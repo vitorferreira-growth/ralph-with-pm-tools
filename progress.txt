@@ -338,5 +338,55 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 4.4: Create vendedores tests (2026-01-14)
+- Installed testing dependencies:
+  - vitest: Test runner (v4.0.17)
+  - @vitejs/plugin-react: React plugin for Vite
+  - jsdom: Browser environment simulation
+  - @testing-library/react: React testing utilities
+  - @testing-library/jest-dom: Custom matchers for DOM testing
+  - @testing-library/user-event: User interaction simulation
+- Created vitest.config.ts:
+  - Configured jsdom environment
+  - Set up path aliases (@/)
+  - Configured test file patterns
+  - Set up coverage reporters
+- Created src/__tests__/setup.ts:
+  - Mocked next/navigation (useRouter, usePathname, useSearchParams)
+  - Mocked global fetch
+  - Added beforeEach to clear mocks
+- Created src/hooks/use-vendedores.test.ts (14 tests):
+  - buscarVendedores: Initial load, error handling, manual refresh
+  - criarVendedor: Creation, alphabetical ordering, error handling
+  - atualizarVendedor: Update, alphabetical ordering, error handling
+  - excluirVendedor: Deletion, error handling
+  - Network error handling for all operations
+- Created src/components/vendedores/tabela-vendedores.test.tsx (9 tests):
+  - Empty state rendering
+  - Table rendering with data
+  - Header columns verification
+  - Action buttons (edit, delete) click handlers
+- Created src/components/vendedores/formulario-vendedor.test.tsx (19 tests):
+  - Dialog rendering states (open/closed)
+  - Create vs edit mode UI differences
+  - Form field pre-filling in edit mode
+  - Validation (required name, required email)
+  - Form submission with data normalization (trim, lowercase email)
+  - Dialog close on success, stay open on failure
+  - Cancel button behavior
+  - Loading state disabling
+- Created src/components/vendedores/dialogo-excluir-vendedor.test.tsx (11 tests):
+  - Dialog rendering with vendedor data
+  - Null vendedor handling
+  - Cancel and confirm button handlers
+  - Loading state (excluindo) button states
+- Added npm scripts:
+  - test: vitest (watch mode)
+  - test:run: vitest run (single run)
+  - test:coverage: vitest run --coverage
+- Test results: 53 tests passing
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 4.4: Testes de vendedores
+- Step 5.1: Criar API de produtos
