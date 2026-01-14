@@ -66,7 +66,35 @@
 - Verified: npm run lint passes (only warnings)
 - User Instructions: Create Supabase project and update .env.local with real keys
 
+### Step 1.4: Create database schema (2025-01-14)
+- Created supabase/migrations/001_initial_schema.sql with complete schema
+- Tables created:
+  - tenants: Multi-tenant support with name, slug
+  - users: Linked to auth.users with tenant_id, role (owner/admin/member)
+  - sellers: Sales team members with name, email
+  - customers: Client data with full contact info, linked to seller
+  - products: Product catalog with name, code, price
+  - opportunities: CRM pipeline with stages (first_contact through closed_won/lost)
+  - opportunity_products: Many-to-many junction table with quantity, unit_price
+- Indexes created for:
+  - Tenant lookups (all tables)
+  - Foreign key relationships
+  - Search fields (name, email, code)
+  - Stage filtering and date filtering for dashboard
+- Functions implemented:
+  - get_user_tenant_id(): Returns current user's tenant for RLS
+  - update_updated_at_column(): Auto-updates timestamps
+  - calculate_opportunity_total(): Auto-calculates opportunity value from products
+- Triggers for:
+  - Auto-updating updated_at on all tables
+  - Auto-calculating opportunity total when products change
+- RLS Policies (all tables):
+  - SELECT, INSERT, UPDATE, DELETE restricted to user's own tenant
+  - Special policies for signup flow (tenant/user creation)
+- Verified: npm run build compiles successfully
+- Verified: npm run lint passes (only warnings)
+- User Instructions: Run migration in Supabase SQL Editor or via CLI
+
 ## Next Tasks
-- Step 1.4: Create database schema
 - Step 1.5: Generate Supabase types
 - Step 1.6: Configure folder structure
