@@ -1,10 +1,26 @@
 import type { ReactNode } from 'react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { FormularioLogin } from '@/components/auth/formulario-login'
 
-export default function LoginPage(): ReactNode {
+interface LoginPageProps {
+  searchParams: Promise<{ redirectTo?: string }>
+}
+
+export default async function LoginPage({ searchParams }: LoginPageProps): Promise<ReactNode> {
+  const { redirectTo } = await searchParams
+
   return (
-    <div className="rounded-lg bg-white p-lg shadow-card">
-      <h1 className="text-h2 font-semibold text-gray-900">Login</h1>
-      <p className="mt-sm text-body text-gray-500">Página de login - a ser implementada</p>
-    </div>
+    <Card className="shadow-card">
+      <CardHeader className="space-y-xs text-center">
+        <div className="mx-auto mb-md text-h1 font-bold text-primary">InfinitePay</div>
+        <CardTitle className="text-h2">Bem-vindo de volta</CardTitle>
+        <CardDescription className="text-body text-gray-500">
+          Entre com seu email e senha para acessar sua conta
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <FormularioLogin redirectTo={redirectTo} />
+      </CardContent>
+    </Card>
   )
 }
