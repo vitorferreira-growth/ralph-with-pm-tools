@@ -544,5 +544,39 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (117 tests)
 
+### Step 6.2: Create useClientes hook (2026-01-14)
+- Created src/hooks/use-clientes.ts with full CRUD state management
+- Hook interface (UseClientesRetorno):
+  - clientes: CustomerWithSeller[] - list of customers with seller data
+  - carregando: boolean - loading state
+  - erro: string | null - error message
+  - buscarClientes(filtros?): Promise<void> - fetch customers with optional filters
+  - criarCliente(dados): Promise<CustomerWithSeller | null> - create new customer
+  - atualizarCliente(id, dados): Promise<CustomerWithSeller | null> - update customer
+  - excluirCliente(id): Promise<boolean> - delete customer
+- FiltrosClientes interface for search functionality:
+  - busca?: string - search by name or email
+  - vendedorId?: string - filter by seller
+- ClienteInput type for create/update operations:
+  - nome: string (required)
+  - email: string (required)
+  - whatsapp, endereco, cidade, estado, cep, dataNascimento, vendedorId (optional)
+- Features implemented:
+  - Auto-loads customers on mount using useEffect
+  - Maintains alphabetical order after create/update operations
+  - Proper error handling with Portuguese error messages
+  - Search and filter support via query params
+  - Uses fetch API to communicate with /api/clientes endpoints
+  - All functions use useCallback for performance optimization
+- Created src/hooks/use-clientes.test.ts with 21 tests:
+  - buscarClientes: Initial load, error handling, manual refresh, search filters, seller filter, multiple filters, empty search handling
+  - criarCliente: Creation, minimal fields, alphabetical ordering, error handling
+  - atualizarCliente: Update, alphabetical ordering, error handling
+  - excluirCliente: Deletion, error handling
+  - Network error handling for all operations
+- Test results: 138 tests passing (117 previous + 21 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 6.2: Criar hook useClientes
+- Step 6.3: Criar validações Zod
