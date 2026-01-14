@@ -511,5 +511,38 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 6.1: Create clientes API (2026-01-14)
+- Created src/app/api/clientes/route.ts:
+  - GET /api/clientes: Lists all customers for tenant (RLS applied)
+    - Includes seller data via join
+    - Search by name or email via `busca` query param
+    - Filter by seller via `vendedor_id` query param
+  - POST /api/clientes: Creates new customer with validation
+    - Required fields: nome (name), email
+    - Optional fields: whatsapp, endereco, cidade, estado, cep, dataNascimento, vendedorId
+    - Email format validation
+    - Duplicate email check within tenant
+    - CEP validation (8 digits)
+    - Date validation for birth_date
+    - Seller existence verification if vendedorId provided
+- Created src/app/api/clientes/[id]/route.ts:
+  - GET /api/clientes/:id: Fetches specific customer with seller data
+  - PUT /api/clientes/:id: Updates customer with validation
+    - Partial updates supported
+    - Email uniqueness check (excluding self)
+    - All optional fields can be set to null to remove
+    - Seller existence verification if changing vendedorId
+  - DELETE /api/clientes/:id: Removes customer with safety checks
+    - Checks for linked opportunities before delete
+    - Returns descriptive error if dependencies exist
+- All endpoints:
+  - Verify authentication via getUser()
+  - Use RLS (Row Level Security) for tenant isolation
+  - Return Portuguese error messages
+  - Handle errors gracefully with appropriate HTTP status codes
+  - Include seller relationship data in responses
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (117 tests)
+
 ## Next Tasks
-- Step 6.1: Criar API de clientes
+- Step 6.2: Criar hook useClientes
