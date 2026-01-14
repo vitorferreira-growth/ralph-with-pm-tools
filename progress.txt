@@ -445,5 +445,38 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 5.3: Create produtos page (2026-01-14)
+- Created src/components/produtos/tabela-produtos.tsx:
+  - Table component displaying list of products (Código, Nome, Valor, Ações)
+  - Empty state with Package icon and CTA when no products exist
+  - Row hover states with action buttons (edit, delete)
+  - Currency formatting using Intl.NumberFormat (pt-BR, BRL)
+  - Monospace font for code and value columns
+- Created src/components/produtos/formulario-produto.tsx:
+  - Dialog form for creating/editing products
+  - Fields: nome (required), codigo (optional), valor (required with validation)
+  - Value input with comma support for Brazilian currency format
+  - Modes: create (new) and edit (existing product)
+  - Form validation with error messages in Portuguese
+  - Loading states during save operation
+  - Closes automatically on successful save
+- Created src/components/produtos/dialogo-excluir-produto.tsx:
+  - Confirmation dialog for deleting products
+  - Shows product name being deleted
+  - Warning icon with destructive styling
+  - Loading state during deletion
+  - Cancel and confirm buttons
+- Updated src/app/(dashboard)/produtos/page.tsx:
+  - Client component with full CRUD functionality
+  - Integrates useProdutos hook
+  - Loading state with spinner
+  - Error state with retry button
+  - Operation error display (inline toast style)
+  - Header with product count and "Add" button
+  - All three dialog components integrated
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+- Verified: npm run test:run passes (70 tests)
+
 ## Next Tasks
-- Step 5.3: Criar página de produtos
+- Step 5.4: Testes de produtos (componentes)
