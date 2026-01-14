@@ -1,26 +1,52 @@
+'use client'
+
 import type { ReactNode } from 'react'
+import { useState } from 'react'
 import { TenantProvider } from '@/hooks/use-tenant'
+import { Sidebar } from '@/components/layout/sidebar'
+import { Header } from '@/components/layout/header'
+import { MobileSidebar } from '@/components/layout/mobile-sidebar'
+
+// ============================================================================
+// TYPES
+// ============================================================================
 
 interface DashboardLayoutProps {
   children: ReactNode
 }
 
+// ============================================================================
+// COMPONENT
+// ============================================================================
+
 export default function DashboardLayout({ children }: DashboardLayoutProps): ReactNode {
+  const [menuAberto, setMenuAberto] = useState(false)
+
+  function abrirMenu(): void {
+    setMenuAberto(true)
+  }
+
+  function fecharMenu(): void {
+    setMenuAberto(false)
+  }
+
   return (
     <TenantProvider>
-      <div className="flex min-h-screen bg-gray-50">
-        {/* Sidebar - a ser implementada em Step 3.1 */}
-        <aside className="hidden w-sidebar border-r border-gray-300 bg-white lg:block">
-          <div className="p-lg">
-            <h2 className="text-h3 font-semibold text-primary">CRM InfinitePay</h2>
-          </div>
-          <nav className="mt-lg px-sm">
-            {/* NavItems - a ser implementado em Step 3.2 */}
-          </nav>
-        </aside>
+      <div className="flex h-screen bg-gray-50">
+        {/* Desktop Sidebar */}
+        <Sidebar />
 
-        {/* Main content */}
-        <main className="flex-1 p-3xl">{children}</main>
+        {/* Mobile Sidebar */}
+        <MobileSidebar aberto={menuAberto} aoFechar={fecharMenu} />
+
+        {/* Main content area */}
+        <div className="flex flex-1 flex-col overflow-hidden">
+          {/* Header */}
+          <Header onMenuClick={abrirMenu} />
+
+          {/* Page content */}
+          <main className="flex-1 overflow-y-auto p-lg lg:p-xl">{children}</main>
+        </div>
       </div>
     </TenantProvider>
   )

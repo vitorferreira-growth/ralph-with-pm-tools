@@ -213,5 +213,40 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 3.1: Create dashboard layout (2026-01-14)
+- Created src/components/layout/sidebar.tsx:
+  - Fixed sidebar for desktop (hidden on mobile, visible on lg screens)
+  - Logo with InfinitePay branding (IP icon + CRM text)
+  - Navigation menu with 5 items: Dashboard, Clientes, Produtos, Vendedores, CRM
+  - Active state styling (primary-light background, primary text)
+  - Hover states with gray background
+  - Footer with "Powered by InfinitePay" branding
+- Created src/components/layout/header.tsx:
+  - Responsive header with mobile menu button (hamburger icon)
+  - Tenant name displayed on larger screens
+  - Mobile logo shown on small screens
+  - User info with avatar (initials), name, and tenant name
+  - Logout button with signOut functionality
+  - Loading states with skeleton placeholders
+- Created src/components/layout/mobile-sidebar.tsx:
+  - Mobile-only sidebar with overlay
+  - Slide-in animation from left
+  - Close button with X icon
+  - Same navigation items as desktop sidebar
+  - Auto-close on route change
+  - Body scroll prevention when open
+- Created src/components/layout/nav-items.tsx:
+  - Shared navigation items constant (ITENS_NAVEGACAO)
+  - Standalone NavItems component for reusability
+  - Icons from Lucide: LayoutDashboard, Users, Package, UserCircle, Kanban
+- Updated src/app/(dashboard)/layout.tsx:
+  - Client component with menu state management
+  - Uses Sidebar, Header, and MobileSidebar components
+  - TenantProvider wraps all content
+  - Flex layout with h-screen for full viewport height
+  - Overflow handling for scrollable content area
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 3.1: Criar layout do dashboard
+- Step 3.2: Criar navegação da sidebar

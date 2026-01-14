@@ -1154,9 +1154,9 @@ describe('calcularTicketMedio', () => {
 
 ### Section 3: Layout Base
 
-- [ ] **Step 3.1**: Criar layout do dashboard
+- [x] **Step 3.1**: Criar layout do dashboard
   - **Task**: Criar layout com sidebar e área de conteúdo
-  - **Files**: `src/app/(dashboard)/layout.tsx`, `src/components/layout/sidebar.tsx`, `src/components/layout/header.tsx`
+  - **Files**: `src/app/(dashboard)/layout.tsx`, `src/components/layout/sidebar.tsx`, `src/components/layout/header.tsx`, `src/components/layout/mobile-sidebar.tsx`, `src/components/layout/nav-items.tsx`
   - **Dependencies**: Step 2.1
   - **Acceptance**: Layout responsivo, navegação funcional
 
