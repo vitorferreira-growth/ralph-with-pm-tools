@@ -415,5 +415,35 @@
 - Verified: npm run lint passes (only pre-existing warnings)
 - Verified: npm run test:run passes (53 tests)
 
+### Step 5.2: Create useProdutos hook (2026-01-14)
+- Created src/hooks/use-produtos.ts with full CRUD state management
+- Hook interface (UseProdutosRetorno):
+  - produtos: Product[] - list of products
+  - carregando: boolean - loading state
+  - erro: string | null - error message
+  - buscarProdutos(): Promise<void> - refresh products list
+  - criarProduto(dados): Promise<Product | null> - create new product
+  - atualizarProduto(id, dados): Promise<Product | null> - update product
+  - excluirProduto(id): Promise<boolean> - delete product
+- Features implemented:
+  - Auto-loads products on mount using useEffect
+  - Maintains alphabetical order after create/update operations
+  - Proper error handling with Portuguese error messages
+  - Uses fetch API to communicate with /api/produtos endpoints
+  - All functions use useCallback for performance optimization
+- ProdutoInput type for create/update operations:
+  - nome: string (required)
+  - codigo?: string | null (optional)
+  - valor: number (required)
+- Created src/hooks/use-produtos.test.ts with 17 tests:
+  - buscarProdutos: Initial load, error handling, manual refresh
+  - criarProduto: Creation, without code, alphabetical ordering, error handling
+  - atualizarProduto: Update, alphabetical ordering, error handling
+  - excluirProduto: Deletion, error handling
+  - Network error handling for all operations
+- Test results: 70 tests passing (53 previous + 17 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 5.2: Criar hook useProdutos
+- Step 5.3: Criar página de produtos
