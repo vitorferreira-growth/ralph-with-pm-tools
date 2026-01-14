@@ -107,10 +107,15 @@ export const clienteSchema = z.object({
 
   vendedorId: z
     .string()
-    .uuid('ID do vendedor inválido')
+    .transform((val) => val?.trim() || null)
     .nullable()
     .optional()
-    .transform((val) => val || null),
+    .refine((val) => {
+      if (!val) return true
+      // UUID v4 regex validation
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+      return uuidRegex.test(val)
+    }, { message: 'ID do vendedor inválido' }),
 })
 
 // Schema para atualização de cliente (todos os campos opcionais)
