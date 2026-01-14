@@ -175,5 +175,24 @@
 - Verified: npm run build compiles successfully
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 2.3: Create registration page (2026-01-14)
+- Created src/components/auth/formulario-registro.tsx:
+  - Client component with registration form (name, company name, email, password, confirm password)
+  - Creates tenant with unique slug (company name + timestamp)
+  - Creates auth user via Supabase signUp
+  - Creates tenant record in tenants table
+  - Creates user record in users table with role 'owner'
+  - Password validation (minimum 6 characters, confirmation match)
+  - Loading state with spinner while registering
+  - Error handling with Portuguese translations
+  - Redirects to dashboard on success
+  - Link to login page for existing users
+- Updated src/app/(auth)/registro/page.tsx:
+  - Server component with Card layout matching login page
+  - InfinitePay branding
+  - Uses FormularioRegistro component
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 2.3: Criar página de Registro
+- Step 2.4: Criar logica de multi-tenancy

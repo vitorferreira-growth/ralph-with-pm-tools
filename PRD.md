@@ -1138,7 +1138,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 2.1
   - **Acceptance**: Login funcional, redireciona para dashboard
 
-- [ ] **Step 2.3**: Criar página de Registro
+- [x] **Step 2.3**: Criar página de Registro
   - **Task**: Criar página de registro com criação de tenant
   - **Files**: `src/app/(auth)/registro/page.tsx`, `src/components/auth/formulario-registro.tsx`
   - **Dependencies**: Step 2.1
