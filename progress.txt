@@ -388,5 +388,32 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 5.1: Create products API (2026-01-14)
+- Created src/app/api/produtos/route.ts:
+  - GET /api/produtos: Lists all products for tenant (RLS applied)
+  - POST /api/produtos: Creates new product with validation
+    - Required fields: nome (name), valor (price)
+    - Optional fields: codigo (code)
+    - Value validation (must be number, non-negative)
+    - Duplicate code check within tenant (if code provided)
+- Created src/app/api/produtos/[id]/route.ts:
+  - GET /api/produtos/:id: Fetches specific product
+  - PUT /api/produtos/:id: Updates product with validation
+    - Partial updates supported
+    - Code uniqueness check (excluding self)
+    - Code can be null/empty to remove
+    - Value must be non-negative number
+  - DELETE /api/produtos/:id: Removes product with safety checks
+    - Checks for linked opportunity_products before delete
+    - Returns descriptive error if dependencies exist
+- All endpoints:
+  - Verify authentication via getUser()
+  - Use RLS (Row Level Security) for tenant isolation
+  - Return Portuguese error messages
+  - Handle errors gracefully with appropriate HTTP status codes
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+- Verified: npm run test:run passes (53 tests)
+
 ## Next Tasks
-- Step 5.1: Criar API de produtos
+- Step 5.2: Criar hook useProdutos
