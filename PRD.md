@@ -1116,7 +1116,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 1.4
   - **Acceptance**: Types disponíveis e sem erros de TS
 
-- [ ] **Step 1.6**: Configurar estrutura de pastas
+- [x] **Step 1.6**: Configurar estrutura de pastas
   - **Task**: Criar estrutura de pastas conforme arquitetura definida
   - **Files**: Estrutura em `src/app/`, `src/components/`, `src/lib/`, `src/hooks/`
   - **Dependencies**: Step 1.1

@@ -122,5 +122,29 @@
 - Verified: npm run build compiles successfully
 - Verified: npm run lint passes (only warnings)
 
+### Step 1.6: Configure folder structure (2026-01-14)
+- Created complete folder structure as per PRD architecture
+- App routes created:
+  - src/app/(auth)/ - Auth route group with layout, login, registro pages
+  - src/app/(dashboard)/ - Dashboard route group with layout and all module pages
+  - src/app/api/ - API routes for all entities (clientes, produtos, vendedores, oportunidades, dashboard)
+- Components structure:
+  - src/components/layout/ - Sidebar, Header, NavItems placeholders
+  - src/components/ui/ - shadcn components (already exists)
+  - src/components/dashboard/, clientes/, produtos/, vendedores/, crm/, auth/ - Empty folders ready
+- Library structure:
+  - src/lib/supabase/ - Already configured
+  - src/lib/validations/ - Placeholder for Zod schemas
+- Other folders:
+  - src/hooks/ - Placeholder for custom hooks
+  - src/contexts/ - Placeholder for React contexts
+  - src/styles/ - Placeholder for additional styles
+  - src/__tests__/e2e/ - Placeholder for E2E tests
+- Updated root page.tsx to redirect to /dashboard
+- All pages have placeholder content with references to implementation steps
+- API routes return 501 Not Implemented status as placeholders
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only warnings)
+
 ## Next Tasks
-- Step 1.6: Configure folder structure
+- Step 2.1: Configurar Supabase Auth
