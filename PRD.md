@@ -1233,7 +1233,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 1.4, Step 4.1
   - **Acceptance**: Endpoints funcionais, vinculação com vendedor
 
-- [ ] **Step 6.2**: Criar hook useClientes
+- [x] **Step 6.2**: Criar hook useClientes
   - **Task**: Implementar hook para gerenciar estado de clientes
   - **Files**: `src/hooks/use-clientes.ts`
   - **Dependencies**: Step 6.1
