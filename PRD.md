@@ -1189,7 +1189,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 4.2
   - **Acceptance**: CRUD completo funcional
 
-- [ ] **Step 4.4**: Testes de vendedores
+- [x] **Step 4.4**: Testes de vendedores
   - **Task**: Criar testes unitários e de integração
   - **Files**: `src/hooks/use-vendedores.test.ts`, `src/components/vendedores/*.test.tsx`
   - **Dependencies**: Step 4.3
