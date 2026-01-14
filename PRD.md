@@ -1199,7 +1199,7 @@ describe('calcularTicketMedio', () => {
 
 ### Section 5: Cadastro de Produtos
 
-- [ ] **Step 5.1**: Criar API de produtos
+- [x] **Step 5.1**: Criar API de produtos
   - **Task**: Implementar endpoints CRUD para produtos
   - **Files**: `src/app/api/produtos/route.ts`, `src/app/api/produtos/[id]/route.ts`
   - **Dependencies**: Step 1.4
