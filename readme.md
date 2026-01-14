@@ -1,6 +1,6 @@
 # Ralph with Steroids
 
-A fork of [Ralph Loop](https://github.com/luisbebop/ralph-loop) enhanced with a structured **PRD Generator** using the 8-Step Method.
+A fork of [Ralph Loop](https://github.com/luisbebop/ralph) enhanced with a structured **PRD Generator** using the 8-Step Method.
 
 ## The `/prd` Command
 
