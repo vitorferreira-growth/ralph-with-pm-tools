@@ -2,22 +2,119 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* InfinitePay Theme - Light Mode */
+    /* Background colors */
+    --background: 210 20% 98%; /* Gray 50: #F9FAFB */
+    --foreground: 220 13% 13%; /* Gray 900: #111827 */
+
+    /* Card */
+    --card: 0 0% 100%; /* White: #FFFFFF */
+    --card-foreground: 220 13% 13%; /* Gray 900: #111827 */
+
+    /* Popover */
+    --popover: 0 0% 100%; /* White: #FFFFFF */
+    --popover-foreground: 220 13% 13%; /* Gray 900: #111827 */
+
+    /* Primary - InfinitePay Purple: #6E08F2 */
+    --primary: 267 93% 49%;
+    --primary-foreground: 0 0% 100%; /* White */
+
+    /* Secondary - Gray 100: #F3F4F6 */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 9% 28%; /* Gray 700: #374151 */
+
+    /* Muted - Gray 100: #F3F4F6 */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%; /* Gray 500: #6B7280 */
+
+    /* Accent - InfinitePay Teal: #33D9B2 */
+    --accent: 163 65% 52%;
+    --accent-foreground: 220 13% 13%; /* Gray 900 */
+
+    /* Destructive - Error Red: #EF4444 */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%; /* White */
+
+    /* Border - Gray 300: #D1D5DB */
+    --border: 220 13% 84%;
+    --input: 220 13% 84%;
+    --ring: 267 93% 49%; /* Primary purple */
+
+    /* Chart colors for dashboard */
+    --chart-1: 267 93% 49%; /* Primary purple */
+    --chart-2: 163 65% 52%; /* Accent teal */
+    --chart-3: 142 71% 45%; /* Success green */
+    --chart-4: 47 96% 67%; /* Warning yellow */
+    --chart-5: 0 84% 60%; /* Error red */
+
+    /* Border radius as per PRD */
+    --radius: 0.5rem; /* 8px - md default */
+
+    /* Additional InfinitePay colors as CSS custom properties */
+    --primary-hover: 267 95% 40%; /* #5A06C8 */
+    --primary-light: 260 92% 95%; /* #EDE5FE */
+    --accent-light: 163 65% 94%; /* #E6FAF5 */
+    --success: 142 71% 45%; /* #22C55E */
+    --warning: 47 96% 67%; /* #FFDB58 */
+    --info: 267 93% 49%; /* Same as primary */
+
+    /* Gray scale */
+    --gray-50: 210 20% 98%; /* #F9FAFB */
+    --gray-100: 220 14% 96%; /* #F3F4F6 */
+    --gray-300: 220 13% 84%; /* #D1D5DB */
+    --gray-500: 220 9% 46%; /* #6B7280 */
+    --gray-700: 220 9% 28%; /* #374151 */
+    --gray-900: 220 13% 13%; /* #111827 */
+  }
+
+  .dark {
+    /* Dark mode (optional - keeping for future use) */
+    --background: 220 13% 13%;
+    --foreground: 210 20% 98%;
+
+    --card: 220 9% 15%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 9% 15%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 267 93% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 9% 18%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 220 9% 18%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 163 65% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 9% 22%;
+    --input: 220 9% 22%;
+    --ring: 267 93% 60%;
+
+    --chart-1: 267 93% 60%;
+    --chart-2: 163 65% 50%;
+    --chart-3: 142 71% 50%;
+    --chart-4: 47 96% 60%;
+    --chart-5: 0 84% 55%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
 }
 
 @layer utilities {
