@@ -1177,7 +1177,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 1.4
   - **Acceptance**: Endpoints funcionais, RLS aplicado
 
-- [ ] **Step 4.2**: Criar hook useVendedores
+- [x] **Step 4.2**: Criar hook useVendedores
   - **Task**: Implementar hook para gerenciar estado de vendedores
   - **Files**: `src/hooks/use-vendedores.ts`
   - **Dependencies**: Step 4.1

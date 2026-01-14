@@ -283,5 +283,27 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 4.2: Create useVendedores hook (2026-01-14)
+- Created src/hooks/use-vendedores.ts with full CRUD state management
+- Hook interface (UseVendedoresRetorno):
+  - vendedores: Seller[] - list of sellers
+  - carregando: boolean - loading state
+  - erro: string | null - error message
+  - buscarVendedores(): Promise<void> - refresh sellers list
+  - criarVendedor(dados): Promise<Seller | null> - create new seller
+  - atualizarVendedor(id, dados): Promise<Seller | null> - update seller
+  - excluirVendedor(id): Promise<boolean> - delete seller
+- Features implemented:
+  - Auto-loads sellers on mount using useEffect
+  - Maintains alphabetical order after create/update operations
+  - Proper error handling with Portuguese error messages
+  - Uses fetch API to communicate with /api/vendedores endpoints
+  - All functions use useCallback for performance optimization
+- VendedorInput type for create/update operations:
+  - nome: string (required)
+  - email: string (required)
+- Verified: npm run build compiles successfully
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 4.2: Criar hook useVendedores
+- Step 4.3: Criar página de vendedores
