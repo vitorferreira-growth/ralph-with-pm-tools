@@ -1097,7 +1097,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 1.1
   - **Acceptance**: Componentes shadcn renderizam com cores corretas
 
-- [ ] **Step 1.3**: Configurar Supabase
+- [x] **Step 1.3**: Configurar Supabase
   - **Task**: Criar projeto Supabase, configurar client e variáveis de ambiente
   - **Files**: `src/lib/supabase/client.ts`, `src/lib/supabase/server.ts`, `.env.local`
   - **Dependencies**: Step 1.1
