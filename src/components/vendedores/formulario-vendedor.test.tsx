@@ -158,7 +158,7 @@ describe('FormularioVendedor', () => {
       expect(onSalvar).not.toHaveBeenCalled()
     })
 
-    it('deve exibir erro quando email é inválido', async () => {
+    it('deve exibir erro quando email é inválido (sem domínio)', async () => {
       const user = userEvent.setup()
       const onFechar = vi.fn()
       const onSalvar = vi.fn()
@@ -166,8 +166,8 @@ describe('FormularioVendedor', () => {
       render(<FormularioVendedor aberto={true} onFechar={onFechar} onSalvar={onSalvar} />)
 
       await user.type(screen.getByLabelText('Nome'), 'Teste')
-      // Email sem arroba - falha na regex
-      await user.type(screen.getByLabelText('Email'), 'emailsemarroba')
+      // Email com @ mas sem domínio válido - passa HTML5 validation mas falha na regex
+      await user.type(screen.getByLabelText('Email'), 'teste@')
       await user.click(screen.getByRole('button', { name: 'Adicionar' }))
 
       expect(screen.getByText('Email inválido')).toBeInTheDocument()
