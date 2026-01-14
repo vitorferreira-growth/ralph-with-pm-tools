@@ -1160,17 +1160,18 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 2.1
   - **Acceptance**: Layout responsivo, navegação funcional
 
-- [ ] **Step 3.2**: Criar navegação da sidebar
+- [x] **Step 3.2**: Criar navegação da sidebar
   - **Task**: Implementar menu com links para todas as seções
   - **Files**: `src/components/layout/nav-items.tsx`
   - **Dependencies**: Step 3.1
   - **Acceptance**: Links funcionais, estado ativo visível
+  - **Note**: Implemented as part of Step 3.1 (nav-items.tsx already includes NavItems component and ITENS_NAVEGACAO constant)
 
 ---
 
 ### Section 4: Cadastro de Vendedores
 
-- [ ] **Step 4.1**: Criar API de vendedores
+- [x] **Step 4.1**: Criar API de vendedores
   - **Task**: Implementar endpoints CRUD para vendedores
   - **Files**: `src/app/api/vendedores/route.ts`, `src/app/api/vendedores/[id]/route.ts`
   - **Dependencies**: Step 1.4

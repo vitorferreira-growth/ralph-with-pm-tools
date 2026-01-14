@@ -248,5 +248,40 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 3.2: Create sidebar navigation (2026-01-14)
+- Note: This step was already implemented as part of Step 3.1
+- Navigation items defined in src/components/layout/nav-items.tsx:
+  - ITENS_NAVEGACAO constant with all 5 menu items
+  - NavItems component with active state logic
+- Both Sidebar and MobileSidebar use ITENS_NAVEGACAO
+- Active states: bg-primary-light text-primary for active items
+- Hover states: bg-gray-100 for inactive items
+- Links functional with usePathname() for active detection
+- Verified: All acceptance criteria met (Links funcionais, estado ativo visível)
+
+### Step 4.1: Create vendedores API (2026-01-14)
+- Created src/app/api/vendedores/route.ts:
+  - GET /api/vendedores: Lists all sellers for tenant (RLS applied)
+  - POST /api/vendedores: Creates new seller with validation
+    - Required fields: nome (name), email
+    - Email format validation
+    - Duplicate email check within tenant
+- Created src/app/api/vendedores/[id]/route.ts:
+  - GET /api/vendedores/:id: Fetches specific seller
+  - PUT /api/vendedores/:id: Updates seller with validation
+    - Partial updates supported
+    - Email uniqueness check (excluding self)
+  - DELETE /api/vendedores/:id: Removes seller with safety checks
+    - Checks for linked customers before delete
+    - Checks for linked opportunities before delete
+    - Returns descriptive error if dependencies exist
+- All endpoints:
+  - Verify authentication via getUser()
+  - Use RLS (Row Level Security) for tenant isolation
+  - Return Portuguese error messages
+  - Handle errors gracefully with appropriate HTTP status codes
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 3.2: Criar navegação da sidebar
+- Step 4.2: Criar hook useVendedores
