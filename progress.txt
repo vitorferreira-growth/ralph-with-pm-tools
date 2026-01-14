@@ -578,5 +578,42 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 6.3: Create Zod validation schemas for cliente (2026-01-14)
+- Installed zod package for runtime validation
+- Created src/lib/validations/cliente.ts with comprehensive validation:
+  - clienteSchema: Main validation schema for customer form
+    - nome: Required, min 2 chars, max 255, auto-trim
+    - email: Required, valid format, auto-lowercase, auto-trim
+    - whatsapp: Optional, Brazilian format validation with regex
+    - endereco: Optional, max 500 chars
+    - cidade: Optional, max 100 chars
+    - estado: Optional, 2-char state code, auto-uppercase
+    - cep: Optional, 8-digit Brazilian CEP format, auto-format
+    - dataNascimento: Optional, valid date, not future, not before 1900
+    - vendedorId: Optional, valid UUID, empty string converts to null
+  - clienteUpdateSchema: Partial schema for updates (all fields optional)
+  - Type exports: ClienteFormData, ClienteUpdateFormData
+- Added utility validation functions:
+  - validarEmail(email): Checks if email format is valid
+  - validarCEP(cep): Checks if CEP format is valid
+  - validarWhatsApp(whatsapp): Checks if WhatsApp format is valid
+- Added formatting utility functions:
+  - formatarCEP(cep): Formats CEP for display (00000-000)
+  - formatarWhatsApp(whatsapp): Formats phone for display ((11) 99999-9999)
+- Added ESTADOS_BRASILEIROS constant with all 27 Brazilian states
+- Created src/lib/validations/cliente.test.ts with 51 tests:
+  - nome field: Valid input, trim, required, min length
+  - email field: Valid input, lowercase, required, format validation
+  - whatsapp field: Various formats, empty, null, invalid
+  - cep field: With/without hyphen, empty, null, invalid formats
+  - dataNascimento field: Valid, empty, null, future date, ancient date
+  - vendedorId field: Valid UUID, null, empty string, invalid
+  - Optional fields: endereco, cidade, estado with transforms
+  - Update schema: Partial validation
+  - Utility functions: Email, CEP, WhatsApp validation and formatting
+- Test results: 189 tests passing (138 previous + 51 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 6.3: Criar validações Zod
+- Step 6.4: Criar página de clientes
