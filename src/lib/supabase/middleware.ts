@@ -2,7 +2,11 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import type { Database } from '@/types/database'
 
-export async function atualizarSessao(request: NextRequest) {
+/**
+ * Atualiza a sessão do usuário no middleware.
+ * Deve ser chamada em todas as requisições para manter a sessão ativa.
+ */
+export async function atualizarSessao(request: NextRequest): Promise<NextResponse> {
   let supabaseResponse = NextResponse.next({
     request,
   })
@@ -28,7 +32,8 @@ export async function atualizarSessao(request: NextRequest) {
     }
   )
 
-  // Atualiza sessão do usuário
+  // IMPORTANTE: Não usar getSession() pois retorna dados do storage que podem ser manipulados.
+  // getUser() faz uma requisição ao servidor Supabase para validar o token JWT.
   await supabase.auth.getUser()
 
   return supabaseResponse

@@ -146,5 +146,18 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only warnings)
 
+### Step 2.1: Configure Supabase Auth middleware (2026-01-14)
+- Created src/middleware.ts with authentication route protection
+- Protected routes: /dashboard, /clientes, /produtos, /vendedores, /crm
+- Auth routes: /login, /registro (redirect to dashboard if already logged in)
+- Middleware features:
+  - Uses Supabase getUser() to validate JWT tokens (not getSession())
+  - Redirects unauthenticated users to /login with redirectTo query param
+  - Redirects authenticated users away from auth pages to /dashboard
+  - Excludes static files, images, and API routes from middleware
+- Updated src/lib/supabase/middleware.ts with explicit return type and documentation
+- Verified: npm run build compiles successfully (18 routes + Middleware)
+- Verified: npm run lint passes (only warnings)
+
 ## Next Tasks
-- Step 2.1: Configurar Supabase Auth
+- Step 2.2: Criar página de Login

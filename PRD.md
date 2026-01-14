@@ -1126,7 +1126,7 @@ describe('calcularTicketMedio', () => {
 
 ### Section 2: Autenticação
 
-- [ ] **Step 2.1**: Configurar Supabase Auth
+- [x] **Step 2.1**: Configurar Supabase Auth
   - **Task**: Configurar middleware de autenticação e providers
   - **Files**: `src/middleware.ts`, `src/lib/supabase/middleware.ts`
   - **Dependencies**: Step 1.3
