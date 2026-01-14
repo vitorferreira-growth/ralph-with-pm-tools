@@ -1183,9 +1183,9 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 4.1
   - **Acceptance**: Hook retorna dados, loading, erro
 
-- [ ] **Step 4.3**: Criar página de vendedores
+- [x] **Step 4.3**: Criar página de vendedores
   - **Task**: Implementar listagem, criação, edição e exclusão
-  - **Files**: `src/app/(dashboard)/vendedores/page.tsx`, `src/components/vendedores/tabela-vendedores.tsx`, `src/components/vendedores/formulario-vendedor.tsx`
+  - **Files**: `src/app/(dashboard)/vendedores/page.tsx`, `src/components/vendedores/tabela-vendedores.tsx`, `src/components/vendedores/formulario-vendedor.tsx`, `src/components/vendedores/dialogo-excluir-vendedor.tsx`
   - **Dependencies**: Step 4.2
   - **Acceptance**: CRUD completo funcional
 
