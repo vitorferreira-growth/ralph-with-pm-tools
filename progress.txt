@@ -159,5 +159,21 @@
 - Verified: npm run build compiles successfully (18 routes + Middleware)
 - Verified: npm run lint passes (only warnings)
 
+### Step 2.2: Create login page (2026-01-14)
+- Created src/components/auth/formulario-login.tsx:
+  - Client component with email/password form
+  - Uses Supabase signInWithPassword for authentication
+  - Loading state with spinner while authenticating
+  - Error handling with Portuguese translations
+  - Redirects to dashboard (or redirectTo param) on success
+  - Link to registration page
+- Updated src/app/(auth)/login/page.tsx:
+  - Server component with Card layout
+  - InfinitePay branding
+  - Passes redirectTo search param to form component
+- Added shadcn Label component for form labels
+- Verified: npm run build compiles successfully
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 2.2: Criar página de Login
+- Step 2.3: Criar página de Registro
