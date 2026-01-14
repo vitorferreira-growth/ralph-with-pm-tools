@@ -30,11 +30,11 @@ Autônomos e microempreendedores gerenciam clientes, produtos e vendas em planil
 
 ### Target Audience
 
-| Segmento | Descrição | Necessidades |
-|----------|-----------|--------------|
-| Primário | Autônomos e MEIs | Organizar clientes, acompanhar vendas, ter visão do negócio |
-| Secundário | Microempresas (1-5 pessoas) | Gestão básica de equipe de vendas, controle de produtos |
-| Terciário | Vendedores individuais | Acompanhar próprio pipeline de vendas |
+| Segmento   | Descrição                   | Necessidades                                                |
+| ---------- | --------------------------- | ----------------------------------------------------------- |
+| Primário   | Autônomos e MEIs            | Organizar clientes, acompanhar vendas, ter visão do negócio |
+| Secundário | Microempresas (1-5 pessoas) | Gestão básica de equipe de vendas, controle de produtos     |
+| Terciário  | Vendedores individuais      | Acompanhar próprio pipeline de vendas                       |
 
 ### USP (Unique Selling Proposition)
 
@@ -58,24 +58,24 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 ### MVP (P0)
 
-| Feature | Descrição | Requisitos |
-|---------|-----------|------------|
-| **Dashboard** | Visão geral do negócio com KPIs e gráficos | KPIs: Total vendas (R$ e qtd), Ticket médio, Em negociação (R$ e qtd), Desistências (R$ e qtd). Gráficos: Vendas por mês, por vendedor, por produto, valor por etapa do CRM |
-| **Cadastro de Clientes** | Base de clientes com dados de contato | Campos: Nome, email, WhatsApp, endereço, cidade, estado, CEP, data nascimento, vendedor responsável |
-| **Cadastro de Produtos** | Catálogo simples de produtos/serviços | Campos: Nome, código, valor |
-| **Cadastro de Vendedores** | Equipe de vendas | Campos: Nome, email |
-| **CRM Kanban** | Pipeline de vendas com etapas visuais | Etapas: 1º Contato → Elaboração de Proposta → Negociação → Aguardando Pagamento → Venda Finalizada / Desistiu |
+| Feature                    | Descrição                                  | Requisitos                                                                                                                                                                  |
+| -------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Dashboard**              | Visão geral do negócio com KPIs e gráficos | KPIs: Total vendas (R$ e qtd), Ticket médio, Em negociação (R$ e qtd), Desistências (R$ e qtd). Gráficos: Vendas por mês, por vendedor, por produto, valor por etapa do CRM |
+| **Cadastro de Clientes**   | Base de clientes com dados de contato      | Campos: Nome, email, WhatsApp, endereço, cidade, estado, CEP, data nascimento, vendedor responsável                                                                         |
+| **Cadastro de Produtos**   | Catálogo simples de produtos/serviços      | Campos: Nome, código, valor                                                                                                                                                 |
+| **Cadastro de Vendedores** | Equipe de vendas                           | Campos: Nome, email                                                                                                                                                         |
+| **CRM Kanban**             | Pipeline de vendas com etapas visuais      | Etapas: 1º Contato → Elaboração de Proposta → Negociação → Aguardando Pagamento → Venda Finalizada / Desistiu                                                               |
 
 ### v2 (P1)
 
-| Feature | Descrição | Requisitos |
-|---------|-----------|------------|
-| - | Nenhuma planejada no momento | - |
+| Feature | Descrição                    | Requisitos |
+| ------- | ---------------------------- | ---------- |
+| -       | Nenhuma planejada no momento | -          |
 
 ### Futuro (P2)
 
-| Feature | Descrição |
-|---------|-----------|
+| Feature                | Descrição                                |
+| ---------------------- | ---------------------------------------- |
 | Integração InfinitePay | Conectar pagamentos e maquininhas ao CRM |
 
 ---
@@ -86,16 +86,16 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 #### User Stories
 
-| Persona | Story | Prioridade |
-|---------|-------|------------|
-| Empreendedor | Como empreendedor, quero ver o total de vendas do período para saber quanto faturei | P0 |
-| Empreendedor | Como empreendedor, quero ver o ticket médio para entender o valor médio por venda | P0 |
-| Empreendedor | Como empreendedor, quero ver negociações em andamento para saber meu potencial de receita | P0 |
-| Empreendedor | Como empreendedor, quero ver desistências para identificar perdas no funil | P0 |
-| Empreendedor | Como empreendedor, quero ver gráficos de vendas por mês para acompanhar evolução | P0 |
-| Empreendedor | Como empreendedor, quero ver vendas por vendedor para avaliar performance da equipe | P0 |
-| Empreendedor | Como empreendedor, quero ver vendas por produto para saber o que vende mais | P0 |
-| Empreendedor | Como empreendedor, quero ver valor em cada etapa do CRM para entender o funil | P0 |
+| Persona      | Story                                                                                     | Prioridade |
+| ------------ | ----------------------------------------------------------------------------------------- | ---------- |
+| Empreendedor | Como empreendedor, quero ver o total de vendas do período para saber quanto faturei       | P0         |
+| Empreendedor | Como empreendedor, quero ver o ticket médio para entender o valor médio por venda         | P0         |
+| Empreendedor | Como empreendedor, quero ver negociações em andamento para saber meu potencial de receita | P0         |
+| Empreendedor | Como empreendedor, quero ver desistências para identificar perdas no funil                | P0         |
+| Empreendedor | Como empreendedor, quero ver gráficos de vendas por mês para acompanhar evolução          | P0         |
+| Empreendedor | Como empreendedor, quero ver vendas por vendedor para avaliar performance da equipe       | P0         |
+| Empreendedor | Como empreendedor, quero ver vendas por produto para saber o que vende mais               | P0         |
+| Empreendedor | Como empreendedor, quero ver valor em cada etapa do CRM para entender o funil             | P0         |
 
 #### Acceptance Criteria
 
@@ -114,13 +114,13 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 #### User Stories
 
-| Persona | Story | Prioridade |
-|---------|-------|------------|
-| Empreendedor | Como empreendedor, quero cadastrar clientes com dados de contato para manter uma base organizada | P0 |
-| Empreendedor | Como empreendedor, quero vincular um cliente a um vendedor para definir responsabilidade | P0 |
-| Empreendedor | Como empreendedor, quero editar dados de um cliente para manter informações atualizadas | P0 |
-| Empreendedor | Como empreendedor, quero buscar clientes por nome ou email para encontrar rapidamente | P0 |
-| Empreendedor | Como empreendedor, quero excluir um cliente que não é mais relevante | P0 |
+| Persona      | Story                                                                                            | Prioridade |
+| ------------ | ------------------------------------------------------------------------------------------------ | ---------- |
+| Empreendedor | Como empreendedor, quero cadastrar clientes com dados de contato para manter uma base organizada | P0         |
+| Empreendedor | Como empreendedor, quero vincular um cliente a um vendedor para definir responsabilidade         | P0         |
+| Empreendedor | Como empreendedor, quero editar dados de um cliente para manter informações atualizadas          | P0         |
+| Empreendedor | Como empreendedor, quero buscar clientes por nome ou email para encontrar rapidamente            | P0         |
+| Empreendedor | Como empreendedor, quero excluir um cliente que não é mais relevante                             | P0         |
 
 #### Acceptance Criteria
 
@@ -137,12 +137,12 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 #### User Stories
 
-| Persona | Story | Prioridade |
-|---------|-------|------------|
-| Empreendedor | Como empreendedor, quero cadastrar produtos com nome, código e valor para ter um catálogo | P0 |
-| Empreendedor | Como empreendedor, quero editar um produto para atualizar preços | P0 |
-| Empreendedor | Como empreendedor, quero excluir um produto descontinuado | P0 |
-| Empreendedor | Como empreendedor, quero buscar produtos por nome ou código | P0 |
+| Persona      | Story                                                                                     | Prioridade |
+| ------------ | ----------------------------------------------------------------------------------------- | ---------- |
+| Empreendedor | Como empreendedor, quero cadastrar produtos com nome, código e valor para ter um catálogo | P0         |
+| Empreendedor | Como empreendedor, quero editar um produto para atualizar preços                          | P0         |
+| Empreendedor | Como empreendedor, quero excluir um produto descontinuado                                 | P0         |
+| Empreendedor | Como empreendedor, quero buscar produtos por nome ou código                               | P0         |
 
 #### Acceptance Criteria
 
@@ -158,11 +158,11 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 #### User Stories
 
-| Persona | Story | Prioridade |
-|---------|-------|------------|
-| Empreendedor | Como empreendedor, quero cadastrar vendedores para organizar minha equipe | P0 |
-| Empreendedor | Como empreendedor, quero editar dados de um vendedor | P0 |
-| Empreendedor | Como empreendedor, quero excluir um vendedor que saiu da equipe | P0 |
+| Persona      | Story                                                                     | Prioridade |
+| ------------ | ------------------------------------------------------------------------- | ---------- |
+| Empreendedor | Como empreendedor, quero cadastrar vendedores para organizar minha equipe | P0         |
+| Empreendedor | Como empreendedor, quero editar dados de um vendedor                      | P0         |
+| Empreendedor | Como empreendedor, quero excluir um vendedor que saiu da equipe           | P0         |
 
 #### Acceptance Criteria
 
@@ -177,14 +177,14 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 #### User Stories
 
-| Persona | Story | Prioridade |
-|---------|-------|------------|
-| Empreendedor | Como empreendedor, quero criar uma oportunidade de venda vinculada a um cliente | P0 |
-| Empreendedor | Como empreendedor, quero arrastar cards entre etapas para atualizar o status | P0 |
-| Empreendedor | Como empreendedor, quero ver o valor total em cada coluna para entender o funil | P0 |
-| Empreendedor | Como empreendedor, quero adicionar produtos a uma oportunidade para calcular o valor | P0 |
-| Empreendedor | Como empreendedor, quero filtrar oportunidades por vendedor | P0 |
-| Vendedor | Como vendedor, quero ver apenas minhas oportunidades para focar no meu trabalho | P0 |
+| Persona      | Story                                                                                | Prioridade |
+| ------------ | ------------------------------------------------------------------------------------ | ---------- |
+| Empreendedor | Como empreendedor, quero criar uma oportunidade de venda vinculada a um cliente      | P0         |
+| Empreendedor | Como empreendedor, quero arrastar cards entre etapas para atualizar o status         | P0         |
+| Empreendedor | Como empreendedor, quero ver o valor total em cada coluna para entender o funil      | P0         |
+| Empreendedor | Como empreendedor, quero adicionar produtos a uma oportunidade para calcular o valor | P0         |
+| Empreendedor | Como empreendedor, quero filtrar oportunidades por vendedor                          | P0         |
+| Vendedor     | Como vendedor, quero ver apenas minhas oportunidades para focar no meu trabalho      | P0         |
 
 #### Acceptance Criteria
 
@@ -205,39 +205,39 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 #### Primary Colors
 
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Primary | `#6E08F2` | Botões principais, links, ênfase |
-| Primary Hover | `#5A06C8` | Hover states em botões |
-| Primary Light | `#EDE5FE` | Backgrounds sutis, badges |
+| Nome          | Hex       | Uso                              |
+| ------------- | --------- | -------------------------------- |
+| Primary       | `#6E08F2` | Botões principais, links, ênfase |
+| Primary Hover | `#5A06C8` | Hover states em botões           |
+| Primary Light | `#EDE5FE` | Backgrounds sutis, badges        |
 
 #### Accent Colors
 
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Accent | `#33D9B2` | CTAs secundários, indicadores de sucesso, destaques |
-| Accent Light | `#E6FAF5` | Backgrounds de destaque positivo |
+| Nome         | Hex       | Uso                                                 |
+| ------------ | --------- | --------------------------------------------------- |
+| Accent       | `#33D9B2` | CTAs secundários, indicadores de sucesso, destaques |
+| Accent Light | `#E6FAF5` | Backgrounds de destaque positivo                    |
 
 #### Neutral Colors
 
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Gray 900 | `#111827` | Texto principal |
-| Gray 700 | `#374151` | Texto secundário |
+| Nome     | Hex       | Uso                           |
+| -------- | --------- | ----------------------------- |
+| Gray 900 | `#111827` | Texto principal               |
+| Gray 700 | `#374151` | Texto secundário              |
 | Gray 500 | `#6B7280` | Texto terciário, placeholders |
-| Gray 300 | `#D1D5DB` | Bordas, divisores |
-| Gray 100 | `#F3F4F6` | Backgrounds de cards, hover |
-| Gray 50 | `#F9FAFB` | Background da página |
-| White | `#FFFFFF` | Cards, modals, inputs |
+| Gray 300 | `#D1D5DB` | Bordas, divisores             |
+| Gray 100 | `#F3F4F6` | Backgrounds de cards, hover   |
+| Gray 50  | `#F9FAFB` | Background da página          |
+| White    | `#FFFFFF` | Cards, modals, inputs         |
 
 #### Functional Colors
 
-| Nome | Hex | Uso |
-|------|-----|-----|
+| Nome    | Hex       | Uso                            |
+| ------- | --------- | ------------------------------ |
 | Success | `#22C55E` | Confirmações, venda finalizada |
-| Error | `#EF4444` | Erros, desistências |
-| Warning | `#FFDB58` | Avisos, atenção |
-| Info | `#6E08F2` | Informações (usa primary) |
+| Error   | `#EF4444` | Erros, desistências            |
+| Warning | `#FFDB58` | Avisos, atenção                |
+| Info    | `#6E08F2` | Informações (usa primary)      |
 
 ### Typography
 
@@ -248,49 +248,49 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 #### Type Scale
 
-| Style | Size | Weight | Line Height | Uso |
-|-------|------|--------|-------------|-----|
-| H1 | 30px | Semibold (600) | 36px | Títulos de página |
-| H2 | 24px | Semibold (600) | 32px | Títulos de seção |
-| H3 | 18px | Medium (500) | 28px | Subtítulos |
-| H4 | 16px | Medium (500) | 24px | Títulos de cards |
-| Body | 14px | Regular (400) | 20px | Texto padrão |
-| Body Small | 13px | Regular (400) | 18px | Texto secundário |
-| Caption | 12px | Medium (500) | 16px | Labels, badges |
+| Style      | Size | Weight         | Line Height | Uso               |
+| ---------- | ---- | -------------- | ----------- | ----------------- |
+| H1         | 30px | Semibold (600) | 36px        | Títulos de página |
+| H2         | 24px | Semibold (600) | 32px        | Títulos de seção  |
+| H3         | 18px | Medium (500)   | 28px        | Subtítulos        |
+| H4         | 16px | Medium (500)   | 24px        | Títulos de cards  |
+| Body       | 14px | Regular (400)  | 20px        | Texto padrão      |
+| Body Small | 13px | Regular (400)  | 18px        | Texto secundário  |
+| Caption    | 12px | Medium (500)   | 16px        | Labels, badges    |
 
 ### Spacing System
 
-| Token | Value | Uso |
-|-------|-------|-----|
-| xs | 4px | Micro espaçamentos |
-| sm | 8px | Entre elementos relacionados |
-| md | 12px | Padding interno de inputs |
-| lg | 16px | Padding de cards |
-| xl | 24px | Separação de seções |
-| 2xl | 32px | Entre blocos principais |
-| 3xl | 48px | Margens de página |
+| Token | Value | Uso                          |
+| ----- | ----- | ---------------------------- |
+| xs    | 4px   | Micro espaçamentos           |
+| sm    | 8px   | Entre elementos relacionados |
+| md    | 12px  | Padding interno de inputs    |
+| lg    | 16px  | Padding de cards             |
+| xl    | 24px  | Separação de seções          |
+| 2xl   | 32px  | Entre blocos principais      |
+| 3xl   | 48px  | Margens de página            |
 
 ### Border Radius
 
-| Token | Value | Uso |
-|-------|-------|-----|
-| sm | 6px | Inputs, badges |
-| md | 8px | Botões, cards pequenos |
-| lg | 12px | Cards, modals |
-| xl | 16px | Cards grandes, containers |
-| full | 9999px | Avatars, pills |
+| Token | Value  | Uso                       |
+| ----- | ------ | ------------------------- |
+| sm    | 6px    | Inputs, badges            |
+| md    | 8px    | Botões, cards pequenos    |
+| lg    | 12px   | Cards, modals             |
+| xl    | 16px   | Cards grandes, containers |
+| full  | 9999px | Avatars, pills            |
 
 ### Component Styling (shadcn/ui)
 
 #### Buttons
 
-| Variant | Background | Text | Border |
-|---------|------------|------|--------|
-| Primary | `#6E08F2` | White | none |
-| Secondary | `#F3F4F6` | `#374151` | none |
-| Outline | Transparent | `#6E08F2` | 1px `#6E08F2` |
-| Ghost | Transparent | `#374151` | none |
-| Destructive | `#EF4444` | White | none |
+| Variant     | Background  | Text      | Border        |
+| ----------- | ----------- | --------- | ------------- |
+| Primary     | `#6E08F2`   | White     | none          |
+| Secondary   | `#F3F4F6`   | `#374151` | none          |
+| Outline     | Transparent | `#6E08F2` | 1px `#6E08F2` |
+| Ghost       | Transparent | `#374151` | none          |
+| Destructive | `#EF4444`   | White     | none          |
 
 - Height: 36px (default), 32px (sm), 40px (lg)
 - Padding: 16px horizontal
@@ -345,12 +345,12 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 ### Motion & Animation
 
-| Type | Duration | Easing | Uso |
-|------|----------|--------|-----|
-| Micro | 100ms | ease-out | Hovers, toggles |
-| Standard | 150ms | ease-in-out | Transições gerais |
-| Emphasis | 200ms | ease-out | Modais, dropdowns |
-| Drag | 250ms | spring | Kanban drag & drop |
+| Type     | Duration | Easing      | Uso                |
+| -------- | -------- | ----------- | ------------------ |
+| Micro    | 100ms    | ease-out    | Hovers, toggles    |
+| Standard | 150ms    | ease-in-out | Transições gerais  |
+| Emphasis | 200ms    | ease-out    | Modais, dropdowns  |
+| Drag     | 250ms    | spring      | Kanban drag & drop |
 
 ### Layout
 
@@ -368,16 +368,19 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 #### Main Screen States
 
 **Loading State**
+
 - Skeleton loaders nos KPI cards (4 retângulos pulsando)
 - Skeleton nos gráficos (área cinza com shimmer)
 - Manter estrutura do layout visível
 
 **Success State (Populated)**
+
 - 4 KPI cards no topo (Total Vendas, Ticket Médio, Em Negociação, Desistências)
 - Grid 2x2 com gráficos abaixo
 - Filtro de período no header (Este mês, Últimos 3 meses, Este ano)
 
 **Empty State**
+
 - KPIs zerados com formatação (R$ 0,00)
 - Gráficos com estado vazio elegante
 - Mensagem sutil: "Seus dados aparecerão aqui conforme você registrar vendas"
@@ -395,28 +398,33 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 #### Main Screen States
 
 **Empty State**
+
 - Ilustração minimalista (ou ícone Lucide)
 - Título: "Nenhum cliente cadastrado"
 - Descrição: "Comece adicionando seu primeiro cliente"
 - CTA: Botão "Adicionar cliente"
 
 **Loading State**
+
 - Skeleton na tabela (5-6 linhas)
 - Shimmer animation
 
 **Success State (Populated)**
+
 - Tabela com colunas: Nome, Email, WhatsApp, Cidade, Vendedor, Ações
 - Busca no topo
 - Paginação no rodapé
 - Botão "Adicionar cliente" no header
 
 **Error State**
+
 - Toast de erro para falhas em ações
 - Inline error em formulários (borda vermelha + mensagem)
 
 #### Modal/Sidebar: Criar/Editar Cliente
 
 **Estados do formulário:**
+
 - Idle: Campos vazios, bordas neutras
 - Focus: Borda primary no campo ativo
 - Error: Borda vermelha, mensagem de erro abaixo
@@ -437,12 +445,14 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 #### Main Screen States
 
 **Empty State**
+
 - Ícone de caixa/produto
 - Título: "Nenhum produto cadastrado"
 - Descrição: "Adicione produtos para vincular às suas vendas"
 - CTA: Botão "Adicionar produto"
 
 **Success State (Populated)**
+
 - Tabela com colunas: Código, Nome, Valor, Ações
 - Busca por nome ou código
 - Valores formatados em R$
@@ -458,12 +468,14 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 #### Main Screen States
 
 **Empty State**
+
 - Ícone de pessoa
 - Título: "Nenhum vendedor cadastrado"
 - Descrição: "Adicione sua equipe de vendas"
 - CTA: Botão "Adicionar vendedor"
 
 **Success State (Populated)**
+
 - Tabela simples: Nome, Email, Ações
 - Sem paginação se poucos registros
 
@@ -478,21 +490,25 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 #### Main Screen States
 
 **Empty State**
+
 - Colunas visíveis mas vazias
 - Card placeholder em "1º Contato": "Arraste oportunidades aqui ou clique em + para criar"
 - CTA flutuante ou no header: "Nova oportunidade"
 
 **Loading State**
+
 - Skeleton cards em cada coluna (2-3 por coluna)
 - Headers das colunas visíveis
 
 **Success State (Populated)**
+
 - 6 colunas lado a lado (scroll horizontal se necessário)
 - Cards com: Nome do cliente, Valor (destaque), Vendedor (avatar/iniciais)
 - Total em R$ no header de cada coluna
 - Contador de cards por coluna
 
 **Drag State**
+
 - Card sendo arrastado: Elevação aumentada, leve rotação (2deg)
 - Coluna destino: Background highlight sutil
 - Drop zone: Linha indicadora onde o card vai cair
@@ -500,6 +516,7 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 #### Modal/Sidebar: Criar/Editar Oportunidade
 
 **Campos:**
+
 - Cliente (select com busca)
 - Produtos (multi-select com valores)
 - Valor total (calculado automaticamente)
@@ -508,6 +525,7 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 - Observações (textarea opcional)
 
 **Estados:**
+
 - Mesmos padrões de formulário dos cadastros
 
 #### Micro-interactions
@@ -560,15 +578,15 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 
 ### Tech Stack
 
-| Layer | Technology | Justificativa |
-|-------|------------|---------------|
-| Frontend | Next.js 14 (App Router) | SSR, React Server Components, performance |
-| UI Framework | shadcn/ui + Tailwind CSS | Componentes acessíveis, customizáveis, design system consistente |
-| Language | TypeScript | Type-safety, melhor DX |
-| Backend | REST API (Route Handlers) | Simplicidade, compatível com n8n |
-| Database | Supabase (PostgreSQL) | Managed, RLS para multi-tenancy, real-time ready |
-| Auth | Supabase Auth | Integrado com DB, Row Level Security |
-| Hosting | Vercel | Edge, preview deployments, integração Next.js |
+| Layer        | Technology                | Justificativa                                                    |
+| ------------ | ------------------------- | ---------------------------------------------------------------- |
+| Frontend     | Next.js 14 (App Router)   | SSR, React Server Components, performance                        |
+| UI Framework | shadcn/ui + Tailwind CSS  | Componentes acessíveis, customizáveis, design system consistente |
+| Language     | TypeScript                | Type-safety, melhor DX                                           |
+| Backend      | REST API (Route Handlers) | Simplicidade, compatível com n8n                                 |
+| Database     | Supabase (PostgreSQL)     | Managed, RLS para multi-tenancy, real-time ready                 |
+| Auth         | Supabase Auth             | Integrado com DB, Row Level Security                             |
+| Hosting      | Vercel                    | Edge, preview deployments, integração Next.js                    |
 
 ### System Diagram
 
@@ -614,6 +632,7 @@ Gratuito - ferramenta de valor agregado para a base de clientes InfinitePay.
 ```
 
 **Estratégia:** Row Level Security (RLS) no Supabase
+
 - Todas as tabelas têm coluna `tenant_id`
 - Policies garantem que usuário só vê dados do seu tenant
 - Sem necessidade de filtros manuais no código
@@ -734,41 +753,41 @@ CREATE POLICY "Users can delete own tenant customers"
 
 #### Auth Endpoints (Supabase built-in)
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| /auth/v1/signup | POST | Registro de usuário |
-| /auth/v1/token | POST | Login |
-| /auth/v1/logout | POST | Logout |
+| Endpoint        | Method | Description         |
+| --------------- | ------ | ------------------- |
+| /auth/v1/signup | POST   | Registro de usuário |
+| /auth/v1/token  | POST   | Login               |
+| /auth/v1/logout | POST   | Logout              |
 
 #### REST API Endpoints (para n8n e integrações)
 
-| Endpoint | Method | Description | Auth |
-|----------|--------|-------------|------|
-| **Customers** ||||
-| /api/clientes | GET | Lista clientes do tenant | Required |
-| /api/clientes | POST | Cria cliente | Required |
-| /api/clientes/:id | GET | Busca cliente | Required |
-| /api/clientes/:id | PUT | Atualiza cliente | Required |
-| /api/clientes/:id | DELETE | Remove cliente | Required |
-| **Products** ||||
-| /api/produtos | GET | Lista produtos | Required |
-| /api/produtos | POST | Cria produto | Required |
-| /api/produtos/:id | PUT | Atualiza produto | Required |
-| /api/produtos/:id | DELETE | Remove produto | Required |
-| **Sellers** ||||
-| /api/vendedores | GET | Lista vendedores | Required |
-| /api/vendedores | POST | Cria vendedor | Required |
-| /api/vendedores/:id | PUT | Atualiza vendedor | Required |
-| /api/vendedores/:id | DELETE | Remove vendedor | Required |
-| **Opportunities** ||||
-| /api/oportunidades | GET | Lista oportunidades | Required |
-| /api/oportunidades | POST | Cria oportunidade | Required |
-| /api/oportunidades/:id | PUT | Atualiza oportunidade | Required |
-| /api/oportunidades/:id | PATCH | Atualiza stage (kanban) | Required |
-| /api/oportunidades/:id | DELETE | Remove oportunidade | Required |
-| **Dashboard** ||||
-| /api/dashboard/kpis | GET | KPIs do tenant | Required |
-| /api/dashboard/graficos | GET | Dados dos gráficos | Required |
+| Endpoint                | Method | Description              | Auth     |
+| ----------------------- | ------ | ------------------------ | -------- |
+| **Customers**           |        |                          |          |
+| /api/clientes           | GET    | Lista clientes do tenant | Required |
+| /api/clientes           | POST   | Cria cliente             | Required |
+| /api/clientes/:id       | GET    | Busca cliente            | Required |
+| /api/clientes/:id       | PUT    | Atualiza cliente         | Required |
+| /api/clientes/:id       | DELETE | Remove cliente           | Required |
+| **Products**            |        |                          |          |
+| /api/produtos           | GET    | Lista produtos           | Required |
+| /api/produtos           | POST   | Cria produto             | Required |
+| /api/produtos/:id       | PUT    | Atualiza produto         | Required |
+| /api/produtos/:id       | DELETE | Remove produto           | Required |
+| **Sellers**             |        |                          |          |
+| /api/vendedores         | GET    | Lista vendedores         | Required |
+| /api/vendedores         | POST   | Cria vendedor            | Required |
+| /api/vendedores/:id     | PUT    | Atualiza vendedor        | Required |
+| /api/vendedores/:id     | DELETE | Remove vendedor          | Required |
+| **Opportunities**       |        |                          |          |
+| /api/oportunidades      | GET    | Lista oportunidades      | Required |
+| /api/oportunidades      | POST   | Cria oportunidade        | Required |
+| /api/oportunidades/:id  | PUT    | Atualiza oportunidade    | Required |
+| /api/oportunidades/:id  | PATCH  | Atualiza stage (kanban)  | Required |
+| /api/oportunidades/:id  | DELETE | Remove oportunidade      | Required |
+| **Dashboard**           |        |                          |          |
+| /api/dashboard/kpis     | GET    | KPIs do tenant           | Required |
+| /api/dashboard/graficos | GET    | Dados dos gráficos       | Required |
 
 ### Folder Structure
 
@@ -857,31 +876,31 @@ NEXT_PUBLIC_APP_URL=
 
 #### Naming Conventions
 
-| Tipo | Convenção | Exemplo |
-|------|-----------|---------|
-| Arquivos | kebab-case | `lista-clientes.tsx` |
-| Componentes | PascalCase | `ListaClientes` |
-| Funções | camelCase (português) | `buscarClientes()` |
-| Variáveis | camelCase (português) | `clienteSelecionado` |
-| Constantes | UPPER_SNAKE_CASE | `ETAPAS_CRM` |
+| Tipo             | Convenção              | Exemplo                   |
+| ---------------- | ---------------------- | ------------------------- |
+| Arquivos         | kebab-case             | `lista-clientes.tsx`      |
+| Componentes      | PascalCase             | `ListaClientes`           |
+| Funções          | camelCase (português)  | `buscarClientes()`        |
+| Variáveis        | camelCase (português)  | `clienteSelecionado`      |
+| Constantes       | UPPER_SNAKE_CASE       | `ETAPAS_CRM`              |
 | Types/Interfaces | PascalCase (português) | `Cliente`, `Oportunidade` |
-| Hooks | camelCase com "use" | `useClientes()` |
-| API Routes | kebab-case | `/api/clientes` |
+| Hooks            | camelCase com "use"    | `useClientes()`           |
+| API Routes       | kebab-case             | `/api/clientes`           |
 
 #### Exemplos de Código em Português
 
 ```typescript
 // Types
 interface Cliente {
-  id: string;
-  nome: string;
-  email: string;
-  whatsapp: string;
-  cidade: string;
-  estado: string;
-  cep: string;
-  dataNascimento: Date;
-  vendedorId: string;
+  id: string
+  nome: string
+  email: string
+  whatsapp: string
+  cidade: string
+  estado: string
+  cep: string
+  dataNascimento: Date
+  vendedorId: string
 }
 
 // Funções
@@ -900,9 +919,9 @@ export function CardOportunidade({ oportunidade }: CardOportunidadeProps) {
 
 // Hooks
 export function useClientes() {
-  const [clientes, setClientes] = useState<Cliente[]>([]);
-  const [carregando, setCarregando] = useState(true);
-  const [erro, setErro] = useState<string | null>(null);
+  const [clientes, setClientes] = useState<Cliente[]>([])
+  const [carregando, setCarregando] = useState(true)
+  const [erro, setErro] = useState<string | null>(null)
   // ...
 }
 
@@ -914,7 +933,7 @@ const ETAPAS_CRM = {
   AGUARDANDO_PAGAMENTO: 'aguardando_pagamento',
   VENDA_FINALIZADA: 'venda_finalizada',
   DESISTIU: 'desistiu',
-} as const;
+} as const
 ```
 
 ### TypeScript
@@ -930,10 +949,7 @@ const ETAPAS_CRM = {
 ```json
 // .eslintrc.json
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/explicit-function-return-type": "warn",
@@ -966,12 +982,12 @@ main (produção)
 
 #### Branch Naming
 
-| Tipo | Prefixo | Exemplo |
-|------|---------|---------|
-| Nova feature | `feature/` | `feature/cadastro-clientes` |
-| Correção | `fix/` | `fix/erro-login` |
-| Refatoração | `refactor/` | `refactor/otimizar-queries` |
-| Documentação | `docs/` | `docs/atualizar-readme` |
+| Tipo         | Prefixo     | Exemplo                     |
+| ------------ | ----------- | --------------------------- |
+| Nova feature | `feature/`  | `feature/cadastro-clientes` |
+| Correção     | `fix/`      | `fix/erro-login`            |
+| Refatoração  | `refactor/` | `refactor/otimizar-queries` |
+| Documentação | `docs/`     | `docs/atualizar-readme`     |
 
 #### Commits (Conventional Commits em português)
 
@@ -1014,11 +1030,11 @@ src/
 
 #### Ferramentas
 
-| Tipo | Ferramenta | Cobertura |
-|------|------------|-----------|
-| Unit Tests | Vitest | 90%+ |
-| Component Tests | React Testing Library | 90%+ |
-| E2E Tests | Playwright | Fluxos críticos |
+| Tipo            | Ferramenta            | Cobertura       |
+| --------------- | --------------------- | --------------- |
+| Unit Tests      | Vitest                | 90%+            |
+| Component Tests | React Testing Library | 90%+            |
+| E2E Tests       | Playwright            | Fluxos críticos |
 
 #### O que testar (prioridade)
 
@@ -1042,11 +1058,7 @@ describe('calcularTicketMedio', () => {
   })
 
   it('deve calcular corretamente com múltiplas vendas', () => {
-    const vendas = [
-      { valor: 100 },
-      { valor: 200 },
-      { valor: 300 },
-    ]
+    const vendas = [{ valor: 100 }, { valor: 200 }, { valor: 300 }]
     expect(calcularTicketMedio(vendas)).toBe(200)
   })
 })
@@ -1073,15 +1085,15 @@ describe('calcularTicketMedio', () => {
 
 ### Section 1: Project Setup
 
-- [ ] **Step 1.1**: Inicializar projeto Next.js
+- [x] **Step 1.1**: Inicializar projeto Next.js
   - **Task**: Criar projeto Next.js 14 com TypeScript, Tailwind CSS, ESLint, Prettier
   - **Files**: `package.json`, `tsconfig.json`, `tailwind.config.ts`, `next.config.js`, `.eslintrc.json`, `.prettierrc`
   - **Dependencies**: Nenhuma
   - **Acceptance**: `npm run dev` inicia sem erros
 
-- [ ] **Step 1.2**: Configurar shadcn/ui
+- [x] **Step 1.2**: Configurar shadcn/ui
   - **Task**: Instalar e configurar shadcn/ui com tema customizado (cores InfinitePay)
-  - **Files**: `components.json`, `src/components/ui/*`, `src/styles/globals.css`
+  - **Files**: `components.json`, `src/components/ui/*`, `src/app/globals.css`
   - **Dependencies**: Step 1.1
   - **Acceptance**: Componentes shadcn renderizam com cores corretas
 
