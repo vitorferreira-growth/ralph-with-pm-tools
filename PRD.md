@@ -1205,7 +1205,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 1.4
   - **Acceptance**: Endpoints funcionais, RLS aplicado
 
-- [ ] **Step 5.2**: Criar hook useProdutos
+- [x] **Step 5.2**: Criar hook useProdutos
   - **Task**: Implementar hook para gerenciar estado de produtos
   - **Files**: `src/hooks/use-produtos.ts`
   - **Dependencies**: Step 5.1
