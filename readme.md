@@ -62,9 +62,10 @@ Add new features to an existing project. Reads `PRD.md` and `progress.txt` autom
 
 ```
 1. /prd        -> Generate complete PRD
-2. ralph-afk   -> Execute all PRD tasks
-3. /frd        -> Add new features (after PRD is done)
-4. ralph-afk   -> Execute feature tasks
+3. ralph-once  -> See the first execution
+3. ralph-afk   -> Execute all PRD tasks
+4. /frd        -> Add new features (after PRD is done)
+5. ralph-afk   -> Execute feature tasks
 ```
 
 > **Tip:** The `/frd` command is designed for adding features to working projects.
@@ -129,9 +130,7 @@ docs/prd_reference/        # 8-Step Method documentation
 
 ## License
 
-MIT License
-
-Copyright (c) 2026 luisbebop
+Copyright (c) 2026 vitorferreira
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
