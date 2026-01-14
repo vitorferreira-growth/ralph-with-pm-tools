@@ -1227,7 +1227,7 @@ describe('calcularTicketMedio', () => {
 
 ### Section 6: Cadastro de Clientes
 
-- [ ] **Step 6.1**: Criar API de clientes
+- [x] **Step 6.1**: Criar API de clientes
   - **Task**: Implementar endpoints CRUD para clientes
   - **Files**: `src/app/api/clientes/route.ts`, `src/app/api/clientes/[id]/route.ts`
   - **Dependencies**: Step 1.4, Step 4.1
