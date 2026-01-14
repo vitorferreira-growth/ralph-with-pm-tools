@@ -1,146 +1,30 @@
-# Cross-Sell Agent - Progress Log
+# CRM InfinitePay - Progress Log
 
 ## Completed Tasks
 
-### Task 0.1: Create project folder structure (2025-01-14)
-- Created crosssell/ package with all submodules:
-  - cli/ with commands/ subdirectory
-  - data/, clustering/, models/, explainer/, export/
-  - config/, utils/
-- Created tests/ directory structure with subdirectories
-- Created data/ directories (input, output, models, logs) with .gitkeep
-- Added .gitignore with Python and data exclusions
-- Added __init__.py files to all packages
-- Added __main__.py entry point for `python -m crosssell`
-- Created basic cli/main.py with Typer app scaffold
-- Commit: 56e3ce9
-
-### Task 0.2: Configure pyproject.toml with Poetry (2025-01-14)
-- Created pyproject.toml with Poetry configuration
-- Added all required dependencies from PRD tech stack:
-  - CLI: typer ^0.12.0, rich ^13.7.0
-  - Logging: loguru ^0.7.2
-  - Data Processing: pandas ^2.2.0, numpy ^1.26.0
-  - ML Models: xgboost ^2.0.0, scikit-learn ^1.4.0
-  - Clustering: hdbscan ^0.8.33
-  - Explainability: shap ^0.44.0
-  - Validation: pydantic ^2.6.0, pydantic-settings ^2.2.0
-  - Persistence: joblib ^1.3.0
-- Added dev dependencies: pytest, pytest-cov, ruff, black, mypy, pandas-stubs
-- Configured CLI entry point: `crosssell = "crosssell.cli.main:app"`
-- Added Ruff configuration (E, W, F, I, B, C4, UP, ARG, SIM rules)
-- Added Black configuration (line-length 88, target py311)
-- Added mypy configuration (strict type checking)
-- Added pytest configuration (testpaths, addopts)
-- Added coverage configuration
-
-### Task 0.3: Configure Makefile with useful commands (2025-01-14)
-- Created Makefile with comprehensive command targets
-- Installation commands: install, install-dev
-- Code quality commands: lint, lint-fix, format, format-check, type-check, check
-- Testing commands: test, test-cov, test-fast
-- CLI commands: run, train, train-early/growth/mature/loyal, predict, export, evaluate
-- Utility commands: clean, clean-models, clean-output, clean-all, shell, dev, all
-- Added colored help output with command descriptions
-- All commands use poetry run for proper environment management
-
-### Task 0.4: Configure Ruff + Black (2025-01-14)
-- Updated pyproject.toml Ruff config to use new `lint` section format (fixes deprecation warnings)
-  - Moved `select`, `ignore` to `[tool.ruff.lint]`
-  - Moved `per-file-ignores` to `[tool.ruff.lint.per-file-ignores]`
-  - Moved `isort` to `[tool.ruff.lint.isort]`
-- Created .pre-commit-config.yaml with hooks:
-  - pre-commit-hooks: trailing-whitespace, end-of-file-fixer, check-yaml, check-added-large-files, check-merge-conflict, debug-statements
-  - ruff-pre-commit: ruff (with --fix), ruff-format
-  - black: code formatting
-  - mirrors-mypy: type checking
-- Added Makefile targets for pre-commit:
-  - `make pre-commit-install`: Install pre-commit hooks
-  - `make pre-commit`: Run pre-commit on all files
-- Verified all checks pass:
-  - `make lint`: All checks passed!
-  - `make format-check`: 13 files would be left unchanged
-  - `make type-check`: Success: no issues found in 12 source files
-
-### Task 1.1: Create Pydantic schemas for CSV validation (2025-01-14)
-- Created `crosssell/data/schemas.py` with comprehensive validation schemas:
-  - `MerchantRecord`: Main schema for merchant data (34 required + 4 optional fields)
-    - Identification data (8 fields): merchant_id, primeira_so_date, produto_comprado, etc.
-    - Firmographic data (5 fields): mcc, mcc_group, is_piselli_entrada, is_piselli_6m, tpv_avg_6m
-    - Behavioral data (10 fields): dias_ativos_30d, tx_count_30d, tpv_30d, avg_ticket, etc.
-    - Premium features (3 required + 2 optional): has_lending, has_pix_credit, has_cdb, etc.
-    - Product data (7 fields): produtos_ativos, has_tap, has_link, has_smart, etc.
-    - Target data (1 required + 2 optional): did_crosssell, crosssell_products, age_at_crosssell_months
-  - Field validators: produto_comprado validation (tap/link/smart/conta), case-insensitive
-  - Annotated constraints: non-negative values for counts and amounts
-  - `REQUIRED_COLUMNS` and `OPTIONAL_COLUMNS` constants for CSV validation
-  - `MerchantDataSummary`: Summary statistics schema for loaded data
-  - `ValidationError` and `ValidationResult`: Error handling schemas
-- Created `tests/test_data/__init__.py` and `tests/test_data/test_schemas.py`:
-  - 19 unit tests covering all schema functionality
-  - Tests for valid records, validation errors, optional fields, column constants
-- All tests passing, linting clean, type checking successful
-
-### Task 1.2: Implement CSV loader (2025-01-14)
-- Created `crosssell/data/loader.py` with CSV loading functionality:
-  - `CSVLoader` class with configurable options:
-    - max_file_size_bytes: Maximum file size (default 500MB)
-    - churn_threshold_days: Days to consider churned (default 90)
-    - filter_churned: Toggle to filter churned customers
-  - `load()` method that:
-    - Validates file existence and size
-    - Loads CSV with proper dtypes (merchant_id, mcc as strings)
-    - Validates required schema (28 columns from PRD)
-    - Filters churned customers (recencia_ultima_tx > 90 days)
-    - Generates summary statistics
-  - `CSVLoaderError` custom exception for clear error messages
-  - `load_csv()` convenience function
-- Summary generation includes:
-  - Distribution by produto_comprado (tap/link/smart/conta)
-  - Distribution by is_piselli_6m (piselli/nao_piselli)
-  - Distribution by age window (early/growth/mature/loyal)
-- Updated `crosssell/data/__init__.py` with exports
-- Updated `crosssell/data/schemas.py` for Python 3.9 compatibility:
-  - Changed `float | None` to `Optional[float]`
-  - Changed `list[str]` to `List[str]`
-  - Changed `dict[str, int]` to `Dict[str, int]`
-- Created `tests/test_data/test_loader.py` with 14 tests:
-  - Valid CSV loading with/without churn filtering
-  - File not found and missing columns errors
-  - Empty CSV handling
-  - Summary distributions by produto, piselli, age window
-  - Custom churn threshold
-  - File size validation
-  - Age window calculation
-- All 33 tests passing, type checking successful
-
-### Task 1.3: Implement data validator (2025-01-14)
-- Created `crosssell/data/validator.py` with comprehensive validation:
-  - `DataValidator` class for row-by-row Pydantic validation
-  - `validate()` method: validates all records, returns ValidationResult
-  - `validate_and_filter()` method: validates and returns only valid records
-  - Configurable options: `max_errors`, `fail_fast`
-  - Type conversion for dates (string, Timestamp to date)
-  - Type conversion for booleans (int, string to bool)
-  - Proper NaN/None handling for optional fields
-  - Clear error reporting with row number, column, value, message
-- Handles edge cases:
-  - Missing columns detection
-  - Case-insensitive produto_comprado validation
-  - Empty DataFrame handling
-  - Max errors limit with warnings
-- Updated `crosssell/data/__init__.py` with exports
-- Created `tests/test_data/test_validator.py` with 20 tests:
-  - Valid record validation
-  - Missing columns detection
-  - Invalid produto and negative values
-  - validate_and_filter functionality
-  - Fail fast mode
-  - Max errors limit
-  - Boolean/date conversion (int, string, Timestamp)
-  - Optional fields with null/NaN
-  - Edge cases (empty DataFrame, error messages)
-- All 53 tests passing, mypy type checking successful
+### Step 1.1: Initialize Next.js project (2025-01-14)
+- Created Next.js 14 project with App Router
+- Configured TypeScript with strict mode
+- Configured Tailwind CSS with PostCSS
+- Configured ESLint with @typescript-eslint/recommended rules:
+  - @typescript-eslint/no-explicit-any: error
+  - @typescript-eslint/explicit-function-return-type: warn
+  - prefer-const: error
+- Added Prettier with tailwindcss plugin
+- Configured .prettierrc as per PRD:
+  - semi: false
+  - singleQuote: true
+  - tabWidth: 2
+  - trailingComma: es5
+  - printWidth: 100
+- Added npm scripts: lint, lint:fix, format, format:check
+- Verified: npm run dev starts without errors
+- Verified: npm run build compiles successfully
+- Commit: 8675712
 
 ## Next Tasks
-- Phase 1: Data Layer (Task 1.4 - 1.5)
+- Step 1.2: Configure shadcn/ui with InfinitePay theme colors
+- Step 1.3: Configure Supabase
+- Step 1.4: Create database schema
+- Step 1.5: Generate Supabase types
+- Step 1.6: Configure folder structure
