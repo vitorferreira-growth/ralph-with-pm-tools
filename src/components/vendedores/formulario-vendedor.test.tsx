@@ -166,7 +166,8 @@ describe('FormularioVendedor', () => {
       render(<FormularioVendedor aberto={true} onFechar={onFechar} onSalvar={onSalvar} />)
 
       await user.type(screen.getByLabelText('Nome'), 'Teste')
-      await user.type(screen.getByLabelText('Email'), 'email-invalido')
+      // Email sem arroba - falha na regex
+      await user.type(screen.getByLabelText('Email'), 'emailsemarroba')
       await user.click(screen.getByRole('button', { name: 'Adicionar' }))
 
       expect(screen.getByText('Email inválido')).toBeInTheDocument()
