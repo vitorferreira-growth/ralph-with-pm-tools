@@ -4,9 +4,9 @@ set -euo pipefail
 # =========================
 # Config
 # =========================
-LOG_FILE="${LOG_FILE:-run.log}"     # pode sobrescrever: LOG_FILE=meu.log ./script.sh 10
-STREAM="${STREAM:-1}"              # 1 = mostra output ao vivo, 0 = só imprime no fim do ciclo
-BAR_WIDTH="${BAR_WIDTH:-30}"       # tamanho da barra de progresso
+LOG_FILE="${LOG_FILE:-run.log}"     # override: LOG_FILE=meu.log ./script.sh 10
+STREAM="${STREAM:-1}"              # 1 = stream Claude output live, 0 = print at end of cycle
+BAR_WIDTH="${BAR_WIDTH:-30}"       # progress bar width
 
 # =========================
 # Colors (auto-disable if not TTY)
@@ -69,9 +69,36 @@ progress_bar() {
   local empty=$(( BAR_WIDTH - filled ))
 
   printf "["
-  printf "%0.s#" $(seq 1 "$filled" 2>/dev/null || true)
-  printf "%0.s-" $(seq 1 "$empty" 2>/dev/null || true)
+  if command -v seq >/dev/null 2>&1; then
+    printf "%0.s#" $(seq 1 "$filled" 2>/dev/null || true)
+    printf "%0.s-" $(seq 1 "$empty" 2>/dev/null || true)
+  else
+    # fallback without seq
+    for ((k=0; k<filled; k++)); do printf "#"; done
+    for ((k=0; k<empty; k++)); do printf "-"; done
+  fi
   printf "] %d/%d" "$current" "$total"
+}
+
+notify_done() {
+  # 1) Beep in terminal (if bell is enabled)
+  if command -v tput >/dev/null 2>&1; then
+    tput bel || true
+  else
+    printf '\a' || true
+  fi
+
+  # 2) Best-effort system sound
+  if command -v afplay >/dev/null 2>&1; then
+    # macOS
+    afplay /System/Library/Sounds/Glass.aiff >/dev/null 2>&1 || true
+  elif command -v paplay >/dev/null 2>&1; then
+    # Linux (PulseAudio/PipeWire)
+    paplay /usr/share/sounds/freedesktop/stereo/complete.oga >/dev/null 2>&1 || true
+  elif command -v aplay >/dev/null 2>&1; then
+    # Linux (ALSA)
+    aplay /usr/share/sounds/alsa/Front_Center.wav >/dev/null 2>&1 || true
+  fi
 }
 
 # =========================
@@ -83,7 +110,7 @@ if [[ "${1:-}" == "" ]]; then
 fi
 
 if ! [[ "$1" =~ ^[0-9]+$ ]] || [[ "$1" -le 0 ]]; then
-  log "ERROR" "$C_RED" "iterations must be a positive integer."
+  echo "ERROR: iterations must be a positive integer."
   usage
   exit 1
 fi
@@ -93,7 +120,7 @@ iterations="$1"
 # =========================
 # Init
 # =========================
-: > "$LOG_FILE" # truncate
+: > "$LOG_FILE" # truncate log file
 start_all="$(date +%s)"
 
 log "INFO" "$C_CYAN" "Starting run with ${iterations} iteration(s)."
@@ -108,12 +135,10 @@ for ((i=1; i<=iterations; i++)); do
   echo | tee -a "$LOG_FILE"
   hr | tee -a "$LOG_FILE"
 
-  local_bar="$(progress_bar "$i" "$iterations")"
-  log "CYCLE" "$C_MAGENTA" "$local_bar  — Running Claude..."
-
+  bar="$(progress_bar "$i" "$iterations")"
+  log "CYCLE" "$C_MAGENTA" "$bar  — Running Claude..."
   hr | tee -a "$LOG_FILE"
 
-  # Prompt
   prompt='@PRD.md @progress.txt \
 1. Find the highest-priority task and implement it. \
 2. Run your tests and type checks. \
@@ -126,16 +151,18 @@ If the PRD is complete, output <promise>COMPLETE</promise>.'
   result=""
   if [[ "$STREAM" == "1" ]]; then
     tmp="$(mktemp)"
-    # Stream to terminal and log, while also capturing to tmp for checking COMPLETE
+    # Stream to terminal+log and also capture to tmp for COMPLETE detection
     set +e
     claude --dangerously-skip-permissions -p "$prompt" 2>&1 | tee -a "$LOG_FILE" | tee "$tmp"
     cmd_status="${PIPESTATUS[0]}"
     set -e
+
     result="$(cat "$tmp")"
     rm -f "$tmp"
 
     if [[ "$cmd_status" -ne 0 ]]; then
       log "ERROR" "$C_RED" "claude exited with status $cmd_status (stopping)."
+      notify_done
       exit "$cmd_status"
     fi
   else
@@ -149,6 +176,7 @@ If the PRD is complete, output <promise>COMPLETE</promise>.'
 
     if [[ "$cmd_status" -ne 0 ]]; then
       log "ERROR" "$C_RED" "claude exited with status $cmd_status (stopping)."
+      notify_done
       exit "$cmd_status"
     fi
   fi
@@ -162,6 +190,7 @@ If the PRD is complete, output <promise>COMPLETE</promise>.'
   if [[ "$result" == *"<promise>COMPLETE</promise>"* ]]; then
     total_secs="$(( $(date +%s) - start_all ))"
     log "SUCCESS" "$C_GREEN" "PRD complete after $i iteration(s). Total time: ${total_secs}s."
+    notify_done
     exit 0
   else
     log "INFO" "$C_YELLOW" "Not complete yet. Moving to next cycle."
@@ -170,4 +199,5 @@ done
 
 total_secs="$(( $(date +%s) - start_all ))"
 log "INFO" "$C_CYAN" "Reached max iterations ($iterations). Total time: ${total_secs}s."
+notify_done
 exit 0
