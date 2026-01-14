@@ -478,5 +478,38 @@
 - Verified: npm run lint passes (only pre-existing warnings)
 - Verified: npm run test:run passes (70 tests)
 
+### Step 5.4: Create produtos component tests (2026-01-14)
+- Created src/components/produtos/tabela-produtos.test.tsx (11 tests):
+  - Empty state rendering (message and no table)
+  - Table rendering with headers (Código, Nome, Valor, Ações)
+  - Product data display (names, codes, formatted prices in R$)
+  - Dash display for products without code
+  - Action buttons (edit, delete) per product
+  - Callback handlers for onEditar and onExcluir
+- Created src/components/produtos/formulario-produto.test.tsx (25 tests):
+  - Dialog rendering states (open/closed)
+  - Create vs edit mode UI differences (title, button text)
+  - Form field pre-filling in edit mode (including value formatting)
+  - Field handling for products without code
+  - Validation (required name, required value, invalid value, negative value)
+  - Multiple validation errors display
+  - Zero value acceptance
+  - Form submission with data normalization (trim, null for empty code)
+  - Decimal separator handling (comma and dot)
+  - Dialog close on success, stay open on failure
+  - Cancel button behavior
+  - Field reset on dialog reopen
+  - Loading state disabling
+- Created src/components/produtos/dialogo-excluir-produto.test.tsx (11 tests):
+  - Dialog rendering with produto data
+  - Null produto handling
+  - Title and warning message display
+  - Product name in confirmation message
+  - Cancel and confirm button handlers
+  - Loading state (excluindo) button states
+- Test results: 117 tests passing (70 previous + 47 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 5.4: Testes de produtos (componentes)
+- Step 6.1: Criar API de clientes
