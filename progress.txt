@@ -305,5 +305,38 @@
 - Verified: npm run build compiles successfully
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 4.3: Create vendedores page (2026-01-14)
+- Created src/components/vendedores/tabela-vendedores.tsx:
+  - Table component displaying list of sellers (Name, Email, Actions)
+  - Empty state with icon and CTA when no sellers exist
+  - Row hover states with action buttons (edit, delete)
+  - Uses shadcn/ui Table components
+- Created src/components/vendedores/formulario-vendedor.tsx:
+  - Dialog form for creating/editing sellers
+  - Fields: nome (required), email (required with validation)
+  - Modes: create (new) and edit (existing seller)
+  - Form validation with error messages in Portuguese
+  - Loading states during save operation
+  - Closes automatically on successful save
+- Created src/components/vendedores/dialogo-excluir-vendedor.tsx:
+  - Confirmation dialog for deleting sellers
+  - Shows seller name being deleted
+  - Warning icon with destructive styling
+  - Loading state during deletion
+  - Cancel and confirm buttons
+- Updated src/app/(dashboard)/vendedores/page.tsx:
+  - Client component with full CRUD functionality
+  - Integrates useVendedores hook
+  - Loading state with spinner
+  - Error state with retry button
+  - Operation error display (inline toast style)
+  - Header with vendor count and "Add" button
+  - All three dialog components integrated
+- Added shadcn/ui components:
+  - table.tsx: Table component family
+  - dialog.tsx: Dialog/modal component family
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 4.3: Criar página de vendedores
+- Step 4.4: Testes de vendedores
