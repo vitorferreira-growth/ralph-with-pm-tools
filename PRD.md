@@ -1104,7 +1104,7 @@ describe('calcularTicketMedio', () => {
   - **User Instructions**: Criar projeto no Supabase, copiar URL e keys para `.env.local`
   - **Acceptance**: Conexão com Supabase funcional
 
-- [ ] **Step 1.4**: Criar schema do banco de dados
+- [x] **Step 1.4**: Criar schema do banco de dados
   - **Task**: Criar tabelas (tenants, users, sellers, customers, products, opportunities, opportunity_products) com RLS
   - **Files**: `supabase/migrations/001_initial_schema.sql`
   - **Dependencies**: Step 1.3
