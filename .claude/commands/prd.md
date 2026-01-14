@@ -20,8 +20,9 @@ Quando o usuário acionar `/prd`:
 1. **Verifique o modo** solicitado (quick ou full)
 2. **Cumprimente** e explique brevemente o processo
 3. **Inicie as perguntas** da primeira fase
-4. **Ao final de cada fase**, apresente o output e pergunte se deseja ajustar antes de avançar
-5. **Na última fase**, gere o PRD completo e salve em `docs/prd/PRD_[NOME].md`
+4. **Não utilize QuestionTool** e mantenha as perguntas abertas para o usuário responder da melhor forma.
+5. **Ao final de cada fase**, apresente o output e pergunte se deseja ajustar antes de avançar
+6. **Na última fase**, gere o PRD completo e salve em `PRD.md`
 
 ---
 
