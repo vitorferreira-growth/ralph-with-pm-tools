@@ -1144,7 +1144,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 2.1
   - **Acceptance**: Registro cria usuário + tenant, redireciona para dashboard
 
-- [ ] **Step 2.4**: Criar lógica de multi-tenancy
+- [x] **Step 2.4**: Criar lógica de multi-tenancy
   - **Task**: Implementar hook e context para tenant atual
   - **Files**: `src/hooks/use-tenant.ts`, `src/contexts/tenant-context.tsx`
   - **Dependencies**: Step 2.3

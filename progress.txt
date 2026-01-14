@@ -194,5 +194,24 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 2.4: Create multi-tenancy logic (2026-01-14)
+- Created src/contexts/tenant-context.tsx:
+  - TenantProvider component that wraps dashboard routes
+  - TenantContext with tenant, usuario, carregando, erro states
+  - Loads user and tenant data from Supabase on mount
+  - Listens to auth state changes (SIGNED_IN, TOKEN_REFRESHED, SIGNED_OUT)
+  - Provides recarregar function to refresh tenant data
+- Created src/hooks/use-tenant.ts:
+  - useTenant hook with convenient accessors
+  - Returns tenant, usuario, tenantId, carregando, erro, autenticado
+  - Permission helpers: ehProprietario, ehAdministrador, ehMembro
+  - temPermissao(roleMinima) function with role hierarchy (owner > admin > member)
+  - Re-exports TenantProvider for easy imports
+- Updated src/app/(dashboard)/layout.tsx:
+  - Wrapped dashboard layout with TenantProvider
+  - Tenant context now available in all dashboard pages
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 2.4: Criar logica de multi-tenancy
+- Step 3.1: Criar layout do dashboard
