@@ -1211,9 +1211,9 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 5.1
   - **Acceptance**: Hook retorna dados, loading, erro
 
-- [ ] **Step 5.3**: Criar página de produtos
+- [x] **Step 5.3**: Criar página de produtos
   - **Task**: Implementar listagem, criação, edição e exclusão
-  - **Files**: `src/app/(dashboard)/produtos/page.tsx`, `src/components/produtos/tabela-produtos.tsx`, `src/components/produtos/formulario-produto.tsx`
+  - **Files**: `src/app/(dashboard)/produtos/page.tsx`, `src/components/produtos/tabela-produtos.tsx`, `src/components/produtos/formulario-produto.tsx`, `src/components/produtos/dialogo-excluir-produto.tsx`
   - **Dependencies**: Step 5.2
   - **Acceptance**: CRUD completo funcional, valores em R$
 
