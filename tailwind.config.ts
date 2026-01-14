@@ -72,8 +72,8 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-        xl: 'calc(var(--radius) + 4px)', /* 12px - cards, modals */
-        '2xl': 'calc(var(--radius) + 8px)', /* 16px - cards grandes */
+        xl: 'calc(var(--radius) + 4px)' /* 12px - cards, modals */,
+        '2xl': 'calc(var(--radius) + 8px)' /* 16px - cards grandes */,
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
