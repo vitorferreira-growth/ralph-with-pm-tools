@@ -1132,7 +1132,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 1.3
   - **Acceptance**: Rotas protegidas redirecionam para login
 
-- [ ] **Step 2.2**: Criar página de Login
+- [x] **Step 2.2**: Criar página de Login
   - **Task**: Criar página de login com email/senha
   - **Files**: `src/app/(auth)/login/page.tsx`, `src/components/auth/formulario-login.tsx`
   - **Dependencies**: Step 2.1
