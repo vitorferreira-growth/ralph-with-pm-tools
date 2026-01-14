@@ -1110,7 +1110,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 1.3
   - **Acceptance**: Tabelas criadas, RLS policies ativas
 
-- [ ] **Step 1.5**: Gerar types do Supabase
+- [x] **Step 1.5**: Gerar types do Supabase
   - **Task**: Gerar tipos TypeScript a partir do schema
   - **Files**: `src/types/database.ts`
   - **Dependencies**: Step 1.4

@@ -95,6 +95,32 @@
 - Verified: npm run lint passes (only warnings)
 - User Instructions: Run migration in Supabase SQL Editor or via CLI
 
+### Step 1.5: Generate Supabase types (2025-01-14)
+- Created comprehensive TypeScript types in src/types/database.ts
+- Added enum types:
+  - UserRole: 'owner' | 'admin' | 'member'
+  - OpportunityStage: all 6 CRM stages
+- Added Portuguese label mappings for UI:
+  - OPPORTUNITY_STAGE_LABELS: Maps stage to Portuguese text
+  - OPPORTUNITY_STAGES_ORDER: Ordered array for kanban
+- Added Database interface with all tables:
+  - Row, Insert, Update types for each table
+  - Relationships metadata for foreign keys
+  - Functions (get_user_tenant_id)
+  - Enums declaration
+- Added helper types for convenience:
+  - Tables<T>, TablesInsert<T>, TablesUpdate<T> generic helpers
+  - Direct type exports: Tenant, User, Seller, Customer, Product, Opportunity, OpportunityProduct
+  - Insert types: TenantInsert, UserInsert, etc.
+  - Update types: TenantUpdate, UserUpdate, etc.
+- Added extended types for relationships:
+  - OpportunityWithRelations: Opportunity with customer, seller, products
+  - CustomerWithSeller: Customer with seller data
+- Added Portuguese constants as per PRD code style:
+  - ETAPAS_CRM: Maps Portuguese names to stage values
+  - ROLES_USUARIO: Maps Portuguese names to role values
+- Verified: npm run build compiles successfully
+- Verified: npm run lint passes (only warnings)
+
 ## Next Tasks
-- Step 1.5: Generate Supabase types
 - Step 1.6: Configure folder structure
