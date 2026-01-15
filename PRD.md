@@ -1245,9 +1245,9 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Nenhuma
   - **Acceptance**: Validação de campos obrigatórios, formato de email/CEP
 
-- [ ] **Step 6.4**: Criar página de clientes
+- [x] **Step 6.4**: Criar página de clientes
   - **Task**: Implementar listagem com busca, criação, edição e exclusão
-  - **Files**: `src/app/(dashboard)/clientes/page.tsx`, `src/components/clientes/tabela-clientes.tsx`, `src/components/clientes/formulario-cliente.tsx`
+  - **Files**: `src/app/(dashboard)/clientes/page.tsx`, `src/components/clientes/tabela-clientes.tsx`, `src/components/clientes/formulario-cliente.tsx`, `src/components/clientes/dialogo-excluir-cliente.tsx`
   - **Dependencies**: Step 6.2, Step 6.3
   - **Acceptance**: CRUD completo funcional, busca funciona
 
