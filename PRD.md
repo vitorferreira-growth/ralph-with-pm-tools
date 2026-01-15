@@ -1377,7 +1377,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Sections 4-8
   - **Acceptance**: Lighthouse score > 90
 
-- [ ] **Step 9.5**: Configurar CI/CD
+- [x] **Step 9.5**: Configurar CI/CD
   - **Task**: Configurar GitHub Actions para lint, test e deploy
   - **Files**: `.github/workflows/ci.yml`, `.github/workflows/deploy.yml`
   - **Dependencies**: Step 9.3

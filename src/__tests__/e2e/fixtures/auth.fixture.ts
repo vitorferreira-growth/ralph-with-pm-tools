@@ -1,4 +1,4 @@
-import { test as base, expect } from '@playwright/test'
+import { test as base, expect, type Page } from '@playwright/test'
 
 /**
  * Fixture de autenticação para testes E2E
@@ -23,9 +23,9 @@ const TEST_EMAIL = process.env.E2E_TEST_EMAIL || 'teste@e2e.test'
 const TEST_PASSWORD = process.env.E2E_TEST_PASSWORD || 'teste123'
 
 export const test = base.extend<{
-  authenticatedPage: typeof base.prototype
+  authenticatedPage: Page
 }>({
-  authenticatedPage: async ({ page }, use) => {
+  authenticatedPage: async ({ page }, use): Promise<void> => {
     // Tentar fazer login
     await page.goto('/login')
 

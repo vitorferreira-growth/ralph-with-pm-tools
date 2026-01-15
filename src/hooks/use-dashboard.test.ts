@@ -447,19 +447,19 @@ describe('useDashboard', () => {
   // ==========================================================================
   describe('estados de carregamento', () => {
     it('deve ter estados de carregamento separados para KPIs e gráficos', async () => {
-      let resolveKpis: (value: unknown) => void
-      let resolveGraficos: (value: unknown) => void
+      let resolveKpis!: (value: Response) => void
+      let resolveGraficos!: (value: Response) => void
 
       vi.mocked(fetch)
         .mockImplementationOnce(
           () =>
-            new Promise((resolve) => {
+            new Promise<Response>((resolve) => {
               resolveKpis = resolve
             })
         )
         .mockImplementationOnce(
           () =>
-            new Promise((resolve) => {
+            new Promise<Response>((resolve) => {
               resolveGraficos = resolve
             })
         )
@@ -473,10 +473,10 @@ describe('useDashboard', () => {
 
       // Resolve KPIs first
       await act(async () => {
-        resolveKpis!({
+        resolveKpis({
           ok: true,
           json: async () => ({ kpis: mockKpis }),
-        })
+        } as Response)
       })
 
       await waitFor(() => {
@@ -490,10 +490,10 @@ describe('useDashboard', () => {
 
       // Resolve graficos
       await act(async () => {
-        resolveGraficos!({
+        resolveGraficos({
           ok: true,
           json: async () => ({ graficos: mockGraficos }),
-        })
+        } as Response)
       })
 
       await waitFor(() => {

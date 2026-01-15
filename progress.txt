@@ -1325,5 +1325,36 @@
 - Verified: npm run build compiles successfully
 - Verified: npm run lint passes (only pre-existing warnings)
 
+### Step 9.5: Configure CI/CD with GitHub Actions (2026-01-15)
+- Created .github/workflows/ci.yml:
+  - lint job: Runs ESLint and Prettier format check
+  - typecheck job: Runs TypeScript type check (tsc --noEmit)
+  - test job: Runs unit tests with Vitest, uploads coverage to Codecov
+  - build job: Builds application (depends on lint, typecheck, test)
+  - e2e job: Runs Playwright E2E tests (depends on build)
+  - Node.js 20 with npm caching
+  - Placeholder Supabase env vars for CI builds
+  - Playwright HTML report artifact upload
+- Created .github/workflows/deploy.yml:
+  - deploy-preview job: Deploys preview on pull requests
+    - Installs Vercel CLI
+    - Pulls Vercel environment info
+    - Builds and deploys preview
+    - Comments PR with preview URL
+  - deploy-production job: Deploys to production on main push
+    - Uses production environment with approval gates
+    - Builds and deploys to production
+    - Creates deployment summary in GitHub
+  - Requires secrets: VERCEL_ORG_ID, VERCEL_PROJECT_ID, VERCEL_TOKEN
+- Fixed TypeScript errors in test files:
+  - auth.fixture.ts: Added Page type import, explicit return type
+  - setup.ts: Added beforeEach import from vitest
+  - use-dashboard.test.ts: Fixed Promise type annotations
+- Removed unused Suspense import from dashboard page
+- Test results: 516 tests passing
+- Verified: npm run build compiles successfully
+- Verified: npm run lint passes (no errors, only warnings)
+- Verified: npx tsc --noEmit passes
+
 ## Next Tasks
-- Step 9.5: Configurar CI/CD
+- Step 9.6: Deploy para produção

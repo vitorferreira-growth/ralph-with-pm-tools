@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactElement, Suspense } from 'react'
+import { type ReactElement } from 'react'
 import dynamic from 'next/dynamic'
 import { useDashboard, type PeriodoDashboard } from '@/hooks/use-dashboard'
 import { GridKPIs } from '@/components/dashboard/grid-kpis'
