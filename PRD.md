@@ -1261,7 +1261,7 @@ describe('calcularTicketMedio', () => {
 
 ### Section 7: CRM Kanban
 
-- [ ] **Step 7.1**: Criar API de oportunidades
+- [x] **Step 7.1**: Criar API de oportunidades
   - **Task**: Implementar endpoints CRUD + PATCH para stage
   - **Files**: `src/app/api/oportunidades/route.ts`, `src/app/api/oportunidades/[id]/route.ts`
   - **Dependencies**: Step 6.1, Step 5.1
