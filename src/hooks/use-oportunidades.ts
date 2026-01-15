@@ -258,7 +258,7 @@ export function useOportunidades(): UseOportunidadesRetorno {
         const data = await response.json()
 
         if (!response.ok) {
-          // Rollback em caso de erro
+          // Rollback em caso de erro da API
           setOportunidades((prev) =>
             prev.map((o) => (o.id === id ? oportunidadeAnterior : o))
           )
@@ -270,6 +270,10 @@ export function useOportunidades(): UseOportunidadesRetorno {
 
         return data.oportunidade
       } catch (error) {
+        // Rollback em caso de erro de rede ou outro erro
+        setOportunidades((prev) =>
+          prev.map((o) => (o.id === id ? oportunidadeAnterior : o))
+        )
         const mensagem = error instanceof Error ? error.message : 'Erro ao mover oportunidade'
         setErro(mensagem)
         console.error('useOportunidades - moverOportunidade:', error)
