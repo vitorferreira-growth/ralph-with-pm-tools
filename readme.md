@@ -128,6 +128,53 @@ docs/prd_reference/        # 8-Step Method documentation
 
 4. **Feature Addition**: Once PRD is complete, use `/frd` to add new features. It reads the existing PRD for context and generates compatible tasks
 
+---
+
+## Agent-Aware Execution
+
+The `ralph-once.sh` and `ralph-afk.sh` scripts leverage **specialized agents** from CloudWalk's Claude Code Commandments for intelligent task execution.
+
+### What Happens During Execution
+
+1. **Task Detection**: Claude identifies the task type (frontend, backend, database, etc.)
+2. **Agent Selection**: Applies relevant agent guidelines automatically:
+   - Frontend/UI → `typescript-engineer`, `frontend-developer`
+   - Backend → `python-engineer`, `golang-engineer`, `ruby-engineer`, `rust-engineer`
+   - Database → `data-architect-agent`
+   - Security → `security-engineer`, `api-security-agent`
+   - Infrastructure → `terraform-ops`, `gitops-engineer`
+   - Payments/Fintech → `payments-engineer`, `compliance-engineer`
+3. **Quality Gates**: Before committing:
+   - Runs `/security-review` on changed files
+   - Runs `/test-gen` for new functionality
+4. **Commit**: Uses conventional commits format
+
+### Available Agents
+
+| Category | Agents |
+|----------|--------|
+| Languages | `golang`, `python`, `ruby`, `rust`, `typescript`, `elixir` |
+| Frontend | `frontend-developer`, `frontend-security-agent`, `ui-ux-designer`, `ui-visual-validator` |
+| Security | `security-engineer`, `api-security-agent`, `crypto-engineer`, `supply-chain-security` |
+| Infrastructure | `terraform-ops`, `gitops-engineer`, `networking-engineer`, `observability-engineer` |
+| Fintech | `payments-engineer`, `compliance-engineer`, `data-architect-agent`, `incident-response-agent` |
+
+### Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `/prd` | Generate PRD using 8-Step Method |
+| `/frd` | Add features to existing PRD |
+| `/security-review` | Quick security scan |
+| `/test-gen` | Generate tests for code |
+| `/diagnose` | Diagnose project issues |
+| `/refactor` | Suggest refactoring opportunities |
+| `/optimize` | Performance optimization suggestions |
+| `/document` | Generate documentation |
+| `/workflow` | Multi-agent workflow orchestrator |
+| `/compliance-check` | PCI-DSS/SOC2 compliance validation |
+| `/onboard` | Team member onboarding |
+
 ## License
 
 Copyright (c) 2026 vitorferreira
