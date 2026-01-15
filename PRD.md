@@ -1343,7 +1343,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 8.4, Step 8.5
   - **Acceptance**: Dashboard completo com filtro de período
 
-- [ ] **Step 8.7**: Testes do dashboard
+- [x] **Step 8.7**: Testes do dashboard
   - **Task**: Criar testes unitários para cálculos e componentes
   - **Files**: `src/lib/calculos.test.ts`, `src/components/dashboard/*.test.tsx`
   - **Dependencies**: Step 8.6
