@@ -771,5 +771,32 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 7.3: Create KanbanBoard component (2026-01-15)
+- Installed @hello-pangea/dnd (maintained fork of react-beautiful-dnd) for drag-and-drop
+- Created src/components/crm/kanban-coluna.tsx:
+  - KanbanColuna component for individual columns
+  - Header with stage indicator (colored dot), label, and card count
+  - Total value display in Brazilian currency format (R$)
+  - Droppable area for drag-and-drop operations
+  - Visual feedback when dragging over column (highlighted background)
+  - Empty state for columns with no cards
+  - CardOportunidadeSimplificado: Simplified card component within column
+    - Displays customer name, total value (monospace font), seller name
+    - Product count indicator
+    - Click handler for card selection
+    - Keyboard accessibility (Enter/Space to click)
+    - Hover shadow effect for interaction feedback
+  - Color-coded stages: blue (1º Contato), purple (Proposta), yellow (Negociação), orange (Aguardando Pagamento), green (Venda Finalizada), red (Desistiu)
+- Created src/components/crm/kanban-board.tsx:
+  - KanbanBoard component wrapping DragDropContext
+  - Renders 6 columns in order: first_contact → proposal → negotiation → awaiting_payment → closed_won → closed_lost
+  - Handles drag end events with validation
+  - Only triggers onMoverOportunidade when column changes
+  - Loading state with spinner
+  - Horizontal scroll for overflow
+  - Props: oportunidadesPorEtapa, totaisPorEtapa, onMoverOportunidade, onCardClick, carregando
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (261 tests)
+
 ## Next Tasks
-- Step 7.3: Criar componente KanbanBoard
+- Step 7.4: Criar componente CardOportunidade
