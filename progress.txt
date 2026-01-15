@@ -651,5 +651,44 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (189 tests)
 
+### Step 6.5: Create clientes component tests (2026-01-15)
+- Created src/components/clientes/tabela-clientes.test.tsx (13 tests):
+  - Empty state rendering (message and no table)
+  - Table rendering with headers (Nome, Email, WhatsApp, Cidade, Vendedor, Ações)
+  - Customer data display (names, emails, formatted WhatsApp)
+  - WhatsApp formatting (11999999999 -> (11) 99999-9999)
+  - Dash display for null values
+  - City/state formatting (city/state, city only, state only)
+  - Seller name display from relationship
+  - Action buttons (edit, delete) per customer
+  - Callback handlers for onEditar and onExcluir
+- Created src/components/clientes/formulario-cliente.test.tsx (23 tests):
+  - Dialog rendering states (open/closed)
+  - Create vs edit mode UI differences (title, button text)
+  - Form field display (all 9 fields: nome, email, whatsapp, endereco, cidade, estado, cep, dataNascimento, vendedorId)
+  - Form field pre-filling in edit mode (including formatted WhatsApp, CEP)
+  - Field handling for customers without optional fields
+  - Validation (required name, required email, invalid CEP format)
+  - Multiple validation errors display
+  - Form submission with data normalization (trim, lowercase email, CEP digits only)
+  - Optional fields sent as null when empty
+  - Dialog close on success, stay open on failure
+  - Cancel button behavior
+  - Field reset on dialog reopen
+  - Loading state disabling fields and buttons
+- Created src/components/clientes/dialogo-excluir-cliente.test.tsx (10 tests):
+  - Null cliente handling (returns null)
+  - Dialog rendering with cliente data
+  - Title and warning message display
+  - Customer name in confirmation message
+  - Cancel and confirm button handlers
+  - Loading state (excluindo) button states
+- Fixed FormularioCliente component:
+  - Changed SelectItem value="" to value="__none__" for "Nenhum" option (Radix UI doesn't allow empty string values)
+  - Updated validation and submit handlers to treat "__none__" as null
+- Test results: 235 tests passing (189 previous + 46 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 6.5: Testes de clientes
+- Step 7.1: Criar API de oportunidades
