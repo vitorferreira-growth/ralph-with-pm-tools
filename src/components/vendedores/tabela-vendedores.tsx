@@ -94,3 +94,41 @@ export function TabelaVendedores({
     </div>
   )
 }
+
+// ============================================================================
+// SKELETON COMPONENT
+// ============================================================================
+
+export function TabelaVendedoresSkeleton(): ReactNode {
+  return (
+    <div className="rounded-lg border shadow-card">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[45%]">Nome</TableHead>
+            <TableHead className="w-[45%]">Email</TableHead>
+            <TableHead className="w-[10%] text-right">Ações</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <Skeleton className="h-4 w-32" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-4 w-48" />
+              </TableCell>
+              <TableCell className="text-right">
+                <div className="flex justify-end gap-xs">
+                  <Skeleton className="h-8 w-8 rounded-md" />
+                  <Skeleton className="h-8 w-8 rounded-md" />
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  )
+}
