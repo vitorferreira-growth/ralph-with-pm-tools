@@ -8,7 +8,8 @@ import { TabelaProdutos, TabelaProdutosSkeleton } from '@/components/produtos/ta
 import { FormularioProduto } from '@/components/produtos/formulario-produto'
 import { DialogoExcluirProduto } from '@/components/produtos/dialogo-excluir-produto'
 import { Button } from '@/components/ui/button'
-import { Plus, Loader2, AlertCircle, RefreshCw } from 'lucide-react'
+import { Plus, AlertCircle, RefreshCw } from 'lucide-react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 // ============================================================================
 // COMPONENT
