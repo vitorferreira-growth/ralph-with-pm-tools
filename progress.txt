@@ -690,5 +690,43 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 7.1: Create opportunities API (2026-01-15)
+- Created src/app/api/oportunidades/route.ts:
+  - GET /api/oportunidades: Lists all opportunities for tenant (RLS applied)
+    - Includes customer, seller, and products data via joins
+    - Filter by seller via `vendedor_id` query param
+    - Filter by stage via `etapa` query param
+    - Filter by customer via `cliente_id` query param
+  - POST /api/oportunidades: Creates new opportunity with validation
+    - Required fields: clienteId (customer)
+    - Optional fields: vendedorId, etapa (stage), observacoes (notes), produtos (products array)
+    - Each product has: produtoId, quantidade (default 1), precoUnitario
+    - Auto-calculates total_value from products
+    - Validates customer, seller, and products existence
+    - Returns complete opportunity with all relationships
+- Created src/app/api/oportunidades/[id]/route.ts:
+  - GET /api/oportunidades/:id: Fetches specific opportunity with relationships
+  - PUT /api/oportunidades/:id: Full update of opportunity
+    - Supports updating customer, seller, stage, notes, and products
+    - Replaces products (deletes old, inserts new)
+    - Auto-recalculates total_value
+    - Sets closed_at when stage is closed_won or closed_lost
+  - PATCH /api/oportunidades/:id: Updates only the stage (for kanban drag & drop)
+    - Validates stage value
+    - Sets/clears closed_at based on stage
+    - Efficient endpoint for kanban operations
+  - DELETE /api/oportunidades/:id: Removes opportunity
+    - Deletes associated opportunity_products first
+    - Then deletes the opportunity
+- All endpoints:
+  - Verify authentication via getUser()
+  - Use RLS (Row Level Security) for tenant isolation
+  - Return Portuguese error messages
+  - Handle errors gracefully with appropriate HTTP status codes
+  - Include full relationships data in responses (customer, seller, products)
+- Test results: 235 tests passing (no new tests added - API tests will be in Step 7.7)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 7.1: Criar API de oportunidades
+- Step 7.2: Criar hook useOportunidades
