@@ -1337,7 +1337,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 8.3
   - **Acceptance**: Gráficos renderizam com dados corretos
 
-- [ ] **Step 8.6**: Criar página do dashboard
+- [x] **Step 8.6**: Criar página do dashboard
   - **Task**: Integrar KPIs e gráficos na página principal
   - **Files**: `src/app/(dashboard)/dashboard/page.tsx`
   - **Dependencies**: Step 8.4, Step 8.5
