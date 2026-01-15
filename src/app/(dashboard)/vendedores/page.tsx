@@ -105,13 +105,22 @@ export default function VendedoresPage(): ReactNode {
   }
 
   // --------------------------------------------------------------------------
-  // Loading state
+  // Loading state with skeleton
   // --------------------------------------------------------------------------
-  if (carregando) {
+  if (carregando && vendedores.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-3xl">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-lg text-body text-gray-500">Carregando vendedores...</p>
+      <div className="space-y-xl">
+        {/* Header skeleton */}
+        <div className="flex items-center justify-between">
+          <div>
+            <Skeleton className="h-8 w-36" />
+            <Skeleton className="mt-xs h-4 w-48" />
+          </div>
+          <Skeleton className="h-9 w-40" />
+        </div>
+
+        {/* Table skeleton */}
+        <TabelaVendedoresSkeleton />
       </div>
     )
   }
@@ -119,7 +128,7 @@ export default function VendedoresPage(): ReactNode {
   // --------------------------------------------------------------------------
   // Error state
   // --------------------------------------------------------------------------
-  if (erro) {
+  if (erro && vendedores.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-3xl">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
