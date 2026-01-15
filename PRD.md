@@ -1251,7 +1251,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 6.2, Step 6.3
   - **Acceptance**: CRUD completo funcional, busca funciona
 
-- [ ] **Step 6.5**: Testes de clientes
+- [x] **Step 6.5**: Testes de clientes
   - **Task**: Criar testes unitários e de integração
   - **Files**: `src/hooks/use-clientes.test.ts`, `src/components/clientes/*.test.tsx`, `src/lib/validations/cliente.test.ts`
   - **Dependencies**: Step 6.4
