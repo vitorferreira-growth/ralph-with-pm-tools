@@ -413,9 +413,7 @@ describe('FormularioOportunidade', () => {
       expect(remainingDeleteButtons.length).toBe(1)
     })
 
-    it('should update quantity when changing input', async () => {
-      const user = userEvent.setup()
-
+    it('should update quantity when changing input', () => {
       render(
         <FormularioOportunidade
           aberto={true}
