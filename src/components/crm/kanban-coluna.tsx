@@ -5,6 +5,7 @@ import { Droppable, Draggable } from '@hello-pangea/dnd'
 import type { OpportunityStage, OpportunityWithRelations } from '@/types/database'
 import { OPPORTUNITY_STAGE_LABELS } from '@/types/database'
 import { cn } from '@/lib/utils'
+import { Skeleton } from '@/components/ui/skeleton'
 
 // ============================================================================
 // TYPES
