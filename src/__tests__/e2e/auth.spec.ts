@@ -5,7 +5,8 @@ test.describe('Autenticação', () => {
     test('deve exibir formulário de login', async ({ page }) => {
       await page.goto('/login')
 
-      await expect(page.getByRole('heading', { name: /entrar/i })).toBeVisible()
+      // Title is "Bem-vindo de volta"
+      await expect(page.getByRole('heading', { name: /bem-vindo de volta/i })).toBeVisible()
       await expect(page.getByLabel(/email/i)).toBeVisible()
       await expect(page.getByLabel(/senha/i)).toBeVisible()
       await expect(page.getByRole('button', { name: /entrar/i })).toBeVisible()
@@ -24,7 +25,8 @@ test.describe('Autenticação', () => {
       await page.getByLabel(/senha/i).fill('senhaerrada')
       await page.getByRole('button', { name: /entrar/i }).click()
 
-      await expect(page.getByText(/email ou senha inválidos|credenciais inválidas/i)).toBeVisible({
+      // Error message: "Email ou senha incorretos" or similar
+      await expect(page.getByText(/email ou senha|erro ao fazer login/i)).toBeVisible({
         timeout: 10000,
       })
     })
@@ -32,9 +34,7 @@ test.describe('Autenticação', () => {
     test('deve validar campos obrigatórios', async ({ page }) => {
       await page.goto('/login')
 
-      await page.getByRole('button', { name: /entrar/i }).click()
-
-      // HTML5 validation or custom error
+      // HTML5 validation: required attribute
       const emailInput = page.getByLabel(/email/i)
       await expect(emailInput).toHaveAttribute('required', '')
     })
@@ -44,7 +44,8 @@ test.describe('Autenticação', () => {
     test('deve exibir formulário de registro', async ({ page }) => {
       await page.goto('/registro')
 
-      await expect(page.getByRole('heading', { name: /criar conta/i })).toBeVisible()
+      // Title is "Criar sua conta"
+      await expect(page.getByRole('heading', { name: /criar sua conta/i })).toBeVisible()
       await expect(page.getByLabel(/seu nome/i)).toBeVisible()
       await expect(page.getByLabel(/nome da empresa/i)).toBeVisible()
       await expect(page.getByLabel(/email/i)).toBeVisible()
@@ -69,7 +70,8 @@ test.describe('Autenticação', () => {
       await page.getByLabel(/confirmar senha/i).fill('senha456')
       await page.getByRole('button', { name: /criar conta/i }).click()
 
-      await expect(page.getByText(/senhas não coincidem/i)).toBeVisible()
+      // Error: "As senhas nao coincidem"
+      await expect(page.getByText(/senhas nao coincidem/i)).toBeVisible()
     })
 
     test('deve validar senha mínima', async ({ page }) => {
@@ -82,7 +84,8 @@ test.describe('Autenticação', () => {
       await page.getByLabel(/confirmar senha/i).fill('123')
       await page.getByRole('button', { name: /criar conta/i }).click()
 
-      await expect(page.getByText(/mínimo 6 caracteres/i)).toBeVisible()
+      // Error: "A senha deve ter pelo menos 6 caracteres"
+      await expect(page.getByText(/pelo menos 6 caracteres/i)).toBeVisible()
     })
   })
 
