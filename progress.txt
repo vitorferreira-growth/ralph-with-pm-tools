@@ -1062,5 +1062,43 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 8.4: Create KPI components (2026-01-15)
+- Created src/components/dashboard/card-kpi.tsx:
+  - CardKPI component for individual KPI display
+  - Props: titulo, valor, descricao, icone, variante, carregando, className, onClick
+  - Variantes: default (purple), success (green), warning (yellow), error (red)
+  - Loading state with CardKPISkeleton component
+  - Hover and click interactions with keyboard accessibility (Enter/Space)
+  - Monospace font for values (JetBrains Mono)
+  - Responsive and accessible design
+- Created src/components/dashboard/grid-kpis.tsx:
+  - GridKPIs component displays all 4 KPIs in responsive grid
+  - Layout: 1 column mobile, 2 columns sm, 4 columns lg
+  - KPIs: Total de Vendas, Ticket Médio, Em Negociação, Desistências
+  - Icons: DollarSign, TrendingUp, Clock, XCircle from Lucide
+  - Portuguese plural/singular handling (1 venda vs 10 vendas)
+  - Currency formatting using formatarMoeda from calculos.ts
+  - Loading state renders 4 skeleton cards
+  - ARIA region with label "Indicadores de desempenho"
+  - onKPIClick callback for optional interactivity
+  - Exports: CONFIGURACAO_KPIS, ORDEM_KPIS for external use
+- Created src/components/dashboard/card-kpi.test.tsx (20 tests):
+  - Rendering: Title, value, description, icon
+  - Variants: default, success, warning, error color variants
+  - Loading state: Skeleton rendering, content hidden
+  - Interactivity: onClick, keyboard Enter/Space, cursor-pointer
+  - CSS classes: Custom className support
+- Created src/components/dashboard/grid-kpis.test.tsx (16 tests):
+  - Rendering: All 4 KPIs, BRL formatting, quantity descriptions
+  - Singular/plural: "1 venda" vs "10 vendas"
+  - Zero values: R$ 0,00 formatting, "0 vendas"
+  - Loading state: Skeletons when carregando or kpis null
+  - Interactivity: onKPIClick with correct TipoKPI
+  - CSS classes: Responsive grid classes
+  - Constants: CONFIGURACAO_KPIS and ORDEM_KPIS exports
+- Test results: 475 tests passing (439 previous + 36 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 8.4: Criar componentes de KPI
+- Step 8.5: Criar componentes de gráficos
