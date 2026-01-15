@@ -199,7 +199,7 @@ test.describe('CRM Kanban - Drag and Drop (autenticado)', () => {
   })
 })
 
-test.describe.skip('Fluxo Completo - Login até Venda (autenticado)', () => {
+test.describe('Fluxo Completo - Login até Venda (autenticado)', () => {
   test('deve completar fluxo: login -> criar cliente -> criar produto -> criar oportunidade -> mover para venda finalizada', async ({
     page,
   }) => {
