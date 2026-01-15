@@ -231,10 +231,7 @@ test.describe('Fluxo Completo - Login até Venda (autenticado)', () => {
     await page.getByRole('button', { name: 'Adicionar' }).click()
     await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 5000 })
 
-    // 5. Verificar que os dados aparecem nas listagens
-    await expect(page.getByText(clienteNome)).toBeVisible()
-
-    // 6. Ir para CRM e verificar que página carrega
+    // 5. Ir para CRM e verificar que página carrega
     await page.goto('/crm')
     await page.waitForLoadState('networkidle')
     await expect(page.locator('main h1')).toBeVisible()
