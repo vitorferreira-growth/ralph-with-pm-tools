@@ -170,7 +170,7 @@ export function FormularioCliente({
         estado: estado.trim().toUpperCase() || null,
         cep: cep.replace(/\D/g, '') || null,
         dataNascimento: dataNascimento || null,
-        vendedorId: vendedorId || null,
+        vendedorId: vendedorId && vendedorId !== '__none__' ? vendedorId : null,
       }
 
       const resultado = await onSalvar(dados)
