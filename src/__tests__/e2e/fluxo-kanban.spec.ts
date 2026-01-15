@@ -57,11 +57,11 @@ test.describe('CRM Kanban - Fluxo Completo (autenticado)', () => {
     await page.goto('/crm')
     await page.waitForLoadState('networkidle')
 
-    // Clicar no botão de nova oportunidade
-    await page.getByRole('button', { name: /nova oportunidade|adicionar/i }).click()
+    // Clicar no botão "Nova Oportunidade"
+    await page.getByRole('button', { name: /nova oportunidade/i }).click()
 
-    // Sidebar ou modal deve aparecer
-    await expect(page.getByText(/nova oportunidade/i)).toBeVisible()
+    // Sheet deve aparecer com título
+    await expect(page.getByRole('dialog')).toBeVisible()
   })
 
   test('deve exibir campos do formulário de oportunidade', async ({ page }) => {
