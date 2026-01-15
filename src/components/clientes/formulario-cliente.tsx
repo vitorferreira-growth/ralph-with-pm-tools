@@ -127,7 +127,7 @@ export function FormularioCliente({
       estado: estado || null,
       cep: cep || null,
       dataNascimento: dataNascimento || null,
-      vendedorId: vendedorId || null,
+      vendedorId: vendedorId && vendedorId !== '__none__' ? vendedorId : null,
     }
 
     const resultado = clienteSchema.safeParse(dados)
