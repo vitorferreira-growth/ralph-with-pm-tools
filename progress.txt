@@ -1024,5 +1024,43 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 8.3: Create useDashboard hook (2026-01-15)
+- Created src/hooks/use-dashboard.ts with full dashboard state management
+- Hook interface (UseDashboardRetorno):
+  - kpis: DashboardKPIs | null - KPI data from API
+  - graficos: DashboardGraficos | null - charts data from API
+  - carregando: boolean - overall loading state
+  - carregandoKpis: boolean - KPIs loading state
+  - carregandoGraficos: boolean - charts loading state
+  - erro: string | null - error message
+  - periodo: PeriodoDashboard - current filter ('mes' | 'trimestre' | 'ano')
+  - setPeriodo(periodo): void - change period and refresh data
+  - buscarDados(filtros?): Promise<void> - fetch all data in parallel
+  - buscarKpis(filtros?): Promise<void> - fetch KPIs only
+  - buscarGraficos(filtros?): Promise<void> - fetch charts only
+- Features implemented:
+  - Auto-loads both KPIs and charts on mount using useEffect
+  - Parallel fetching of KPIs and graficos for performance
+  - Separate loading states for granular UI feedback
+  - Period filter support (mes, trimestre, ano)
+  - Optional meses filter for chart historical depth
+  - Default period is 'mes'
+  - setPeriodo automatically triggers data refresh
+  - Empty KPIs fallback when API returns null
+  - Proper error handling with Portuguese error messages
+  - Uses fetch API to communicate with /api/dashboard endpoints
+  - All functions use useCallback for performance optimization
+- Created src/hooks/use-dashboard.test.ts with 16 tests:
+  - carregamento inicial: Load on mount, default period
+  - buscarKpis: Period filter, error handling, empty fallback
+  - buscarGraficos: Period filter, meses filter, error handling
+  - buscarDados: Parallel fetching, reload capability
+  - setPeriodo: Period change and data refresh
+  - estados de carregamento: Separate loading states for KPIs and graficos
+  - erros de rede: Network error handling for all operations
+- Test results: 439 tests passing (423 previous + 16 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 8.3: Criar hook useDashboard
+- Step 8.4: Criar componentes de KPI
