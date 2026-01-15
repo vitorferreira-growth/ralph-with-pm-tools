@@ -363,7 +363,7 @@ export default function CrmPage(): ReactNode {
           <AlertDialogHeader>
             <AlertDialogTitle>Confirmar desistência</AlertDialogTitle>
             <AlertDialogDescription>
-              Tem certeza que deseja marcar esta oportunidade como "Desistiu"?
+              Tem certeza que deseja marcar esta oportunidade como &quot;Desistiu&quot;?
               {confirmacaoDesistencia?.oportunidade && (
                 <span className="mt-sm block font-medium text-gray-900">
                   Cliente: {confirmacaoDesistencia.oportunidade.customer.name}
