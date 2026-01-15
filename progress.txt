@@ -942,5 +942,35 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Note: E2E tests (fluxo-kanban.spec.ts) to be added in Section 9 when Playwright is configured
 
+### Step 8.1: Create Dashboard API (2026-01-15)
+- Created src/app/api/dashboard/kpis/route.ts:
+  - GET /api/dashboard/kpis: Returns KPIs for tenant
+  - KPIs: Total Vendas (R$ e qtd), Ticket Médio, Em Negociação (R$ e qtd), Desistências (R$ e qtd)
+  - Filter by period via `periodo` query param (mes, trimestre, ano)
+  - Period filtering based on created_at for opportunities
+  - Calculates ticket médio (average sale value)
+  - Groups opportunities by stage (closed_won, in progress, closed_lost)
+  - RLS applied via Supabase for tenant isolation
+  - Exported DashboardKPIs type interface
+- Created src/app/api/dashboard/graficos/route.ts:
+  - GET /api/dashboard/graficos: Returns chart data for tenant
+  - VendasPorMes: Monthly sales (last N months, default 12)
+  - VendasPorVendedor: Sales by seller with totals and quantities
+  - VendasPorProduto: Sales by product with totals and quantities
+  - ValorPorEtapa: Value per CRM stage (funnel data)
+  - Filter by period via `periodo` query param (mes, trimestre, ano)
+  - Filter by months via `meses` query param (default 12)
+  - Joins with sellers and products for complete data
+  - Portuguese month formatting (Jan, Fev, Mar, etc.)
+  - Sorted results by value (descending) for sellers and products
+  - Exported type interfaces: VendasPorMes, VendasPorVendedor, VendasPorProduto, ValorPorEtapa, DashboardGraficos
+- All endpoints:
+  - Verify authentication via getUser()
+  - Use RLS (Row Level Security) for tenant isolation
+  - Return Portuguese error messages
+  - Handle errors gracefully with appropriate HTTP status codes
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (361 tests - no new tests, API tests in Step 8.7)
+
 ## Next Tasks
-- Step 8.1: Criar API do dashboard
+- Step 8.2: Criar funções de cálculo
