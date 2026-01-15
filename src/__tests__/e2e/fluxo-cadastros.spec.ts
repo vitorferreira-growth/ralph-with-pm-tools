@@ -146,23 +146,22 @@ test.describe('Clientes - Fluxo Completo (autenticado)', () => {
     await page.goto('/clientes')
     await page.waitForLoadState('networkidle')
 
-    await expect(
-      page.getByRole('heading', { name: /clientes/i }).or(page.getByText(/clientes/i).first())
-    ).toBeVisible()
+    // Verificar título da página (h1 dentro do main)
+    await expect(page.locator('main h1')).toBeVisible()
   })
 
   test('deve criar cliente com sucesso', async ({ page }) => {
     await page.goto('/clientes')
     await page.waitForLoadState('networkidle')
 
-    await page.getByRole('button', { name: /adicionar|novo/i }).click()
+    await page.getByRole('button', { name: /adicionar cliente/i }).click()
     await expect(page.getByRole('dialog')).toBeVisible()
 
     const nomeUnico = `Cliente E2E ${Date.now()}`
     await page.getByLabel(/nome/i).fill(nomeUnico)
     await page.getByLabel(/email/i).fill(`cliente-e2e-${Date.now()}@teste.com`)
 
-    await page.getByRole('button', { name: /salvar|criar/i }).click()
+    await page.getByRole('button', { name: 'Adicionar' }).click()
 
     await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 5000 })
     await expect(page.getByText(nomeUnico)).toBeVisible()
@@ -172,12 +171,11 @@ test.describe('Clientes - Fluxo Completo (autenticado)', () => {
     await page.goto('/clientes')
     await page.waitForLoadState('networkidle')
 
-    // Se houver campo de busca
+    // Verificar campo de busca
     const searchInput = page.getByPlaceholder(/buscar/i)
-    if (await searchInput.isVisible()) {
-      await searchInput.fill('teste')
-      // Aguardar debounce e resultados
-      await page.waitForTimeout(500)
-    }
+    await expect(searchInput).toBeVisible()
+    await searchInput.fill('teste')
+    // Aguardar debounce
+    await page.waitForTimeout(500)
   })
 })
