@@ -109,3 +109,53 @@ export function TabelaClientes({
     </div>
   )
 }
+
+// ============================================================================
+// SKELETON COMPONENT
+// ============================================================================
+
+export function TabelaClientesSkeleton(): ReactNode {
+  return (
+    <div className="rounded-lg border shadow-card">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[25%]">Nome</TableHead>
+            <TableHead className="w-[25%]">Email</TableHead>
+            <TableHead className="w-[15%]">WhatsApp</TableHead>
+            <TableHead className="w-[15%]">Cidade</TableHead>
+            <TableHead className="w-[12%]">Vendedor</TableHead>
+            <TableHead className="w-[8%] text-right">Ações</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <Skeleton className="h-4 w-32" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-4 w-40" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-4 w-28" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-4 w-24" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-4 w-20" />
+              </TableCell>
+              <TableCell className="text-right">
+                <div className="flex justify-end gap-xs">
+                  <Skeleton className="h-8 w-8 rounded-md" />
+                  <Skeleton className="h-8 w-8 rounded-md" />
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  )
+}
