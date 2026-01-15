@@ -61,10 +61,8 @@ test.describe('Vendedores - Fluxo Completo (autenticado)', () => {
     // Aguardar carregamento
     await page.waitForLoadState('networkidle')
 
-    // Deve ter título ou elemento identificador da página
-    await expect(
-      page.getByRole('heading', { name: /vendedores/i }).or(page.getByText(/vendedores/i).first())
-    ).toBeVisible()
+    // Deve ter título da página (h1 específico, não o link da sidebar)
+    await expect(page.locator('main h1')).toBeVisible()
   })
 
   test('deve abrir modal de criação ao clicar em adicionar', async ({ page }) => {
