@@ -2,7 +2,6 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { KanbanBoard } from './kanban-board'
 import type { OpportunityWithRelations, OpportunityStage } from '@/types/database'
-import { OPPORTUNITY_STAGES_ORDER } from '@/types/database'
 
 // ============================================================================
 // MOCK DATA
