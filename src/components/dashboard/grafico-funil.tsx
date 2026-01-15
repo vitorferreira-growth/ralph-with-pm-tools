@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis } from 'recharts'
 import {
   ChartConfig,
@@ -89,10 +90,13 @@ function GraficoFunilVazio(): React.ReactElement {
 }
 
 // ============================================================================
-// MAIN COMPONENT
+// MAIN COMPONENT (memoized for performance)
 // ============================================================================
 
-export function GraficoFunil({ dados, carregando }: GraficoFunilProps): React.ReactElement {
+export const GraficoFunil = memo(function GraficoFunil({
+  dados,
+  carregando,
+}: GraficoFunilProps): React.ReactElement {
   if (carregando) {
     return <GraficoFunilSkeleton />
   }
@@ -182,6 +186,8 @@ export function GraficoFunil({ dados, carregando }: GraficoFunilProps): React.Re
       </CardContent>
     </Card>
   )
-}
+})
+
+GraficoFunil.displayName = 'GraficoFunil'
 
 export { GraficoFunilSkeleton, GraficoFunilVazio }

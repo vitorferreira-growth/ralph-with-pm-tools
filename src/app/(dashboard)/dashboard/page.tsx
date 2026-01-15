@@ -1,12 +1,10 @@
 'use client'
 
-import { type ReactElement } from 'react'
+import { type ReactElement, Suspense } from 'react'
+import dynamic from 'next/dynamic'
 import { useDashboard, type PeriodoDashboard } from '@/hooks/use-dashboard'
 import { GridKPIs } from '@/components/dashboard/grid-kpis'
-import { GraficoVendasMes } from '@/components/dashboard/grafico-vendas-mes'
-import { GraficoVendasVendedor } from '@/components/dashboard/grafico-vendas-vendedor'
-import { GraficoVendasProduto } from '@/components/dashboard/grafico-vendas-produto'
-import { GraficoFunil } from '@/components/dashboard/grafico-funil'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import {
   Select,
   SelectContent,
@@ -16,6 +14,44 @@ import {
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import { RefreshCw, AlertCircle } from 'lucide-react'
+
+// ============================================================================
+// LAZY LOADED CHART COMPONENTS (Recharts is heavy - ~100KB)
+// ============================================================================
+
+const ChartSkeleton = (): ReactElement => (
+  <Card>
+    <CardHeader>
+      <div className="h-5 w-32 animate-pulse rounded bg-gray-200" />
+      <div className="h-4 w-48 animate-pulse rounded bg-gray-200" />
+    </CardHeader>
+    <CardContent>
+      <div className="h-[300px] animate-pulse rounded bg-gray-100" />
+    </CardContent>
+  </Card>
+)
+
+const GraficoVendasMes = dynamic(
+  () => import('@/components/dashboard/grafico-vendas-mes').then((mod) => mod.GraficoVendasMes),
+  { loading: () => <ChartSkeleton />, ssr: false }
+)
+
+const GraficoVendasVendedor = dynamic(
+  () =>
+    import('@/components/dashboard/grafico-vendas-vendedor').then((mod) => mod.GraficoVendasVendedor),
+  { loading: () => <ChartSkeleton />, ssr: false }
+)
+
+const GraficoVendasProduto = dynamic(
+  () =>
+    import('@/components/dashboard/grafico-vendas-produto').then((mod) => mod.GraficoVendasProduto),
+  { loading: () => <ChartSkeleton />, ssr: false }
+)
+
+const GraficoFunil = dynamic(
+  () => import('@/components/dashboard/grafico-funil').then((mod) => mod.GraficoFunil),
+  { loading: () => <ChartSkeleton />, ssr: false }
+)
 
 // ============================================================================
 // CONSTANTS

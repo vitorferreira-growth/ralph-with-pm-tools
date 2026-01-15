@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useMemo } from 'react'
 import type { OpportunityStage, OpportunityWithRelations } from '@/types/database'
 
 // ============================================================================
@@ -313,10 +313,17 @@ export function useOportunidades(): UseOportunidadesRetorno {
   }, [])
 
   // --------------------------------------------------------------------------
-  // Computed values
+  // Computed values (memoized for performance)
   // --------------------------------------------------------------------------
-  const oportunidadesPorEtapa = agruparPorEtapa(oportunidades)
-  const totaisPorEtapa = calcularTotaisPorEtapa(oportunidades)
+  const oportunidadesPorEtapa = useMemo(
+    () => agruparPorEtapa(oportunidades),
+    [oportunidades]
+  )
+
+  const totaisPorEtapa = useMemo(
+    () => calcularTotaisPorEtapa(oportunidades),
+    [oportunidades]
+  )
 
   // --------------------------------------------------------------------------
   // Carrega oportunidades na montagem

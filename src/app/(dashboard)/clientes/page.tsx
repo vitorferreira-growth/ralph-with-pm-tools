@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import type { ReactNode, ChangeEvent } from 'react'
 import type { CustomerWithSeller } from '@/types/database'
 import { useClientes } from '@/hooks/use-clientes'
 import { useVendedores } from '@/hooks/use-vendedores'
+import { useDebounce } from '@/hooks/use-debounce'
 import { TabelaClientes, TabelaClientesSkeleton } from '@/components/clientes/tabela-clientes'
 import { FormularioCliente } from '@/components/clientes/formulario-cliente'
 import { DialogoExcluirCliente } from '@/components/clientes/dialogo-excluir-cliente'
@@ -30,8 +31,14 @@ export default function ClientesPage(): ReactNode {
 
   const { vendedores, carregando: carregandoVendedores } = useVendedores()
 
-  // Search state
+  // Search state with debounce
   const [termoBusca, setTermoBusca] = useState('')
+  const termoBuscaDebounced = useDebounce(termoBusca, 300)
+
+  // Trigger search when debounced term changes
+  useEffect(() => {
+    buscarClientes({ busca: termoBuscaDebounced })
+  }, [termoBuscaDebounced, buscarClientes])
 
   // Form dialog state
   const [formularioAberto, setFormularioAberto] = useState(false)
@@ -46,17 +53,11 @@ export default function ClientesPage(): ReactNode {
   const [erroOperacao, setErroOperacao] = useState<string | null>(null)
 
   // --------------------------------------------------------------------------
-  // Search handler with debounce
+  // Search handler (debouncing handled by useDebounce hook)
   // --------------------------------------------------------------------------
-  const handleBusca = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const valor = event.target.value
-      setTermoBusca(valor)
-      // Buscar com filtro
-      buscarClientes({ busca: valor })
-    },
-    [buscarClientes]
-  )
+  const handleBusca = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setTermoBusca(event.target.value)
+  }, [])
 
   // --------------------------------------------------------------------------
   // Handlers

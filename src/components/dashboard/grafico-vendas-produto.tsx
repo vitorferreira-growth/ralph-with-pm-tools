@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Cell, Pie, PieChart, Sector } from 'recharts'
 import {
   ChartConfig,
@@ -148,10 +149,10 @@ function renderActiveShape(props: ActiveShapeProps): React.ReactElement {
 }
 
 // ============================================================================
-// MAIN COMPONENT
+// MAIN COMPONENT (memoized for performance)
 // ============================================================================
 
-export function GraficoVendasProduto({
+export const GraficoVendasProduto = memo(function GraficoVendasProduto({
   dados,
   carregando,
 }: GraficoVendasProdutoProps): React.ReactElement {
@@ -237,6 +238,8 @@ export function GraficoVendasProduto({
       </CardContent>
     </Card>
   )
-}
+})
+
+GraficoVendasProduto.displayName = 'GraficoVendasProduto'
 
 export { GraficoVendasProdutoSkeleton, GraficoVendasProdutoVazio }

@@ -1296,5 +1296,34 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:e2e passes
 
+### Step 9.4: Performance optimization (2026-01-15)
+- Updated next.config.mjs with performance optimizations:
+  - reactStrictMode enabled
+  - experimental.optimizePackageImports for lucide-react, @radix-ui/*, recharts
+  - compiler.removeConsole in production
+  - Image optimization with AVIF and WebP formats
+  - Cache-Control headers for static assets (1 year)
+- Created src/hooks/use-debounce.ts:
+  - useDebounce<T>(value, delay): Returns debounced value
+  - useDebouncedCallback<T>(callback, delay): Returns debounced function
+  - Used for search input optimization
+- Added lazy loading for heavy chart components in dashboard:
+  - Used next/dynamic with ssr: false for all 4 chart components
+  - Created ChartSkeleton component for loading states
+  - Recharts library (~100KB) now code-split and loaded on demand
+- Added React.memo to all chart components:
+  - GraficoVendasMes, GraficoVendasVendedor, GraficoVendasProduto, GraficoFunil
+  - Prevents unnecessary re-renders when props haven't changed
+- Added useMemo for computed values in hooks:
+  - use-oportunidades.ts: oportunidadesPorEtapa, totaisPorEtapa now memoized
+- Added useMemo for derived state in CRM page:
+  - totalOportunidades, oportunidadesFiltradas, totaisFiltrados now memoized
+- Added search debouncing in Clientes page:
+  - 300ms debounce delay prevents API spam on every keystroke
+  - Uses useDebounce hook and useEffect for triggering search
+- Test results: 516 tests passing
+- Verified: npm run build compiles successfully
+- Verified: npm run lint passes (only pre-existing warnings)
+
 ## Next Tasks
-- Step 9.4: Otimizar performance
+- Step 9.5: Configurar CI/CD

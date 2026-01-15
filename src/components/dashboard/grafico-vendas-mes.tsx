@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 import {
   ChartConfig,
@@ -75,10 +76,13 @@ function GraficoVendasMesVazio(): React.ReactElement {
 }
 
 // ============================================================================
-// MAIN COMPONENT
+// MAIN COMPONENT (memoized for performance)
 // ============================================================================
 
-export function GraficoVendasMes({ dados, carregando }: GraficoVendasMesProps): React.ReactElement {
+export const GraficoVendasMes = memo(function GraficoVendasMes({
+  dados,
+  carregando,
+}: GraficoVendasMesProps): React.ReactElement {
   if (carregando) {
     return <GraficoVendasMesSkeleton />
   }
@@ -154,6 +158,8 @@ export function GraficoVendasMes({ dados, carregando }: GraficoVendasMesProps): 
       </CardContent>
     </Card>
   )
-}
+})
+
+GraficoVendasMes.displayName = 'GraficoVendasMes'
 
 export { GraficoVendasMesSkeleton, GraficoVendasMesVazio }

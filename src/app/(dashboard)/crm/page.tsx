@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import type { ReactNode } from 'react'
 import type { OpportunityStage, OpportunityWithRelations, Seller } from '@/types/database'
 import { useOportunidades } from '@/hooks/use-oportunidades'
@@ -79,32 +79,38 @@ export default function CrmPage(): ReactNode {
   } | null>(null)
 
   // --------------------------------------------------------------------------
-  // Derived state
+  // Derived state (memoized for performance)
   // --------------------------------------------------------------------------
   const carregandoDados = carregandoClientes || carregandoProdutos || carregandoVendedores
-  const totalOportunidades = Object.values(oportunidadesPorEtapa).reduce(
-    (acc, arr) => acc + arr.length,
-    0
+
+  const totalOportunidades = useMemo(
+    () =>
+      Object.values(oportunidadesPorEtapa).reduce((acc, arr) => acc + arr.length, 0),
+    [oportunidadesPorEtapa]
   )
 
-  // Filter opportunities by seller
-  const oportunidadesFiltradas = filtroVendedor
-    ? Object.fromEntries(
-        Object.entries(oportunidadesPorEtapa).map(([etapa, ops]) => [
-          etapa,
-          ops.filter((op) => op.seller_id === filtroVendedor),
-        ])
-      ) as Record<OpportunityStage, OpportunityWithRelations[]>
-    : oportunidadesPorEtapa
+  // Filter opportunities by seller (memoized)
+  const oportunidadesFiltradas = useMemo(() => {
+    if (!filtroVendedor) return oportunidadesPorEtapa
 
-  const totaisFiltrados = filtroVendedor
-    ? Object.fromEntries(
-        Object.entries(oportunidadesFiltradas).map(([etapa, ops]) => [
-          etapa,
-          ops.reduce((sum, op) => sum + op.total_value, 0),
-        ])
-      ) as Record<OpportunityStage, number>
-    : totaisPorEtapa
+    return Object.fromEntries(
+      Object.entries(oportunidadesPorEtapa).map(([etapa, ops]) => [
+        etapa,
+        ops.filter((op) => op.seller_id === filtroVendedor),
+      ])
+    ) as Record<OpportunityStage, OpportunityWithRelations[]>
+  }, [oportunidadesPorEtapa, filtroVendedor])
+
+  const totaisFiltrados = useMemo(() => {
+    if (!filtroVendedor) return totaisPorEtapa
+
+    return Object.fromEntries(
+      Object.entries(oportunidadesFiltradas).map(([etapa, ops]) => [
+        etapa,
+        ops.reduce((sum, op) => sum + op.total_value, 0),
+      ])
+    ) as Record<OpportunityStage, number>
+  }, [oportunidadesFiltradas, totaisPorEtapa, filtroVendedor])
 
   // --------------------------------------------------------------------------
   // Handlers

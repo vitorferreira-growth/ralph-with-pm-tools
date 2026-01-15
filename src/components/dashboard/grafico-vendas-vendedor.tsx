@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 import {
   ChartConfig,
@@ -75,10 +76,10 @@ function GraficoVendasVendedorVazio(): React.ReactElement {
 }
 
 // ============================================================================
-// MAIN COMPONENT
+// MAIN COMPONENT (memoized for performance)
 // ============================================================================
 
-export function GraficoVendasVendedor({
+export const GraficoVendasVendedor = memo(function GraficoVendasVendedor({
   dados,
   carregando,
 }: GraficoVendasVendedorProps): React.ReactElement {
@@ -168,6 +169,8 @@ export function GraficoVendasVendedor({
       </CardContent>
     </Card>
   )
-}
+})
+
+GraficoVendasVendedor.displayName = 'GraficoVendasVendedor'
 
 export { GraficoVendasVendedorSkeleton, GraficoVendasVendedorVazio }

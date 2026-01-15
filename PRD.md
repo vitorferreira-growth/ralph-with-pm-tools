@@ -1371,9 +1371,9 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Sections 4-8
   - **Acceptance**: Fluxos críticos cobertos
 
-- [ ] **Step 9.4**: Otimizar performance
+- [x] **Step 9.4**: Otimizar performance
   - **Task**: Implementar lazy loading, otimizar queries
-  - **Files**: Componentes e API routes existentes
+  - **Files**: `next.config.mjs`, `src/hooks/use-debounce.ts`, `src/hooks/use-oportunidades.ts`, `src/app/(dashboard)/dashboard/page.tsx`, `src/app/(dashboard)/crm/page.tsx`, `src/app/(dashboard)/clientes/page.tsx`, `src/components/dashboard/grafico-*.tsx`
   - **Dependencies**: Sections 4-8
   - **Acceptance**: Lighthouse score > 90
 
