@@ -112,7 +112,9 @@ describe('GridKPIs', () => {
 
       // Quantidades zeradas
       expect(screen.getByText('0 vendas')).toBeInTheDocument()
-      expect(screen.getByText('0 oportunidades')).toBeInTheDocument()
+      // "0 oportunidades" aparece 2x (Em Negociação e Desistências)
+      const oportunidadesZeradas = screen.getAllByText('0 oportunidades')
+      expect(oportunidadesZeradas).toHaveLength(2)
     })
 
     it('deve ter role region com aria-label', () => {
