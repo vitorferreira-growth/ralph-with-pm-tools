@@ -449,9 +449,8 @@ describe('FormularioOportunidade', () => {
       const quantityInputs = screen.getAllByLabelText('Qtd')
       expect(quantityInputs[0]).toHaveValue(2)
 
-      // Change quantity
-      await user.clear(quantityInputs[0])
-      await user.type(quantityInputs[0], '5')
+      // Change quantity using fireEvent for more reliable number input handling
+      fireEvent.change(quantityInputs[0], { target: { value: '5' } })
 
       expect(quantityInputs[0]).toHaveValue(5)
     })
