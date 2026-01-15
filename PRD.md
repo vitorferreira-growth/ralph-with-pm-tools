@@ -1353,9 +1353,9 @@ describe('calcularTicketMedio', () => {
 
 ### Section 9: Polish & Deploy
 
-- [ ] **Step 9.1**: Implementar estados de loading e empty
+- [x] **Step 9.1**: Implementar estados de loading e empty
   - **Task**: Adicionar skeleton loaders e empty states em todas as páginas
-  - **Files**: Componentes existentes
+  - **Files**: `src/components/ui/skeleton.tsx`, `src/components/clientes/tabela-clientes.tsx`, `src/components/produtos/tabela-produtos.tsx`, `src/components/vendedores/tabela-vendedores.tsx`, `src/components/crm/kanban-coluna.tsx`, páginas de dashboard
   - **Dependencies**: Sections 4-8
   - **Acceptance**: UX fluida em todos os estados
 
