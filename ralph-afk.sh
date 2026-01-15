@@ -139,14 +139,25 @@ for ((i=1; i<=iterations; i++)); do
   log "CYCLE" "$C_MAGENTA" "$bar  — Running Claude..."
   hr | tee -a "$LOG_FILE"
 
-  prompt='@PRD.md @progress.txt \
-1. Find the highest-priority task and implement it. \
-2. Run your tests and type checks. \
-3. Update the PRD with what was done. \
-4. Append your progress to progress.txt. \
-5. Commit your changes. \
+  prompt='@PRD.md @progress.txt @.claude/agents/ \
+1. Find the highest-priority task and DETECT its type. \
+2. USE SPECIALIZED AGENTS based on task type: \
+   - Frontend/UI: typescript-engineer, frontend-developer \
+   - Backend: python-engineer, golang-engineer, ruby-engineer, rust-engineer \
+   - Database: data-architect-agent \
+   - Security: security-engineer, api-security-agent \
+   - Infrastructure: terraform-ops, gitops-engineer \
+   - Payments/Fintech: payments-engineer, compliance-engineer \
+3. IMPLEMENT following the agent best practices. \
+4. RUN /security-review on all changed files. \
+5. RUN /test-gen for new functionality. \
+6. Run tests and type checks. \
+7. Update PRD with completion status. \
+8. Append to progress.txt: task, agents used, results. \
+9. Commit with conventional commits. \
 ONLY WORK ON A SINGLE TASK. \
-If the PRD is complete, output <promise>COMPLETE</promise>.'
+If PRD is complete, output <promise>COMPLETE</promise>. \
+Reference .claude/agents/ for specialized domain knowledge.'
 
   result=""
   if [[ "$STREAM" == "1" ]]; then
