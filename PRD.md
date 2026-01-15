@@ -1365,7 +1365,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Sections 4-8
   - **Acceptance**: Erros tratados graciosamente
 
-- [ ] **Step 9.3**: Configurar testes E2E completos
+- [x] **Step 9.3**: Configurar testes E2E completos
   - **Task**: Criar testes E2E para fluxos críticos
   - **Files**: `src/__tests__/e2e/*.spec.ts`, `playwright.config.ts`
   - **Dependencies**: Sections 4-8
