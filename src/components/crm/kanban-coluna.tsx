@@ -181,3 +181,82 @@ export function KanbanColuna({
     </div>
   )
 }
+
+// ============================================================================
+// SKELETON COMPONENTS
+// ============================================================================
+
+/**
+ * Skeleton for individual kanban card
+ */
+export function KanbanCardSkeleton(): ReactNode {
+  return (
+    <div className="rounded-md border border-gray-200 bg-white p-md shadow-kanban">
+      {/* Cliente */}
+      <Skeleton className="h-4 w-32" />
+
+      {/* Valor */}
+      <Skeleton className="mt-xs h-5 w-24" />
+
+      {/* Vendedor */}
+      <Skeleton className="mt-xs h-3 w-20" />
+
+      {/* Produtos */}
+      <Skeleton className="mt-xs h-3 w-16" />
+    </div>
+  )
+}
+
+/**
+ * Skeleton for entire kanban column
+ */
+export function KanbanColunaSkeleton({
+  cardsCount = 3,
+}: {
+  cardsCount?: number
+}): ReactNode {
+  return (
+    <div className="flex h-full w-72 min-w-72 flex-col rounded-xl bg-gray-100 p-sm">
+      {/* Header skeleton */}
+      <div className="mb-sm flex items-center justify-between px-xs">
+        <div className="flex items-center gap-sm">
+          <Skeleton className="h-3 w-3 rounded-full" />
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-5 w-5 rounded-full" />
+        </div>
+      </div>
+
+      {/* Total skeleton */}
+      <div className="mb-sm px-xs">
+        <Skeleton className="h-3 w-20" />
+      </div>
+
+      {/* Cards skeleton */}
+      <div className="flex flex-1 flex-col gap-sm overflow-y-auto rounded-lg p-xs">
+        {Array.from({ length: cardsCount }).map((_, index) => (
+          <KanbanCardSkeleton key={index} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/**
+ * Skeleton for entire kanban board (6 columns)
+ */
+export function KanbanBoardSkeleton(): ReactNode {
+  // Different card counts per column for realistic appearance
+  const cardCountsPerColumn = [2, 3, 2, 1, 2, 1]
+
+  return (
+    <div
+      className="flex h-full gap-lg overflow-x-auto pb-lg"
+      role="region"
+      aria-label="Carregando kanban..."
+    >
+      {cardCountsPerColumn.map((cardsCount, index) => (
+        <KanbanColunaSkeleton key={index} cardsCount={cardsCount} />
+      ))}
+    </div>
+  )
+}
