@@ -798,5 +798,35 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (261 tests)
 
+### Step 7.4: Create CardOportunidade component (2026-01-15)
+- Created src/components/crm/card-oportunidade.tsx with two card variants:
+  - CardOportunidadeCompacto: Simplified card for list views
+    - Displays customer name, total value (formatted BRL), stage badge
+    - Shows seller name, product count, and relative date
+    - Click and keyboard accessibility (Enter/Space)
+    - Hover shadow effect for interaction feedback
+  - CardOportunidadeCompleto: Full card for detail views
+    - Customer name and email in header
+    - Stage badge with color coding
+    - Total value prominently displayed with label
+    - Seller section with avatar placeholder and name
+    - Products list with name, code, unit price, quantity
+    - Notes section when available
+    - Creation and closed dates at footer
+  - BadgeEtapa component for reusable stage badges
+    - Color-coded by stage (blue, purple, yellow, orange, green, red)
+    - Portuguese labels from OPPORTUNITY_STAGE_LABELS
+  - Main CardOportunidade component with compact prop switch
+  - Helper functions: formatarMoeda, formatarData, formatarDataRelativa
+  - Exports: CardOportunidade, BadgeEtapa, CardOportunidadeCompacto, CardOportunidadeCompleto
+- Created src/components/crm/card-oportunidade.test.tsx with 42 tests:
+  - BadgeEtapa: All 6 stage labels tested
+  - CardOportunidadeCompacto: Customer name, value, badge, seller, products count, click handlers
+  - CardOportunidadeCompleto: Full details display including products list, notes, dates
+  - CardOportunidade: Compact/full mode switching and onClick propagation
+- Test results: 303 tests passing (261 previous + 42 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 7.4: Criar componente CardOportunidade
+- Step 7.5: Criar formulário de oportunidade
