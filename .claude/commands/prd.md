@@ -6,10 +6,10 @@ Você é um **PRD Architect** especializado em transformar ideias em documentos 
 
 ## Modos de Operação
 
-| Comando | Modo | Fases | Uso |
-|---------|------|-------|-----|
-| `/prd quick` | Quick | 3 fases | PRDs rápidos, MVPs simples |
-| `/prd` ou `/prd full` | Full | 8 fases | PRDs completos, produtos complexos |
+| Comando               | Modo  | Fases   | Uso                                |
+| --------------------- | ----- | ------- | ---------------------------------- |
+| `/prd quick`          | Quick | 3 fases | PRDs rápidos, MVPs simples         |
+| `/prd` ou `/prd full` | Full  | 8 fases | PRDs completos, produtos complexos |
 
 ---
 
@@ -31,6 +31,7 @@ Quando o usuário acionar `/prd`:
 ## Fase 1: Discovery
 
 ### Objetivo
+
 Entender o produto, problema e público-alvo.
 
 ### Perguntas
@@ -55,22 +56,27 @@ Vamos começar pela **Fase 1: Discovery**.
 ## 1. Visão Geral do Produto
 
 ### Elevator Pitch
+
 [Resumo em 1-2 frases]
 
 ### Problem Statement
+
 [Descrição clara do problema]
 
 ### Target Audience
-| Segmento | Descrição | Necessidades |
-|----------|-----------|--------------|
-| Primário | ... | ... |
-| Secundário | ... | ... |
-| Terciário | ... | ... |
+
+| Segmento   | Descrição | Necessidades |
+| ---------- | --------- | ------------ |
+| Primário   | ...       | ...          |
+| Secundário | ...       | ...          |
+| Terciário  | ...       | ...          |
 
 ### USP
+
 [Diferencial único]
 
 ### Plataformas
+
 - [ ] Web (Responsive)
 - [ ] Mobile iOS
 - [ ] Mobile Android
@@ -78,6 +84,7 @@ Vamos começar pela **Fase 1: Discovery**.
 - [ ] API
 
 ### Monetização
+
 [Modelo de negócio]
 ```
 
@@ -86,6 +93,7 @@ Vamos começar pela **Fase 1: Discovery**.
 ## Fase 2: Features
 
 ### Objetivo
+
 Definir as funcionalidades do MVP.
 
 ### Perguntas
@@ -104,20 +112,23 @@ Agora vamos para a **Fase 2: Features**.
 ## 2. Features List
 
 ### MVP (P0)
-| Feature | Descrição | Requisitos |
-|---------|-----------|------------|
-| Feature 1 | ... | ... |
-| Feature 2 | ... | ... |
+
+| Feature   | Descrição | Requisitos |
+| --------- | --------- | ---------- |
+| Feature 1 | ...       | ...        |
+| Feature 2 | ...       | ...        |
 
 ### v2 (P1)
-| Feature | Descrição | Requisitos |
-|---------|-----------|------------|
-| Feature N | ... | ... |
+
+| Feature   | Descrição | Requisitos |
+| --------- | --------- | ---------- |
+| Feature N | ...       | ...        |
 
 ### Futuro (P2)
-| Feature | Descrição |
-|---------|-----------|
-| Feature X | ... |
+
+| Feature   | Descrição |
+| --------- | --------- |
+| Feature X | ...       |
 ```
 
 ---
@@ -125,6 +136,7 @@ Agora vamos para a **Fase 2: Features**.
 ## Fase 3: User Stories
 
 ### Objetivo
+
 Detalhar user stories e acceptance criteria para cada feature.
 
 ### Perguntas (para CADA feature)
@@ -146,23 +158,28 @@ Agora vamos detalhar a feature **[Nome da Feature]** na **Fase 3: User Stories**
 ### Feature: [Nome]
 
 #### User Stories
-| Persona | Story | Prioridade |
-|---------|-------|------------|
-| [Tipo] | As a [X], I want to [Y], so that [Z] | P0 |
-| [Tipo] | As a [X], I want to [Y], so that [Z] | P0 |
+
+| Persona | Story                                | Prioridade |
+| ------- | ------------------------------------ | ---------- |
+| [Tipo]  | As a [X], I want to [Y], so that [Z] | P0         |
+| [Tipo]  | As a [X], I want to [Y], so that [Z] | P0         |
 
 #### Acceptance Criteria
+
 - [ ] [Critério 1]
 - [ ] [Critério 2]
 - [ ] [Critério 3]
 
 #### UX/UI Considerations
+
 **Core Experience:**
+
 - Estado inicial
 - Estados de transição
 - Feedback visual
 
 **Edge Cases:**
+
 - Tratamento de erros
 - Estados vazios
 - Loading states
@@ -173,6 +190,7 @@ Agora vamos detalhar a feature **[Nome da Feature]** na **Fase 3: User Stories**
 ## Fase 4: Design System
 
 ### Objetivo
+
 Definir o sistema visual completo do produto.
 
 ### Perguntas
@@ -200,98 +218,111 @@ Agora vamos para a **Fase 4: Design System**.
 ### Color Palette
 
 #### Primary Colors
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Primary | `#000000` | Botões principais, ênfase |
-| Primary Light | `#333333` | Hover states |
+
+| Nome          | Hex       | Uso                       |
+| ------------- | --------- | ------------------------- |
+| Primary       | `#000000` | Botões principais, ênfase |
+| Primary Light | `#333333` | Hover states              |
 
 #### Secondary Colors
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Secondary | `#666666` | Elementos secundários |
-| Secondary Light | `#999999` | Backgrounds sutis |
+
+| Nome            | Hex       | Uso                   |
+| --------------- | --------- | --------------------- |
+| Secondary       | `#666666` | Elementos secundários |
+| Secondary Light | `#999999` | Backgrounds sutis     |
 
 #### Accent Colors
-| Nome | Hex | Uso |
-|------|-----|-----|
+
+| Nome   | Hex       | Uso                    |
+| ------ | --------- | ---------------------- |
 | Accent | `#0066FF` | CTAs, links, destaques |
 
 #### Functional Colors
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Success | `#22C55E` | Confirmações, sucesso |
-| Error | `#EF4444` | Erros, alertas críticos |
-| Warning | `#F59E0B` | Avisos |
-| Info | `#3B82F6` | Informações |
+
+| Nome    | Hex       | Uso                     |
+| ------- | --------- | ----------------------- |
+| Success | `#22C55E` | Confirmações, sucesso   |
+| Error   | `#EF4444` | Erros, alertas críticos |
+| Warning | `#F59E0B` | Avisos                  |
+| Info    | `#3B82F6` | Informações             |
 
 #### Background Colors
-| Nome | Hex | Uso |
-|------|-----|-----|
-| Background | `#FFFFFF` | Fundo principal |
-| Surface | `#F9FAFB` | Cards, painéis |
-| Elevated | `#FFFFFF` | Modals, dropdowns |
+
+| Nome       | Hex       | Uso               |
+| ---------- | --------- | ----------------- |
+| Background | `#FFFFFF` | Fundo principal   |
+| Surface    | `#F9FAFB` | Cards, painéis    |
+| Elevated   | `#FFFFFF` | Modals, dropdowns |
 
 ### Typography
 
 #### Font Families
-* **Primary**: Inter / SF Pro Text (UI)
-* **Monospace**: JetBrains Mono (código)
+
+- **Primary**: Inter / SF Pro Text (UI)
+- **Monospace**: JetBrains Mono (código)
 
 #### Type Scale
-| Style | Size | Weight | Line Height |
-|-------|------|--------|-------------|
-| H1 | 32px | Bold (700) | 40px |
-| H2 | 24px | Bold (700) | 32px |
-| H3 | 20px | Semibold (600) | 28px |
-| H4 | 18px | Semibold (600) | 24px |
-| Body | 16px | Regular (400) | 24px |
-| Body Small | 14px | Regular (400) | 20px |
-| Caption | 12px | Medium (500) | 16px |
+
+| Style      | Size | Weight         | Line Height |
+| ---------- | ---- | -------------- | ----------- |
+| H1         | 32px | Bold (700)     | 40px        |
+| H2         | 24px | Bold (700)     | 32px        |
+| H3         | 20px | Semibold (600) | 28px        |
+| H4         | 18px | Semibold (600) | 24px        |
+| Body       | 16px | Regular (400)  | 24px        |
+| Body Small | 14px | Regular (400)  | 20px        |
+| Caption    | 12px | Medium (500)   | 16px        |
 
 ### Spacing System
-| Token | Value | Uso |
-|-------|-------|-----|
-| xs | 4px | Micro espaçamentos |
-| sm | 8px | Entre elementos relacionados |
-| md | 16px | Padding padrão |
-| lg | 24px | Separação de seções |
-| xl | 32px | Grandes separações |
-| 2xl | 48px | Entre blocos principais |
+
+| Token | Value | Uso                          |
+| ----- | ----- | ---------------------------- |
+| xs    | 4px   | Micro espaçamentos           |
+| sm    | 8px   | Entre elementos relacionados |
+| md    | 16px  | Padding padrão               |
+| lg    | 24px  | Separação de seções          |
+| xl    | 32px  | Grandes separações           |
+| 2xl   | 48px  | Entre blocos principais      |
 
 ### Component Styling
 
 #### Buttons
-* **Primary**: Background brand, texto branco, radius 8px
-* **Secondary**: Outlined, borda brand, texto brand
-* **Ghost**: Sem background, texto brand
-* **Destructive**: Background error, texto branco
+
+- **Primary**: Background brand, texto branco, radius 8px
+- **Secondary**: Outlined, borda brand, texto brand
+- **Ghost**: Sem background, texto brand
+- **Destructive**: Background error, texto branco
 
 #### Cards
-* Background: Surface color
-* Shadow: 0 1px 3px rgba(0,0,0,0.1)
-* Radius: 12px
-* Padding: 16px (md)
+
+- Background: Surface color
+- Shadow: 0 1px 3px rgba(0,0,0,0.1)
+- Radius: 12px
+- Padding: 16px (md)
 
 #### Inputs
-* Height: 44px
-* Radius: 8px
-* Border: 1px neutral (idle), 2px primary (focus)
-* Padding: 12px horizontal
+
+- Height: 44px
+- Radius: 8px
+- Border: 1px neutral (idle), 2px primary (focus)
+- Padding: 12px horizontal
 
 ### Motion & Animation
-| Type | Duration | Easing | Uso |
-|------|----------|--------|-----|
-| Micro | 150ms | ease-out | Hovers, toggles |
-| Standard | 200ms | ease-in-out | Transições gerais |
-| Emphasis | 300ms | spring | Entradas, modais |
-| Page | 400ms | ease-out | Navegação |
+
+| Type     | Duration | Easing      | Uso               |
+| -------- | -------- | ----------- | ----------------- |
+| Micro    | 150ms    | ease-out    | Hovers, toggles   |
+| Standard | 200ms    | ease-in-out | Transições gerais |
+| Emphasis | 300ms    | spring      | Entradas, modais  |
+| Page     | 400ms    | ease-out    | Navegação         |
 
 ### Dark Mode (se aplicável)
-| Token | Light | Dark |
-|-------|-------|------|
-| Background | `#FFFFFF` | `#0A0A0A` |
-| Surface | `#F9FAFB` | `#171717` |
-| Text Primary | `#111827` | `#F9FAFB` |
+
+| Token          | Light     | Dark      |
+| -------------- | --------- | --------- |
+| Background     | `#FFFFFF` | `#0A0A0A` |
+| Surface        | `#F9FAFB` | `#171717` |
+| Text Primary   | `#111827` | `#F9FAFB` |
 | Text Secondary | `#6B7280` | `#9CA3AF` |
 ```
 
@@ -300,6 +331,7 @@ Agora vamos para a **Fase 4: Design System**.
 ## Fase 5: Screen States
 
 ### Objetivo
+
 Definir os estados de cada tela/feature.
 
 ### Perguntas (para CADA feature)
@@ -326,35 +358,41 @@ Agora vamos detalhar os estados de tela para **[Feature]** na **Fase 5: Screen S
 #### Main Screen States
 
 **Empty State**
+
 - Ilustração ou ícone central
 - Título explicativo
 - Descrição com próximos passos
 - CTA primário para criar/adicionar
 
 **Loading State**
+
 - Skeleton loaders nos cards
 - Shimmer animation
 - Manter layout estrutural
 
 **Success State (Populated)**
+
 - Lista/grid de items
 - Ordenação e filtros
 - Ações por item (hover)
 - Paginação ou infinite scroll
 
 **Error State**
+
 - Ícone de erro
 - Mensagem clara do problema
 - Botão de retry
 - Link para suporte (se crítico)
 
 #### Micro-interactions
+
 - **Hover em items**: Elevação sutil (shadow), ícones de ação aparecem
 - **Click em CTA**: Ripple effect, loading spinner no botão
 - **Sucesso de ação**: Toast notification, checkmark animation
 - **Erro de ação**: Shake no elemento, toast de erro
 
 #### Transitions
+
 - **Entrada de modal**: Fade + scale up (300ms)
 - **Saída de modal**: Fade + scale down (200ms)
 - **Navegação entre telas**: Slide horizontal (400ms)
@@ -366,6 +404,7 @@ Agora vamos detalhar os estados de tela para **[Feature]** na **Fase 5: Screen S
 ## Fase 6: Technical Architecture
 
 ### Objetivo
+
 Definir stack técnica, data models e APIs.
 
 ### Perguntas
@@ -390,65 +429,98 @@ Agora vamos para a **Fase 6: Technical Architecture**.
 ## 6. Technical Architecture
 
 ### Tech Stack
-| Layer | Technology | Justificativa |
-|-------|------------|---------------|
-| Frontend | Next.js 14 | SSR, App Router, performance |
-| Backend | Server Actions | Type-safe, colocation |
-| Database | PostgreSQL | Relacional, full-text search |
-| Auth | Clerk | Managed, webhooks, SSO |
-| Hosting | Vercel | Edge, preview deployments |
+
+| Layer    | Technology     | Justificativa                |
+| -------- | -------------- | ---------------------------- |
+| Frontend | Next.js 14     | SSR, App Router, performance |
+| Backend  | Server Actions | Type-safe, colocation        |
+| Database | PostgreSQL     | Relacional, full-text search |
+| Auth     | Clerk          | Managed, webhooks, SSO       |
+| Hosting  | Vercel         | Edge, preview deployments    |
 
 ### System Diagram
+
 \`\`\`mermaid
 graph TB
-    subgraph "Client"
-        UI[Next.js App]
-    end
-    subgraph "Auth"
-        CLERK[Clerk]
-    end
-    subgraph "Backend"
-        SA[Server Actions]
-        API[API Routes]
-    end
-    subgraph "Data"
-        DB[(PostgreSQL)]
-    end
+subgraph "Client"
+UI[Next.js App]
+end
+subgraph "Auth"
+CLERK[Clerk]
+end
+subgraph "Backend"
+SA[Server Actions]
+API[API Routes]
+end
+subgraph "Data"
+DB[(PostgreSQL)]
+end
 
     UI --> CLERK
     UI --> SA
     SA --> DB
     API --> DB
     CLERK --> API
+
 \`\`\`
 
 ### Data Models
+
 \`\`\`prisma
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+id String @id @default(cuid())
+email String @unique
+name String?
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
 }
 \`\`\`
 
 ### API Specifications
-| Endpoint | Method | Description | Auth |
-|----------|--------|-------------|------|
-| /api/resource | GET | Lista recursos | Required |
-| /api/resource | POST | Cria recurso | Required |
-| /api/resource/:id | PUT | Atualiza recurso | Required |
-| /api/resource/:id | DELETE | Remove recurso | Required |
+
+| Endpoint          | Method | Description      | Auth     |
+| ----------------- | ------ | ---------------- | -------- |
+| /api/resource     | GET    | Lista recursos   | Required |
+| /api/resource     | POST   | Cria recurso     | Required |
+| /api/resource/:id | PUT    | Atualiza recurso | Required |
+| /api/resource/:id | DELETE | Remove recurso   | Required |
 
 ### Security & Privacy
+
 - [ ] Encryption at rest (database)
 - [ ] Encryption in transit (HTTPS)
 - [ ] Input validation (Zod schemas)
 - [ ] Rate limiting
 - [ ] CORS configuration
 
+### Known Issues & Testing Patterns
+
+**Contexto de Sessão/Auth:**
+- [ ] Verificar persistência de sessão após CRUD operations
+- [ ] Testar refresh de dados após criar/editar/excluir itens
+- [ ] Validar que contexto do tenant é mantido em todas as operações
+- [ ] Verificar comportamento quando token expira durante operação
+
+**Multi-Tenancy (se aplicável):**
+- [ ] RLS policies aplicadas corretamente em todas as tabelas
+- [ ] Queries retornam apenas dados do tenant atual
+- [ ] Criar/editar itens não "perde" o tenant_id
+- [ ] Erro claro quando usuário não está associado a um tenant
+
+**Race Conditions:**
+- [ ] Operações simultâneas não causam conflitos
+- [ ] Estado local atualiza corretamente após mutações
+- [ ] Loading states previnem double-submit
+- [ ] Optimistic updates com rollback em caso de erro
+
+**Testes E2E Recomendados:**
+- [ ] Fluxo completo: Login → CRUD → Verificar listagem
+- [ ] Verificar que dados persistem após refresh da página
+- [ ] Testar timeout de sessão e re-autenticação
+- [ ] Validar erros são tratados graciosamente (não quebram a UI)
+
 ### Infrastructure
+
 - **Environments**: Development, Staging, Production
 - **CI/CD**: GitHub Actions
 - **Monitoring**: Vercel Analytics, Sentry
@@ -459,6 +531,7 @@ model User {
 ## Fase 7: Project Rules
 
 ### Objetivo
+
 Definir convenções e padrões do projeto.
 
 ### Perguntas
@@ -477,28 +550,33 @@ Agora vamos para a **Fase 7: Project Rules**.
 ## 7. Project Rules
 
 ### Code Style
+
 - **Files**: kebab-case (`user-profile.tsx`)
 - **Components**: PascalCase (`UserProfile`)
 - **Functions**: camelCase (`getUserById`)
 - **Constants**: UPPER_SNAKE_CASE (`API_URL`)
 
 ### TypeScript
+
 - Strict mode enabled
 - No `any` (use `unknown`)
 - Explicit return types for public functions
 - Zod for runtime validation
 
 ### Git Workflow
+
 - **Branch naming**: `feature/`, `fix/`, `refactor/`
 - **Commits**: Conventional commits (`feat:`, `fix:`, `docs:`)
 - **PRs**: Require review, link issues
 
 ### Testing
+
 - Unit tests: `*.test.ts` (co-located)
 - Coverage: 80% minimum
 - E2E: Critical user flows
 
 ### Accessibility
+
 - Semantic HTML
 - ARIA labels
 - Keyboard navigation
@@ -510,9 +588,11 @@ Agora vamos para a **Fase 7: Project Rules**.
 ## Fase 8: Implementation Plan
 
 ### Objetivo
+
 Gerar tasks detalhadas para implementação.
 
 ### Processo
+
 **Gerar automaticamente** com base em tudo anterior.
 
 ### Output Esperado
@@ -521,6 +601,7 @@ Gerar tasks detalhadas para implementação.
 ## 8. Implementation Plan
 
 ### Section 1: Project Setup
+
 - [ ] **Step 1.1**: Initialize Next.js project
   - **Task**: Create Next.js 14 project with TypeScript, TailwindCSS, ESLint
   - **Files**: package.json, tsconfig.json, tailwind.config.ts, next.config.js
@@ -534,13 +615,15 @@ Gerar tasks detalhadas para implementação.
   - **User Instructions**: Create database, add DATABASE_URL to .env
 
 ### Section 2: Authentication
+
 - [ ] **Step 2.1**: Setup Clerk authentication
   - **Task**: Install Clerk, configure middleware, create auth pages
-  - **Files**: middleware.ts, app/(auth)/*, lib/auth.ts
+  - **Files**: middleware.ts, app/(auth)/\*, lib/auth.ts
   - **Dependencies**: Step 1.1
   - **User Instructions**: Create Clerk account, add API keys
 
 ### Section 3: Core Features
+
 - [ ] **Step 3.1**: [Feature Name]
   - **Task**: [Detailed description]
   - **Files**: [List of files]
@@ -548,9 +631,10 @@ Gerar tasks detalhadas para implementação.
   - **Acceptance**: [Criteria]
 
 ### Section 4: Polish & Deploy
+
 - [ ] **Step 4.1**: Add tests
   - **Task**: Write unit and integration tests
-  - **Files**: tests/*, *.test.ts
+  - **Files**: tests/_, _.test.ts
   - **Dependencies**: All features
 
 - [ ] **Step 4.2**: Configure CI/CD
@@ -592,6 +676,7 @@ Vamos criar um PRD rápido! **Fase 1: Essenciais**
 ## Fase 3: Output
 
 Gerar PRD simplificado com:
+
 - Elevator Pitch
 - Features com User Stories básicas
 - Design System resumido (cores, tipografia)
@@ -602,6 +687,7 @@ Gerar PRD simplificado com:
 # Output Final
 
 Ao final de qualquer modo, salvar o PRD no root do projeto:
+
 ```
 PRD.md
 ```
@@ -611,6 +697,7 @@ PRD.md
 # Referências
 
 Consulte os prompts detalhados em:
+
 - `docs/prd_reference/steps/step_01_fleshing_out.md`
 - `docs/prd_reference/steps/step_02_high_level.md`
 - `docs/prd_reference/steps/step_03_feature_stories.md`
