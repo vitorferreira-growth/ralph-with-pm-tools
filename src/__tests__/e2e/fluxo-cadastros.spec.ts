@@ -45,7 +45,7 @@ test.describe('Fluxo de Cadastros - Estrutura UI', () => {
  * Remova o .skip quando tiver um ambiente de teste configurado.
  */
 
-test.describe.skip('Vendedores - Fluxo Completo (autenticado)', () => {
+test.describe('Vendedores - Fluxo Completo (autenticado)', () => {
   test.beforeEach(async ({ page }) => {
     // Login antes de cada teste
     await page.goto('/login')
