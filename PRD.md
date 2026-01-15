@@ -1307,7 +1307,7 @@ describe('calcularTicketMedio', () => {
 
 ### Section 8: Dashboard
 
-- [ ] **Step 8.1**: Criar API do dashboard
+- [x] **Step 8.1**: Criar API do dashboard
   - **Task**: Implementar endpoints para KPIs e dados de gráficos
   - **Files**: `src/app/api/dashboard/kpis/route.ts`, `src/app/api/dashboard/graficos/route.ts`
   - **Dependencies**: Step 7.1
