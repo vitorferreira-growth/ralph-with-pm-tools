@@ -129,7 +129,7 @@ export default function ProdutosPage(): ReactNode {
   // --------------------------------------------------------------------------
   // Error state
   // --------------------------------------------------------------------------
-  if (erro) {
+  if (erro && produtos.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-3xl">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
