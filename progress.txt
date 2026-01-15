@@ -1148,5 +1148,29 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 8.6: Create Dashboard Page (2026-01-15)
+- Updated src/app/(dashboard)/dashboard/page.tsx:
+  - Client component integrating all dashboard components
+  - Uses useDashboard hook for state management
+  - Header with title and period filter dropdown
+  - Period filter options: Este mês, Últimos 3 meses, Este ano
+  - Refresh button to manually reload data (with spin animation)
+  - Error state with retry button when no data available
+  - Inline error display when data exists but refresh fails
+  - GridKPIs component displaying 4 KPI cards
+  - 2x2 grid layout for charts on desktop (1 column on mobile)
+  - All 4 charts integrated:
+    - GraficoVendasMes (monthly sales bar chart)
+    - GraficoVendasVendedor (sales by seller horizontal bar chart)
+    - GraficoVendasProduto (sales by product pie chart)
+    - GraficoFunil (sales funnel by CRM stage)
+  - Responsive design with proper spacing (space-y-xl)
+- Features per PRD acceptance criteria:
+  - Dashboard completo com filtro de período ✓
+  - KPIs: Total vendas, Ticket médio, Em negociação, Desistências ✓
+  - Gráficos: Vendas por mês, por vendedor, por produto, funil ✓
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (516 tests)
+
 ## Next Tasks
-- Step 8.6: Criar página do dashboard
+- Step 8.7: Criar testes do dashboard
