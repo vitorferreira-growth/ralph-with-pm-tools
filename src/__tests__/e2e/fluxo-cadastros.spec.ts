@@ -136,7 +136,7 @@ test.describe('Produtos - Fluxo Completo (autenticado)', () => {
   })
 })
 
-test.describe.skip('Clientes - Fluxo Completo (autenticado)', () => {
+test.describe('Clientes - Fluxo Completo (autenticado)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/login')
     await page.getByLabel(/email/i).fill(process.env.E2E_TEST_EMAIL || '')
