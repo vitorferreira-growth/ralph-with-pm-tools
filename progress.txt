@@ -972,5 +972,57 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (361 tests - no new tests, API tests in Step 8.7)
 
+### Step 8.2: Create calculation functions (2026-01-15)
+- Created src/lib/calculos.ts with pure, testable calculation functions
+- Types implemented:
+  - OportunidadeCalculo: Simplified opportunity type for calculations
+  - OportunidadeComVendedor: Opportunity with seller data
+  - OportunidadeComProdutos: Opportunity with products data
+  - ResultadoKPIs: KPI calculation results
+  - VendasAgrupadas: Grouped sales results
+  - ValorEtapa: Value per stage results
+- Constants:
+  - ETAPAS_EM_NEGOCIACAO: Active pipeline stages (first_contact, proposal, negotiation, awaiting_payment)
+  - ETAPAS_FUNIL: All funnel stages in order
+  - NOMES_MESES: Portuguese month names (Jan, Fev, Mar, etc.)
+- KPI calculation functions:
+  - calcularTicketMedio(vendas): Average sale value
+  - calcularTotalVendas(vendas): Sum of sales values
+  - filtrarPorEtapas(oportunidades, etapas): Filter opportunities by stages
+  - calcularKPIs(oportunidades): Calculate all dashboard KPIs
+- Grouping functions:
+  - agruparVendasPorVendedor(oportunidades): Group sales by seller
+  - agruparVendasPorProduto(oportunidades): Group sales by product
+  - calcularValorPorEtapa(oportunidades): Calculate value per CRM stage
+  - agruparVendasPorMes(oportunidades, meses): Group sales by month (chronological)
+- Date/month functions:
+  - formatarMesAno(data): Format date as "Mês/Ano" (e.g., "Jan/2025")
+  - gerarListaMeses(quantidade, referencia): Generate list of months
+- Formatting functions:
+  - formatarMoeda(valor): Format as BRL currency (R$ 1.234,56)
+  - formatarPorcentagem(valor, casas): Format as percentage
+- Rate calculation functions:
+  - calcularTaxaConversao(vendas, total): Conversion rate
+  - calcularTaxaDesistencia(desistencias, fechadas): Loss rate
+- Created src/lib/calculos.test.ts with 62 comprehensive tests:
+  - calcularTicketMedio: 5 tests (zero, single, multiple, decimals, zeros)
+  - calcularTotalVendas: 4 tests (zero, single, multiple, decimals)
+  - filtrarPorEtapas: 4 tests (single, multiple, no match, empty)
+  - calcularKPIs: 3 tests (empty, varied data, zero values)
+  - agruparVendasPorVendedor: 4 tests (empty, grouping, no seller, non-closed)
+  - agruparVendasPorProduto: 4 tests (empty, grouping, non-closed, empty products)
+  - calcularValorPorEtapa: 3 tests (empty, correct values, order)
+  - formatarMesAno: 3 tests (January, December, all months)
+  - gerarListaMeses: 4 tests (count, chronological, year boundary, 12 months)
+  - agruparVendasPorMes: 6 tests (empty, grouping, order, outside period, non-closed, no closed_at)
+  - formatarMoeda: 5 tests (integer, decimal, zero, negative, large)
+  - formatarPorcentagem: 5 tests (basic, zero, 100%, decimals, >100%)
+  - calcularTaxaConversao: 4 tests (zero, basic, 100%, 0%)
+  - calcularTaxaDesistencia: 4 tests (zero, basic, 100%, 0%)
+  - Constants: 4 tests (active stages, funnel order)
+- Test results: 423 tests passing (361 previous + 62 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 8.2: Criar funções de cálculo
+- Step 8.3: Criar hook useDashboard
