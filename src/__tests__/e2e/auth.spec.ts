@@ -5,8 +5,8 @@ test.describe('Autenticação', () => {
     test('deve exibir formulário de login', async ({ page }) => {
       await page.goto('/login')
 
-      // Title is "Bem-vindo de volta"
-      await expect(page.getByRole('heading', { name: /bem-vindo de volta/i })).toBeVisible()
+      // Title is "Bem-vindo de volta" (CardTitle renders as div)
+      await expect(page.getByText(/bem-vindo de volta/i)).toBeVisible()
       await expect(page.getByLabel(/email/i)).toBeVisible()
       await expect(page.getByLabel(/senha/i)).toBeVisible()
       await expect(page.getByRole('button', { name: /entrar/i })).toBeVisible()
@@ -44,8 +44,8 @@ test.describe('Autenticação', () => {
     test('deve exibir formulário de registro', async ({ page }) => {
       await page.goto('/registro')
 
-      // Title is "Criar sua conta"
-      await expect(page.getByRole('heading', { name: /criar sua conta/i })).toBeVisible()
+      // Title is "Criar sua conta" (CardTitle renders as div)
+      await expect(page.getByText(/criar sua conta/i)).toBeVisible()
       await expect(page.getByLabel(/seu nome/i)).toBeVisible()
       await expect(page.getByLabel(/nome da empresa/i)).toBeVisible()
       await expect(page.getByLabel(/email/i)).toBeVisible()
@@ -80,8 +80,10 @@ test.describe('Autenticação', () => {
       await page.getByLabel(/seu nome/i).fill('Teste Usuario')
       await page.getByLabel(/nome da empresa/i).fill('Empresa Teste')
       await page.getByLabel(/email/i).fill('teste@teste.com')
-      await page.getByLabel(/^senha$/i).fill('123')
-      await page.getByLabel(/confirmar senha/i).fill('123')
+      // Fill with a 3-char password but bypass the minLength attribute by using keyboard
+      const senhaInput = page.getByLabel(/^senha$/i)
+      await senhaInput.fill('12345') // 5 chars, less than 6
+      await page.getByLabel(/confirmar senha/i).fill('12345')
       await page.getByRole('button', { name: /criar conta/i }).click()
 
       // Error: "A senha deve ter pelo menos 6 caracteres"
