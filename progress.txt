@@ -913,5 +913,34 @@
 - Verified: npm run lint passes (no errors)
 - Note: Some pre-existing test timeouts in dialog component tests (not related to CRM page)
 
+### Step 7.7: Create CRM tests (2026-01-15)
+- Created src/components/crm/kanban-coluna.test.tsx (22 tests):
+  - Stage label rendering for all 6 stages
+  - Opportunity count badge display
+  - Total value formatting in BRL (Brazilian Real)
+  - Empty state rendering ("Arraste oportunidades para cá")
+  - Opportunity card rendering (customer name, value, seller, product count)
+  - Click handler callbacks with correct opportunity data
+  - Multiple opportunities in same column
+  - Keyboard navigation (Enter, Space)
+- Created src/components/crm/kanban-board.test.tsx (18 tests):
+  - Loading state with spinner
+  - All 6 columns rendered in correct order
+  - Opportunities placed in correct columns
+  - Total values per column
+  - Opportunity count badges
+  - Empty state handling for all columns
+  - Multiple opportunities per column
+  - Cards without seller rendering
+  - Cards without products rendering
+  - Default non-loading state
+- Test infrastructure:
+  - DndWrapper helper for drag-drop context in tests
+  - Reused criarOportunidadeMock helper from existing tests
+  - Fixed multiple button role conflict in keyboard tests
+- Verified: npm run test:run passes (361 tests, +40 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Note: E2E tests (fluxo-kanban.spec.ts) to be added in Section 9 when Playwright is configured
+
 ## Next Tasks
-- Step 7.7: Testes do CRM
+- Step 8.1: Criar API do dashboard
