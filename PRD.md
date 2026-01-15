@@ -1331,7 +1331,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 8.3
   - **Acceptance**: Cards exibem valores formatados em R$
 
-- [ ] **Step 8.5**: Criar componentes de gráficos
+- [x] **Step 8.5**: Criar componentes de gráficos
   - **Task**: Implementar gráficos (vendas por mês, por vendedor, por produto, funil)
   - **Files**: `src/components/dashboard/grafico-vendas-mes.tsx`, `src/components/dashboard/grafico-vendas-vendedor.tsx`, `src/components/dashboard/grafico-vendas-produto.tsx`, `src/components/dashboard/grafico-funil.tsx`
   - **Dependencies**: Step 8.3
