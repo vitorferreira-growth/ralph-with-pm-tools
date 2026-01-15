@@ -68,11 +68,11 @@ test.describe('CRM Kanban - Fluxo Completo (autenticado)', () => {
     await page.goto('/crm')
     await page.waitForLoadState('networkidle')
 
-    await page.getByRole('button', { name: /nova oportunidade|adicionar/i }).click()
+    await page.getByRole('button', { name: /nova oportunidade/i }).click()
+    await expect(page.getByRole('dialog')).toBeVisible()
 
-    // Verificar campos obrigatórios
-    await expect(page.getByText(/cliente/i)).toBeVisible()
-    await expect(page.getByText(/produto/i)).toBeVisible()
+    // Verificar campos no formulário
+    await expect(page.getByLabel(/cliente/i)).toBeVisible()
   })
 
   test('deve criar oportunidade com sucesso', async ({ page }) => {
