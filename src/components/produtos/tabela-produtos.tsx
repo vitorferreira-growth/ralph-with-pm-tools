@@ -111,3 +111,45 @@ export function TabelaProdutos({
     </div>
   )
 }
+
+// ============================================================================
+// SKELETON COMPONENT
+// ============================================================================
+
+export function TabelaProdutosSkeleton(): ReactNode {
+  return (
+    <div className="rounded-lg border shadow-card">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[20%]">Código</TableHead>
+            <TableHead className="w-[50%]">Nome</TableHead>
+            <TableHead className="w-[20%] text-right">Valor</TableHead>
+            <TableHead className="w-[10%] text-right">Ações</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <TableRow key={index}>
+              <TableCell>
+                <Skeleton className="h-4 w-16" />
+              </TableCell>
+              <TableCell>
+                <Skeleton className="h-4 w-40" />
+              </TableCell>
+              <TableCell className="text-right">
+                <Skeleton className="ml-auto h-4 w-20" />
+              </TableCell>
+              <TableCell className="text-right">
+                <div className="flex justify-end gap-xs">
+                  <Skeleton className="h-8 w-8 rounded-md" />
+                  <Skeleton className="h-8 w-8 rounded-md" />
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  )
+}
