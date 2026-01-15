@@ -1225,5 +1225,40 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 9.2: Implement error handling (2026-01-15)
+- Added shadcn/ui toast and toaster components via CLI
+- Configured toast system per PRD design:
+  - Top-right position (fixed top-4 right-4)
+  - 4 second auto-dismiss (TOAST_REMOVE_DELAY = 4000)
+  - Limit of 3 toasts at a time (TOAST_LIMIT = 3)
+  - Border-left accent color style per PRD
+  - Three variants: default (purple), destructive (red), success (green)
+- Added Toaster component to root layout (src/app/layout.tsx)
+- Updated root layout metadata:
+  - Title: "CRM InfinitePay"
+  - Description: "CRM gratuito e simples para autônomos e microempreendedores"
+  - Language: pt-BR
+- Created error boundary components:
+  - src/app/error.tsx: Page-level error boundary
+    - AlertTriangle icon with error styling
+    - Portuguese error messages
+    - "Tentar novamente" and "Voltar para o início" buttons
+    - Shows error details in development mode
+  - src/app/global-error.tsx: Root-level error boundary
+    - Standalone (includes own html/body)
+    - Similar UI without shadcn dependencies
+    - Inline styles for reliability
+  - src/app/(dashboard)/error.tsx: Dashboard-specific error boundary
+    - "Voltar para o Dashboard" button
+    - Matches dashboard layout context
+  - src/app/not-found.tsx: 404 page
+    - FileQuestion icon
+    - Portuguese "Página não encontrada" message
+    - Link to dashboard
+- Fixed shadcn/ui use-toast.ts lint error (actionTypes unused warning)
+- Test results: 516 tests passing (no new tests - error boundaries are React internal)
+- Verified: npm run build compiles successfully (20 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 9.2: Implementar tratamento de erros
+- Step 9.3: Configurar testes E2E completos
