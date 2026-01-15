@@ -292,12 +292,13 @@ describe('FormularioCliente', () => {
         />
       )
 
-      await user.type(screen.getByLabelText(/Nome/), 'João Silva')
-      await user.type(screen.getByLabelText(/Email/), 'joao@example.com')
+      await user.type(screen.getByLabelText(/^Nome/), 'João Silva')
+      await user.type(screen.getByLabelText(/^Email/), 'joao@example.com')
       await user.type(screen.getByLabelText('CEP'), '123')
       await user.click(screen.getByRole('button', { name: 'Adicionar' }))
 
-      expect(screen.getByText(/CEP/i)).toBeInTheDocument()
+      // Check for validation error (Zod error message)
+      expect(screen.getByText(/CEP deve ter 8 dígitos/i)).toBeInTheDocument()
       expect(onSalvar).not.toHaveBeenCalled()
     })
   })
