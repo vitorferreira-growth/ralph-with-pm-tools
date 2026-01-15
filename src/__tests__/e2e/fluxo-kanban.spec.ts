@@ -140,7 +140,7 @@ test.describe('CRM Kanban - Fluxo Completo (autenticado)', () => {
   })
 })
 
-test.describe.skip('CRM Kanban - Drag and Drop (autenticado)', () => {
+test.describe('CRM Kanban - Drag and Drop (autenticado)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/login')
     await page.getByLabel(/email/i).fill(process.env.E2E_TEST_EMAIL || '')
