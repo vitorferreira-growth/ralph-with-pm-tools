@@ -615,5 +615,41 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 6.4: Create clientes page (2026-01-15)
+- Created src/components/clientes/tabela-clientes.tsx:
+  - Table component displaying list of customers (Nome, Email, WhatsApp, Cidade, Vendedor, Ações)
+  - Empty state with Users icon and CTA when no customers exist
+  - Row hover states with action buttons (edit, delete)
+  - WhatsApp formatting using formatarWhatsApp utility
+  - City/State display with proper formatting
+  - Seller name display from relationship
+- Created src/components/clientes/formulario-cliente.tsx:
+  - Dialog form for creating/editing customers
+  - All fields from PRD: nome*, email*, whatsapp, endereco, cidade, estado, cep, dataNascimento, vendedorId
+  - Uses Zod validation schema from cliente.ts
+  - State dropdown with all 27 Brazilian states
+  - Seller dropdown populated from useVendedores hook
+  - Form validation with Portuguese error messages
+  - Loading states during save operation
+  - CEP and WhatsApp formatting on display
+- Created src/components/clientes/dialogo-excluir-cliente.tsx:
+  - Confirmation dialog for deleting customers
+  - Shows customer name being deleted
+  - Warning icon with destructive styling
+  - Loading state during deletion
+  - Cancel and confirm buttons
+- Updated src/app/(dashboard)/clientes/page.tsx:
+  - Client component with full CRUD functionality
+  - Integrates useClientes and useVendedores hooks
+  - Search bar with Search icon for filtering by name or email
+  - Loading state with spinner
+  - Error state with retry button
+  - Operation error display (inline toast style)
+  - Header with customer count and "Add" button
+  - All three dialog components integrated
+- Added shadcn/ui Select component for dropdowns
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (189 tests)
+
 ## Next Tasks
-- Step 6.4: Criar página de clientes
+- Step 6.5: Testes de clientes
