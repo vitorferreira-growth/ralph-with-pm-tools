@@ -181,3 +181,7 @@ logs/
 
 # Auto-generated analysis files
 .claude/auto-analysis/
+
+# Claude Code local settings (user-specific)
+.claude/settings.local.json
+.claude/plans/
