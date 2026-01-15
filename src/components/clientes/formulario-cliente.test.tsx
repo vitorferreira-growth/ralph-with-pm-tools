@@ -298,7 +298,7 @@ describe('FormularioCliente', () => {
       await user.click(screen.getByRole('button', { name: 'Adicionar' }))
 
       // Check for validation error (Zod error message)
-      expect(screen.getByText(/CEP deve ter 8 dígitos/i)).toBeInTheDocument()
+      expect(screen.getByText(/CEP inválido/i)).toBeInTheDocument()
       expect(onSalvar).not.toHaveBeenCalled()
     })
   })
