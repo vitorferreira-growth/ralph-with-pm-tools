@@ -230,7 +230,7 @@ describe('FormularioCliente', () => {
       await user.click(screen.getByRole('button', { name: 'Adicionar' }))
 
       // Check for validation error (Zod error message)
-      expect(screen.getByText(/mínimo 2 caracteres/i)).toBeInTheDocument()
+      expect(screen.getByText(/Nome é obrigatório/i)).toBeInTheDocument()
       expect(onSalvar).not.toHaveBeenCalled()
     })
 
