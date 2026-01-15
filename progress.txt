@@ -1260,5 +1260,41 @@
 - Verified: npm run build compiles successfully (20 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 9.3: Configure E2E tests (2026-01-15)
+- Installed @playwright/test and Chromium browser
+- Created playwright.config.ts:
+  - Test directory: src/__tests__/e2e/
+  - Chromium-only project for speed
+  - Auto-starts dev server for tests
+  - HTML reporter for test results
+  - Screenshots on failure
+- Created src/__tests__/e2e/auth.spec.ts (14 tests):
+  - Login page: Form display, link to register, error with invalid credentials, required fields
+  - Registration page: Form display, link to login, password mismatch validation, HTML5 minLength validation
+  - Route protection: Redirect to login for /dashboard, /clientes, /produtos, /vendedores, /crm
+- Created src/__tests__/e2e/navegacao.spec.ts (9 tests):
+  - Public pages: Root redirect, login page load, registration page load
+  - 404 page: Not found message for invalid routes
+  - Navigation links: Login to registration, registration to login
+  - Responsiveness: Mobile and desktop viewport tests
+- Created src/__tests__/e2e/fluxo-cadastros.spec.ts:
+  - Route protection tests (active)
+  - Authenticated CRUD tests for vendedores, produtos, clientes (skipped - require test credentials)
+- Created src/__tests__/e2e/fluxo-kanban.spec.ts:
+  - Route protection test (active)
+  - Authenticated Kanban tests (skipped - require test credentials)
+  - Complete flow test: Login → Create seller → Create product → Create customer → Create opportunity
+- Created src/__tests__/e2e/fixtures/auth.fixture.ts:
+  - Reusable authentication fixture for authenticated tests
+  - Uses E2E_TEST_EMAIL and E2E_TEST_PASSWORD environment variables
+- Added npm scripts:
+  - test:e2e: Run Playwright tests headless
+  - test:e2e:ui: Run with Playwright UI
+  - test:e2e:headed: Run with visible browser
+- E2E test results: 25 passed, 19 skipped (authenticated tests)
+- Unit test results: 516 tests passing
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:e2e passes
+
 ## Next Tasks
-- Step 9.3: Configurar testes E2E completos
+- Step 9.4: Otimizar performance
