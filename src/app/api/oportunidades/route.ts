@@ -58,7 +58,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // Filtro por etapa
     if (etapa && OPPORTUNITY_STAGES_ORDER.includes(etapa as OpportunityStage)) {
-      query = query.eq('stage', etapa)
+      query = query.eq('stage', etapa as OpportunityStage)
     }
 
     // Filtro por cliente
