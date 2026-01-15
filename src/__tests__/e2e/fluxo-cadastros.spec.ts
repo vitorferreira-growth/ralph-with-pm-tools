@@ -111,23 +111,22 @@ test.describe('Produtos - Fluxo Completo (autenticado)', () => {
     await page.goto('/produtos')
     await page.waitForLoadState('networkidle')
 
-    await expect(
-      page.getByRole('heading', { name: /produtos/i }).or(page.getByText(/produtos/i).first())
-    ).toBeVisible()
+    // Verificar título da página (h1 dentro do main)
+    await expect(page.locator('main h1')).toBeVisible()
   })
 
   test('deve criar produto com sucesso', async ({ page }) => {
     await page.goto('/produtos')
     await page.waitForLoadState('networkidle')
 
-    await page.getByRole('button', { name: /adicionar|novo/i }).click()
+    await page.getByRole('button', { name: /adicionar produto/i }).click()
     await expect(page.getByRole('dialog')).toBeVisible()
 
     const nomeUnico = `Produto E2E ${Date.now()}`
     await page.getByLabel(/nome/i).fill(nomeUnico)
-    await page.getByLabel(/valor|preço/i).fill('99,90')
+    await page.getByLabel(/valor/i).fill('99,90')
 
-    await page.getByRole('button', { name: /salvar|criar/i }).click()
+    await page.getByRole('button', { name: 'Adicionar' }).click()
 
     await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 5000 })
     await expect(page.getByText(nomeUnico)).toBeVisible()
