@@ -36,7 +36,10 @@ export function TenantProvider({ children }: TenantProviderProps): ReactNode {
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState<string | null>(null)
 
-  const carregarDadosTenant = useCallback(async (): Promise<void> => {
+  const carregarDadosTenant = useCallback(async (tentativa = 1): Promise<void> => {
+    const MAX_TENTATIVAS = 3
+    const DELAY_MS = 500
+
     try {
       setCarregando(true)
       setErro(null)
@@ -67,12 +70,17 @@ export function TenantProvider({ children }: TenantProviderProps): ReactNode {
         .eq('id', authUser.id)
         .single()
 
-      if (usuarioError) {
-        throw new Error('Erro ao carregar dados do usuário')
-      }
-
-      if (!usuarioData) {
-        throw new Error('Usuário não encontrado')
+      // Se o usuário não existe ainda (durante signup), aguardar e tentar novamente
+      if (usuarioError || !usuarioData) {
+        if (tentativa < MAX_TENTATIVAS) {
+          // Aguardar antes de tentar novamente (signup pode estar em andamento)
+          await new Promise((resolve) => setTimeout(resolve, DELAY_MS))
+          return carregarDadosTenant(tentativa + 1)
+        }
+        // Após todas as tentativas, apenas não carregar (não é um erro durante signup)
+        setTenant(null)
+        setUsuario(null)
+        return
       }
 
       setUsuario(usuarioData)
@@ -84,12 +92,8 @@ export function TenantProvider({ children }: TenantProviderProps): ReactNode {
         .eq('id', usuarioData.tenant_id)
         .single()
 
-      if (tenantError) {
+      if (tenantError || !tenantData) {
         throw new Error('Erro ao carregar dados da empresa')
-      }
-
-      if (!tenantData) {
-        throw new Error('Empresa não encontrada')
       }
 
       setTenant(tenantData)
