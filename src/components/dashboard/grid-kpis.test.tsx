@@ -100,7 +100,9 @@ describe('GridKPIs', () => {
       render(<GridKPIs kpis={kpisUnitarios} />)
 
       expect(screen.getByText('1 venda')).toBeInTheDocument()
-      expect(screen.getByText('1 oportunidade')).toBeInTheDocument()
+      // "1 oportunidade" aparece 2x (Em Negociação e Desistências)
+      const oportunidadesSingulares = screen.getAllByText('1 oportunidade')
+      expect(oportunidadesSingulares).toHaveLength(2)
     })
 
     it('deve renderizar valores zerados corretamente', () => {
