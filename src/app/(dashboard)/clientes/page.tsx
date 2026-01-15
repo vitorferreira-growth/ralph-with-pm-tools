@@ -139,13 +139,25 @@ export default function ClientesPage(): ReactNode {
   }
 
   // --------------------------------------------------------------------------
-  // Loading state
+  // Loading state with skeleton
   // --------------------------------------------------------------------------
   if (carregando && clientes.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-3xl">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="mt-lg text-body text-gray-500">Carregando clientes...</p>
+      <div className="space-y-xl">
+        {/* Header skeleton */}
+        <div className="flex items-center justify-between">
+          <div>
+            <Skeleton className="h-8 w-32" />
+            <Skeleton className="mt-xs h-4 w-48" />
+          </div>
+          <Skeleton className="h-9 w-36" />
+        </div>
+
+        {/* Search bar skeleton */}
+        <Skeleton className="h-10 w-full max-w-md" />
+
+        {/* Table skeleton */}
+        <TabelaClientesSkeleton />
       </div>
     )
   }
