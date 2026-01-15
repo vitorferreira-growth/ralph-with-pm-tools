@@ -886,5 +886,32 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 7.6: Create CRM page (2026-01-15)
+- Created src/app/(dashboard)/crm/page.tsx with full kanban integration:
+  - Integrates useOportunidades, useClientes, useProdutos, useVendedores hooks
+  - Header with CRM title, opportunity count, and controls
+  - Filter by seller functionality (dropdown with all sellers)
+  - "Nova Oportunidade" button to create new opportunities
+  - KanbanBoard component integration with drag-and-drop
+  - FormularioOportunidade sheet for create/edit operations
+  - Opportunity details sheet with full card view
+  - Delete opportunity from details view
+  - Confirmation dialog for "Desistiu" (closed_lost) stage
+  - Error handling with inline error display
+  - Loading state with spinner
+  - Error state with retry button
+- Features implemented per PRD acceptance criteria:
+  - Kanban with 6 columns (drag and drop functional)
+  - Card with client, value, products, seller
+  - Total value displayed in each column
+  - New opportunity creation (sidebar)
+  - Edit existing opportunity
+  - Filter by seller
+  - Multi-select products in opportunity form
+- Added shadcn/ui alert-dialog component for confirmations
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run lint passes (no errors)
+- Note: Some pre-existing test timeouts in dialog component tests (not related to CRM page)
+
 ## Next Tasks
-- Step 7.6: Criar página do CRM
+- Step 7.7: Testes do CRM
