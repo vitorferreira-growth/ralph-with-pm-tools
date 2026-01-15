@@ -1100,5 +1100,53 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 8.5: Create chart components (2026-01-15)
+- Installed shadcn/ui chart component with Recharts library
+- Created src/components/dashboard/grafico-vendas-mes.tsx:
+  - Bar chart showing monthly sales evolution
+  - Uses Recharts BarChart with vertical bars
+  - ChartContainer with responsive sizing
+  - Custom tooltip showing value (R$) and quantity
+  - Loading skeleton state (GraficoVendasMesSkeleton)
+  - Empty state when no sales data (GraficoVendasMesVazio)
+  - Total period value in card description
+  - TrendingUp icon from Lucide
+- Created src/components/dashboard/grafico-vendas-vendedor.tsx:
+  - Horizontal bar chart showing sales by seller
+  - Sorted by value (descending)
+  - Truncates long seller names (>15 chars)
+  - Shows total sales and seller count
+  - Custom tooltip with full name, value, quantity
+  - Limits display to 10 sellers
+  - Loading and empty states
+  - Users icon from Lucide
+- Created src/components/dashboard/grafico-vendas-produto.tsx:
+  - Pie/donut chart showing product distribution
+  - Interactive active shape on hover
+  - Shows product name and value in center on hover
+  - Groups products beyond 5th into "Outros" category
+  - 6 color palette cycling (primary, chart-2 to chart-5, accent)
+  - Custom tooltip with product name, value, units
+  - Loading and empty states
+  - Package icon from Lucide
+- Created src/components/dashboard/grafico-funil.tsx:
+  - Bar chart showing value per CRM stage (funnel)
+  - Color-coded bars matching kanban column colors:
+    - blue (1º Contato), purple (Proposta), yellow (Negociação)
+    - orange (Aguardando Pagamento), green (Venda Finalizada), red (Desistiu)
+  - X-axis with angled labels for long stage names
+  - Shows "Em negociação" total (excludes closed_won/closed_lost)
+  - Custom tooltip with stage label, value, opportunity count
+  - Loading and empty states
+  - Filter icon from Lucide
+- Created test files with comprehensive coverage:
+  - grafico-vendas-mes.test.tsx (10 tests): rendering, loading, empty state, data handling
+  - grafico-vendas-vendedor.test.tsx (10 tests): rendering, singular/plural, truncation, limits
+  - grafico-vendas-produto.test.tsx (10 tests): rendering, grouping "Outros", long names
+  - grafico-funil.test.tsx (11 tests): rendering, stage calculation, partial data
+- Test results: 516 tests passing (475 previous + 41 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 8.5: Criar componentes de gráficos
+- Step 8.6: Criar página do dashboard
