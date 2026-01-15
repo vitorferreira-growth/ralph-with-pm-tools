@@ -828,5 +828,63 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 7.5: Create FormularioOportunidade component (2026-01-15)
+- Installed additional shadcn/ui components:
+  - sheet.tsx: Sidebar overlay component for form
+  - textarea.tsx: Multi-line text input for notes
+- Created src/components/crm/formulario-oportunidade.tsx:
+  - Sheet-based sidebar form for creating/editing opportunities
+  - Fields implemented:
+    - Cliente (select with customer name + email display)
+    - Vendedor responsável (select with "Nenhum" option)
+    - Etapa (select with all 6 CRM stages from OPPORTUNITY_STAGES_ORDER)
+    - Produtos (multi-select with add/remove functionality)
+    - Observações (textarea for notes)
+  - Product management features:
+    - Add product from available products dropdown
+    - Remove product with trash icon button
+    - Edit quantity per product
+    - Edit unit price per product (supports comma decimal separator)
+    - Auto-calculated subtotals per product
+    - Auto-calculated total value
+    - Empty state when no products selected
+  - Form validation:
+    - Required: cliente, at least one product
+    - Etapa defaults to 'first_contact' for new opportunities
+    - Vendedor and observações are optional
+  - Loading states:
+    - Disables all fields during save
+    - Shows "Salvando..." spinner on submit button
+    - Supports external carregando prop
+  - Edit mode:
+    - Pre-fills all fields from oportunidade data
+    - Maps products from opportunity_products with product details
+    - Shows "Editar Oportunidade" title and "Salvar" button
+  - Create mode:
+    - Empty form with placeholders
+    - Shows "Nova Oportunidade" title and "Criar Oportunidade" button
+  - Proper data handling:
+    - Converts empty vendedorId to null
+    - Trims observações and converts empty to null
+    - Formats products array for API
+- Created src/components/crm/formulario-oportunidade.test.tsx with 24 tests:
+  - Rendering: Dialog states (open/closed), create vs edit titles
+  - Form fields: All 5 fields displayed correctly
+  - Edit mode pre-filling: Notes, products with codes, total value
+  - Validation: Shows errors for incomplete form
+  - Product management: Empty state, display products, remove product, update quantity
+  - Form submission: Correct data sent, dialog close on success, stay open on failure
+  - Cancel button: Calls onFechar
+  - Loading state: Buttons disabled, fields disabled
+  - Form reset: Clears fields when reopening
+- Updated src/__tests__/setup.ts:
+  - Added Element.prototype.hasPointerCapture mock for Radix UI
+  - Added Element.prototype.setPointerCapture mock
+  - Added Element.prototype.releasePointerCapture mock
+  - Added Element.prototype.scrollIntoView mock
+- Test results: 327 tests passing (303 previous + 24 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 7.5: Criar formulário de oportunidade
+- Step 7.6: Criar página do CRM
