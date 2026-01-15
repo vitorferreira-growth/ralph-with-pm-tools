@@ -1325,7 +1325,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 8.1
   - **Acceptance**: Hook retorna KPIs e dados de gráficos
 
-- [ ] **Step 8.4**: Criar componentes de KPI
+- [x] **Step 8.4**: Criar componentes de KPI
   - **Task**: Implementar cards de KPI (Total Vendas, Ticket Médio, Em Negociação, Desistências)
   - **Files**: `src/components/dashboard/card-kpi.tsx`, `src/components/dashboard/grid-kpis.tsx`
   - **Dependencies**: Step 8.3
