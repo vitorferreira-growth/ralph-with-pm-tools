@@ -71,12 +71,22 @@ log "INFO" "$C_CYAN" "Starting one-shot Claude run (IS_SANDBOX=1)."
 log "INFO" "$C_DIM"  "Log file: $LOG_FILE | STREAM=$STREAM"
 hr | tee -a "$LOG_FILE"
 
-prompt='@PRD.md @progress.txt \
-1. Read the PRD and progress file. \
-2. Find the next incomplete task and implement it. \
-3. Commit your changes. \
-4. Update progress.txt with what you did. \
-ONLY DO ONE TASK AT A TIME.'
+prompt='@PRD.md @progress.txt @.claude/agents/ \
+1. Read the PRD and progress file to understand context. \
+2. Find the next incomplete task. \
+3. DETECT TASK TYPE and use appropriate specialized agents: \
+   - Frontend tasks: Use typescript-engineer, frontend-developer agents \
+   - Backend tasks: Use language-specific agent (python/go/ruby/rust) \
+   - Database tasks: Use data-architect-agent \
+   - API tasks: Use api-security-agent \
+   - Infrastructure: Use terraform-ops, gitops-engineer \
+4. IMPLEMENT the task following agent best practices. \
+5. RUN /security-review on changed files before committing. \
+6. RUN /test-gen to create tests for new code. \
+7. Commit with conventional commits format. \
+8. Update progress.txt with task details and agents used. \
+ONLY DO ONE TASK AT A TIME. \
+Reference agents in .claude/agents/ for domain expertise.'
 
 result=""
 if [[ "$STREAM" == "1" ]]; then
