@@ -226,10 +226,11 @@ describe('FormularioCliente', () => {
         />
       )
 
-      await user.type(screen.getByLabelText(/Email/), 'teste@example.com')
+      await user.type(screen.getByLabelText(/^Email/), 'teste@example.com')
       await user.click(screen.getByRole('button', { name: 'Adicionar' }))
 
-      expect(screen.getByText(/nome/i)).toBeInTheDocument()
+      // Check for validation error (Zod error message)
+      expect(screen.getByText(/mínimo 2 caracteres/i)).toBeInTheDocument()
       expect(onSalvar).not.toHaveBeenCalled()
     })
 
