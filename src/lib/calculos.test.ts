@@ -562,27 +562,28 @@ describe('agruparVendasPorMes', () => {
 describe('formatarMoeda', () => {
   it('deve formatar valor inteiro corretamente', () => {
     const resultado = formatarMoeda(1000)
-    expect(resultado).toBe('R$ 1.000,00')
+    // Intl.NumberFormat usa non-breaking space (U+00A0) - usamos toMatch para flexibilidade
+    expect(resultado).toMatch(/R\$\s*1\.000,00/)
   })
 
   it('deve formatar valor decimal corretamente', () => {
     const resultado = formatarMoeda(1234.56)
-    expect(resultado).toBe('R$ 1.234,56')
+    expect(resultado).toMatch(/R\$\s*1\.234,56/)
   })
 
   it('deve formatar zero', () => {
     const resultado = formatarMoeda(0)
-    expect(resultado).toBe('R$ 0,00')
+    expect(resultado).toMatch(/R\$\s*0,00/)
   })
 
   it('deve formatar valores negativos', () => {
     const resultado = formatarMoeda(-500.5)
-    expect(resultado).toBe('-R$ 500,50')
+    expect(resultado).toMatch(/-R\$\s*500,50/)
   })
 
   it('deve formatar valores grandes', () => {
     const resultado = formatarMoeda(1000000.99)
-    expect(resultado).toBe('R$ 1.000.000,99')
+    expect(resultado).toMatch(/R\$\s*1\.000\.000,99/)
   })
 })
 
