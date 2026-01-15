@@ -217,12 +217,30 @@ export default function CrmPage(): ReactNode {
   }, [])
 
   // --------------------------------------------------------------------------
-  // Loading state
+  // Loading state with skeleton
   // --------------------------------------------------------------------------
   if (carregandoOportunidades && totalOportunidades === 0) {
     return (
-      <div className="flex h-full items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      <div className="flex h-full flex-col">
+        {/* Header skeleton */}
+        <div className="mb-lg flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-md">
+            <Skeleton className="h-6 w-6" />
+            <div>
+              <Skeleton className="h-8 w-16" />
+              <Skeleton className="mt-xs h-4 w-24" />
+            </div>
+          </div>
+          <div className="flex items-center gap-md">
+            <Skeleton className="h-10 w-[180px]" />
+            <Skeleton className="h-10 w-40" />
+          </div>
+        </div>
+
+        {/* Kanban skeleton */}
+        <div className="min-h-0 flex-1">
+          <KanbanBoardSkeleton />
+        </div>
       </div>
     )
   }
