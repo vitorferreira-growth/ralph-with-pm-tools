@@ -1319,7 +1319,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Nenhuma
   - **Acceptance**: Funções puras e testadas
 
-- [ ] **Step 8.3**: Criar hook useDashboard
+- [x] **Step 8.3**: Criar hook useDashboard
   - **Task**: Implementar hook para dados do dashboard
   - **Files**: `src/hooks/use-dashboard.ts`
   - **Dependencies**: Step 8.1
