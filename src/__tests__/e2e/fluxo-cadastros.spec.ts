@@ -81,7 +81,7 @@ test.describe('Vendedores - Fluxo Completo (autenticado)', () => {
     await page.waitForLoadState('networkidle')
 
     // Abrir modal
-    await page.getByRole('button', { name: /adicionar|novo/i }).click()
+    await page.getByRole('button', { name: /adicionar vendedor/i }).click()
     await expect(page.getByRole('dialog')).toBeVisible()
 
     // Preencher formulário
@@ -89,8 +89,8 @@ test.describe('Vendedores - Fluxo Completo (autenticado)', () => {
     await page.getByLabel(/nome/i).fill(nomeUnico)
     await page.getByLabel(/email/i).fill(`vendedor-e2e-${Date.now()}@teste.com`)
 
-    // Salvar
-    await page.getByRole('button', { name: /salvar|criar/i }).click()
+    // Salvar (botão "Adicionar" no modal)
+    await page.getByRole('button', { name: 'Adicionar' }).click()
 
     // Modal deve fechar e vendedor deve aparecer na lista
     await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 5000 })
