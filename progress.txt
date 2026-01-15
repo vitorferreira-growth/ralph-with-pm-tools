@@ -1203,5 +1203,27 @@
 - Verified: npm run test:run passes (all tests)
 - Step 8.7 marked as complete - all acceptance criteria met
 
+### Step 9.1: Implement loading and empty states (2026-01-15)
+- Added shadcn/ui Skeleton component via CLI
+- Created skeleton loaders for all CRUD tables:
+  - TabelaClientesSkeleton: 5 rows with 6 columns (Nome, Email, WhatsApp, Cidade, Vendedor, Ações)
+  - TabelaProdutosSkeleton: 5 rows with 4 columns (Código, Nome, Valor, Ações)
+  - TabelaVendedoresSkeleton: 5 rows with 3 columns (Nome, Email, Ações)
+- Created skeleton loaders for CRM Kanban:
+  - KanbanCardSkeleton: Individual card placeholder with client, value, seller, products
+  - KanbanColunaSkeleton: Column with configurable card count (default 3)
+  - KanbanBoardSkeleton: Full board with 6 columns and realistic card distribution [2,3,2,1,2,1]
+- Updated all pages to use skeleton loading instead of spinner:
+  - Clientes page: Header skeleton + search bar skeleton + TabelaClientesSkeleton
+  - Produtos page: Header skeleton + TabelaProdutosSkeleton
+  - Vendedores page: Header skeleton + TabelaVendedoresSkeleton
+  - CRM page: Header skeleton + KanbanBoardSkeleton
+- All pages now maintain layout structure during loading (improved perceived performance)
+- Empty states were already implemented in previous steps (no changes needed)
+- Removed unused Loader2 imports from pages
+- Test results: 516 tests passing (no new tests - skeleton components are visual only)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 9.1: Implementar estados de loading e empty
+- Step 9.2: Implementar tratamento de erros
