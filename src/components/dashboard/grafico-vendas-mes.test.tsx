@@ -40,10 +40,11 @@ describe('GraficoVendasMes', () => {
 
     it('deve renderizar o icone TrendingUp', () => {
       const dados = criarDadosMock()
-      render(<GraficoVendasMes dados={dados} />)
+      const { container } = render(<GraficoVendasMes dados={dados} />)
 
-      // O componente renderiza o Card corretamente
-      expect(screen.getByRole('img', { hidden: true }) || screen.getByText('Vendas por Mês')).toBeInTheDocument()
+      // O componente renderiza o icone SVG do Lucide
+      const icone = container.querySelector('.lucide-trending-up')
+      expect(icone).toBeInTheDocument()
     })
   })
 
