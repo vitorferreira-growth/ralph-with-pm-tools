@@ -1279,7 +1279,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 7.2
   - **Acceptance**: Drag and drop funcional entre colunas
 
-- [ ] **Step 7.4**: Criar componente CardOportunidade
+- [x] **Step 7.4**: Criar componente CardOportunidade
   - **Task**: Implementar card com informações da oportunidade
   - **Files**: `src/components/crm/card-oportunidade.tsx`
   - **Dependencies**: Step 7.3
