@@ -134,10 +134,10 @@ export function FormularioCliente({
 
     if (!resultado.success) {
       const novosErros: FormErrors = {}
-      resultado.error.errors.forEach((err) => {
-        const campo = err.path[0] as keyof FormErrors
+      resultado.error.issues.forEach((issue) => {
+        const campo = issue.path[0] as keyof FormErrors
         if (campo && !novosErros[campo]) {
-          novosErros[campo] = err.message
+          novosErros[campo] = issue.message
         }
       })
       setErros(novosErros)
