@@ -24,7 +24,7 @@ test.describe('CRM Kanban - Estrutura UI', () => {
  * Os testes abaixo estão marcados como skip por padrão.
  */
 
-test.describe.skip('CRM Kanban - Fluxo Completo (autenticado)', () => {
+test.describe('CRM Kanban - Fluxo Completo (autenticado)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/login')
     await page.getByLabel(/email/i).fill(process.env.E2E_TEST_EMAIL || '')
