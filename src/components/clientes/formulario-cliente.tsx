@@ -355,7 +355,7 @@ export function FormularioCliente({
                   <SelectValue placeholder="Selecione um vendedor" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Nenhum</SelectItem>
+                  <SelectItem value="__none__">Nenhum</SelectItem>
                   {vendedores.map((vendedor) => (
                     <SelectItem key={vendedor.id} value={vendedor.id}>
                       {vendedor.name}
