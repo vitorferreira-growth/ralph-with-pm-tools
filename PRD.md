@@ -1297,7 +1297,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 7.5
   - **Acceptance**: Kanban completo funcional
 
-- [ ] **Step 7.7**: Testes do CRM
+- [x] **Step 7.7**: Testes do CRM
   - **Task**: Criar testes unitários, integração e E2E do fluxo
   - **Files**: `src/components/crm/*.test.tsx`, `src/__tests__/e2e/fluxo-kanban.spec.ts`
   - **Dependencies**: Step 7.6
