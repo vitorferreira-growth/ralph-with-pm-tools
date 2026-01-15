@@ -95,14 +95,12 @@ function GraficoVendasProdutoVazio(): React.ReactElement {
 interface ActiveShapeProps {
   cx: number
   cy: number
-  midAngle: number
   innerRadius: number
   outerRadius: number
   startAngle: number
   endAngle: number
   fill: string
   payload: { produtoNome: string; valor: number; quantidade: number }
-  percent: number
 }
 
 function renderActiveShape(props: ActiveShapeProps): React.ReactElement {
