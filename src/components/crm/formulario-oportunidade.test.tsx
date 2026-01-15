@@ -375,37 +375,26 @@ describe('FormularioOportunidade', () => {
       expect(screen.getByText('Nenhum produto adicionado')).toBeInTheDocument()
     })
 
-    it('should add product when selecting and clicking add button', async () => {
-      const user = userEvent.setup()
-
+    it('should display products in edit mode (products from oportunidade)', () => {
       render(
         <FormularioOportunidade
           aberto={true}
           onFechar={mockOnFechar}
           onSalvar={mockOnSalvar}
+          oportunidade={mockOportunidade}
           clientes={mockClientes}
           produtos={mockProdutos}
           vendedores={mockVendedores}
         />
       )
 
-      // Find the product select and add button
-      const addButton = screen.getByRole('button', { name: '' }) // Plus icon button
-      const productSelects = screen.getAllByRole('combobox')
-      // The product select is after cliente, vendedor, etapa
-      const produtoSelect = productSelects[3]
-
-      await user.click(produtoSelect)
-      const produtoOption = await screen.findByText(/Produto A - R\$ 100,00/)
-      await user.click(produtoOption)
-
-      await user.click(addButton)
-
-      // Product should appear in list
+      // Products from oportunidade should be displayed
       expect(screen.getByText('Produto A')).toBeInTheDocument()
       expect(screen.getByText('PA001')).toBeInTheDocument()
+      expect(screen.getByText('Produto B')).toBeInTheDocument()
+      expect(screen.getByText('PB002')).toBeInTheDocument()
 
-      // Empty state should be gone
+      // Empty state should not be shown
       expect(screen.queryByText('Nenhum produto adicionado')).not.toBeInTheDocument()
     })
 
