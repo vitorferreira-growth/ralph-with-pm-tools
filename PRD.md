@@ -1313,7 +1313,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 7.1
   - **Acceptance**: Retorna dados agregados corretamente
 
-- [ ] **Step 8.2**: Criar funções de cálculo
+- [x] **Step 8.2**: Criar funções de cálculo
   - **Task**: Implementar funções para calcular KPIs
   - **Files**: `src/lib/calculos.ts`
   - **Dependencies**: Nenhuma
