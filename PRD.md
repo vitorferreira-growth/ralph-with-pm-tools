@@ -1285,7 +1285,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 7.3
   - **Acceptance**: Card exibe cliente, valor, vendedor
 
-- [ ] **Step 7.5**: Criar formulário de oportunidade
+- [x] **Step 7.5**: Criar formulário de oportunidade
   - **Task**: Implementar modal/sidebar para criar/editar oportunidade
   - **Files**: `src/components/crm/formulario-oportunidade.tsx`
   - **Dependencies**: Step 7.4
