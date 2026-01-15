@@ -1267,7 +1267,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 6.1, Step 5.1
   - **Acceptance**: Endpoints funcionais, cálculo de total automático
 
-- [ ] **Step 7.2**: Criar hook useOportunidades
+- [x] **Step 7.2**: Criar hook useOportunidades
   - **Task**: Implementar hook com suporte a drag and drop
   - **Files**: `src/hooks/use-oportunidades.ts`
   - **Dependencies**: Step 7.1
