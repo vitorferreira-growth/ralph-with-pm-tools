@@ -69,8 +69,8 @@ test.describe('Vendedores - Fluxo Completo (autenticado)', () => {
     await page.goto('/vendedores')
     await page.waitForLoadState('networkidle')
 
-    // Clicar no botão de adicionar
-    await page.getByRole('button', { name: /adicionar|novo/i }).click()
+    // Clicar no botão de adicionar vendedor
+    await page.getByRole('button', { name: /adicionar vendedor/i }).click()
 
     // Modal deve aparecer
     await expect(page.getByRole('dialog')).toBeVisible()
