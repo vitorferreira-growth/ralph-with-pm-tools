@@ -450,8 +450,11 @@ describe('KanbanColuna', () => {
       </DndWrapper>
     )
 
-    const card = screen.getByRole('button')
-    fireEvent.keyDown(card, { key: 'Enter' })
+    // Get all buttons - the inner one is the card itself (has cursor-pointer class)
+    const buttons = screen.getAllByRole('button')
+    const cardButton = buttons.find(btn => btn.classList.contains('cursor-pointer'))
+    expect(cardButton).toBeDefined()
+    fireEvent.keyDown(cardButton!, { key: 'Enter' })
     expect(handleCardClick).toHaveBeenCalledWith(oportunidade)
   })
 
@@ -470,8 +473,11 @@ describe('KanbanColuna', () => {
       </DndWrapper>
     )
 
-    const card = screen.getByRole('button')
-    fireEvent.keyDown(card, { key: ' ' })
+    // Get all buttons - the inner one is the card itself (has cursor-pointer class)
+    const buttons = screen.getAllByRole('button')
+    const cardButton = buttons.find(btn => btn.classList.contains('cursor-pointer'))
+    expect(cardButton).toBeDefined()
+    fireEvent.keyDown(cardButton!, { key: ' ' })
     expect(handleCardClick).toHaveBeenCalledWith(oportunidade)
   })
 
