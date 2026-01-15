@@ -728,5 +728,48 @@
 - Verified: npm run build compiles successfully (18 routes)
 - Verified: npm run test:run passes (all tests)
 
+### Step 7.2: Create useOportunidades hook (2026-01-15)
+- Created src/hooks/use-oportunidades.ts with full CRUD state management
+- Hook interface (UseOportunidadesRetorno):
+  - oportunidades: OpportunityWithRelations[] - list of opportunities with relations
+  - carregando: boolean - loading state
+  - erro: string | null - error message
+  - buscarOportunidades(filtros?): Promise<void> - fetch opportunities with optional filters
+  - criarOportunidade(dados): Promise<OpportunityWithRelations | null> - create new opportunity
+  - atualizarOportunidade(id, dados): Promise<OpportunityWithRelations | null> - update opportunity
+  - moverOportunidade(id, novaEtapa): Promise<OpportunityWithRelations | null> - drag & drop stage update via PATCH
+  - excluirOportunidade(id): Promise<boolean> - delete opportunity
+  - oportunidadesPorEtapa: Record<OpportunityStage, OpportunityWithRelations[]> - grouped by stage
+  - totaisPorEtapa: Record<OpportunityStage, number> - total values per stage
+- FiltrosOportunidades interface for filtering:
+  - vendedorId?: string - filter by seller
+  - etapa?: OpportunityStage - filter by stage
+  - clienteId?: string - filter by customer
+- OportunidadeInput type for create operations:
+  - clienteId: string (required)
+  - vendedorId, etapa, observacoes, produtos (optional)
+- OportunidadeUpdateInput type for update operations (all optional)
+- ProdutoOportunidadeInput type for products:
+  - produtoId: string, quantidade?: number, precoUnitario: number
+- Features implemented:
+  - Auto-loads opportunities on mount using useEffect
+  - Optimistic update with rollback for drag & drop (moverOportunidade)
+  - Computed values: oportunidadesPorEtapa, totaisPorEtapa for Kanban display
+  - Proper error handling with Portuguese error messages
+  - Uses fetch API to communicate with /api/oportunidades endpoints
+  - All functions use useCallback for performance optimization
+- Created src/hooks/use-oportunidades.test.ts with 26 tests:
+  - buscarOportunidades: Initial load, error handling, manual refresh, filters (vendedor, etapa, cliente), multiple filters
+  - criarOportunidade: Creation, minimal fields, error handling
+  - atualizarOportunidade: Update, error handling
+  - moverOportunidade: Stage update, optimistic update, rollback on error, closed_won handling
+  - excluirOportunidade: Deletion, error handling
+  - oportunidadesPorEtapa: Grouping, empty arrays for all stages
+  - totaisPorEtapa: Calculations, zeros when empty, multiple opportunities sum
+  - Network error handling for all operations
+- Test results: 261 tests passing (235 previous + 26 new)
+- Verified: npm run build compiles successfully (18 routes)
+- Verified: npm run test:run passes (all tests)
+
 ## Next Tasks
-- Step 7.2: Criar hook useOportunidades
+- Step 7.3: Criar componente KanbanBoard
