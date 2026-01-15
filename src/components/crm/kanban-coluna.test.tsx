@@ -1,14 +1,15 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
+import { DragDropContext } from '@hello-pangea/dnd'
 import { KanbanColuna } from './kanban-coluna'
 import type { OpportunityWithRelations, OpportunityStage } from '@/types/database'
+import type { ReactNode } from 'react'
 
 // ============================================================================
 // MOCK DND CONTEXT WRAPPER
 // ============================================================================
 
-function DndWrapper({ children }: { children: React.ReactNode }) {
+function DndWrapper({ children }: { children: ReactNode }): ReactNode {
   return (
     <DragDropContext onDragEnd={() => {}}>
       {children}
