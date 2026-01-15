@@ -1,0 +1,262 @@
+# Dependabot Configuration for CloudWalk Fintech Projects
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+#
+# Security-first configuration with:
+# - Grouped updates to reduce PR noise
+# - Security updates prioritized over version updates
+# - Automatic labeling for CI/CD integration
+# - Reviewer assignment for compliance
+
+version: 2
+
+registries:
+  # Example: Private npm registry (uncomment if needed)
+  # npm-private:
+  #   type: npm-registry
+  #   url: https://npm.pkg.github.com
+  #   token: ${{ secrets.NPM_TOKEN }}
+
+updates:
+  # ===========================================
+  # Go Dependencies
+  # ===========================================
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "go"
+      - "security-review-required"
+    commit-message:
+      prefix: "deps(go)"
+    groups:
+      # Group all patch updates together
+      go-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+      # Group minor updates by category
+      go-minor:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+    ignore:
+      # Ignore major version bumps (require manual review)
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  # ===========================================
+  # Ruby/Rails Dependencies
+  # ===========================================
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "ruby"
+      - "security-review-required"
+    commit-message:
+      prefix: "deps(ruby)"
+    groups:
+      rails-ecosystem:
+        patterns:
+          - "rails"
+          - "activerecord"
+          - "activesupport"
+          - "actionpack"
+          - "actioncable"
+          - "activejob"
+      security-gems:
+        patterns:
+          - "brakeman"
+          - "bundler-audit"
+          - "rack-attack"
+
+  # ===========================================
+  # Python Dependencies
+  # ===========================================
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "python"
+      - "security-review-required"
+    commit-message:
+      prefix: "deps(python)"
+    groups:
+      testing:
+        patterns:
+          - "pytest*"
+          - "coverage"
+          - "hypothesis"
+      security:
+        patterns:
+          - "cryptography"
+          - "pyjwt"
+          - "python-jose"
+
+  # ===========================================
+  # JavaScript/TypeScript Dependencies
+  # ===========================================
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "security-review-required"
+    commit-message:
+      prefix: "deps(npm)"
+    groups:
+      typescript:
+        patterns:
+          - "typescript"
+          - "@types/*"
+      testing:
+        patterns:
+          - "jest"
+          - "@jest/*"
+          - "vitest"
+      linting:
+        patterns:
+          - "eslint*"
+          - "prettier"
+          - "@typescript-eslint/*"
+
+  # ===========================================
+  # Rust Dependencies
+  # ===========================================
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "rust"
+      - "security-review-required"
+    commit-message:
+      prefix: "deps(rust)"
+    groups:
+      tokio-ecosystem:
+        patterns:
+          - "tokio"
+          - "tokio-*"
+          - "hyper"
+          - "axum"
+      crypto:
+        patterns:
+          - "ring"
+          - "rustls"
+          - "rcgen"
+
+  # ===========================================
+  # Elixir Dependencies
+  # ===========================================
+  - package-ecosystem: "mix"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "elixir"
+      - "security-review-required"
+    commit-message:
+      prefix: "deps(elixir)"
+    groups:
+      phoenix-ecosystem:
+        patterns:
+          - "phoenix"
+          - "phoenix_*"
+          - "ecto"
+          - "ecto_sql"
+      oban:
+        patterns:
+          - "oban"
+          - "oban_*"
+
+  # ===========================================
+  # Docker Dependencies
+  # ===========================================
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    labels:
+      - "dependencies"
+      - "docker"
+      - "security-review-required"
+    commit-message:
+      prefix: "deps(docker)"
+
+  # ===========================================
+  # Terraform Dependencies
+  # ===========================================
+  - package-ecosystem: "terraform"
+    directory: "/terraform"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    labels:
+      - "dependencies"
+      - "terraform"
+      - "security-review-required"
+      - "infrastructure"
+    commit-message:
+      prefix: "deps(terraform)"
+
+  # ===========================================
+  # GitHub Actions
+  # ===========================================
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "ci-cd"
+    commit-message:
+      prefix: "ci(deps)"
+    groups:
+      actions:
+        patterns:
+          - "actions/*"

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "snap-happy": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@mariozechner/snap-happy"
+      ],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# Gitleaks ignore file for false positives
+# All entries below are test data, documentation examples, or regex patterns - NOT REAL SECRETS
+
+# False positive from gitleaks ignore file creation itself
+a7105e4c66fee2633ad1b8a3f35e882b2c391105:.gitleaksignore:private-key:8
+
+# Security utils documentation with example patterns (not real secrets)
+eca7f1091b69d63199232450d0b324e83f7c7100:scripts/security/security_utils.py:private-key:22
+eca7f1091b69d63199232450d0b324e83f7c7100:scripts/security/security_utils.py.backup:private-key:22
+
+# Security test file with intentional test examples (not real secrets)
+eca7f1091b69d63199232450d0b324e83f7c7100:scripts/security/security_test.py:aws-access-token:106
+eca7f1091b69d63199232450d0b324e83f7c7100:scripts/security/security_test.py:generic-api-key:103
+
+# False positive from gitleaksignore itself detecting patterns in comments
+a7105e4c66fee2633ad1b8a3f35e882b2c391105:.gitleaksignore:aws-access-token:7
