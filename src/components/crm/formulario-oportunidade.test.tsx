@@ -346,14 +346,11 @@ describe('FormularioOportunidade', () => {
         />
       )
 
-      // Select cliente via the trigger
-      const clienteTrigger = screen.getByRole('combobox', { name: /cliente/i })
-      await user.click(clienteTrigger)
-      const clienteOption = await screen.findByText('João Silva (joao@test.com)')
-      await user.click(clienteOption)
-
+      // Submit form - will show both cliente and products validation errors
       await user.click(screen.getByRole('button', { name: 'Criar Oportunidade' }))
 
+      // Both validation errors should be shown
+      expect(screen.getByText('Selecione um cliente')).toBeInTheDocument()
       expect(screen.getByText('Adicione pelo menos um produto')).toBeInTheDocument()
       expect(mockOnSalvar).not.toHaveBeenCalled()
     })
