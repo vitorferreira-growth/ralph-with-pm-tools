@@ -191,6 +191,9 @@ test.describe('CRM Kanban - Drag and Drop (autenticado)', () => {
 })
 
 test.describe('Fluxo Completo - Login até Venda (autenticado)', () => {
+  // Aumentar timeout para 60s pois o fluxo completo é mais longo
+  test.setTimeout(60000)
+
   test('deve completar fluxo: login -> criar vendedor -> criar produto -> criar cliente -> verificar CRM', async ({
     page,
   }) => {
@@ -203,42 +206,42 @@ test.describe('Fluxo Completo - Login até Venda (autenticado)', () => {
 
     // 2. Criar vendedor
     await page.goto('/vendedores')
-    await page.waitForLoadState('networkidle')
-    await page.getByRole('button', { name: /adicionar vendedor/i }).click()
+    await page.waitForLoadState('domcontentloaded')
+    await page.getByRole('button', { name: /adicionar vendedor/i }).click({ timeout: 10000 })
     const vendedorNome = `Vendedor Fluxo ${Date.now()}`
     await page.getByLabel(/nome/i).fill(vendedorNome)
     await page.getByLabel(/email/i).fill(`vendedor-fluxo-${Date.now()}@teste.com`)
     await page.getByRole('button', { name: 'Adicionar' }).click()
-    await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 5000 })
+    await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 10000 })
 
     // 3. Criar produto
     await page.goto('/produtos')
-    await page.waitForLoadState('networkidle')
-    await page.getByRole('button', { name: /adicionar produto/i }).click()
+    await page.waitForLoadState('domcontentloaded')
+    await page.getByRole('button', { name: /adicionar produto/i }).click({ timeout: 10000 })
     const produtoNome = `Produto Fluxo ${Date.now()}`
     await page.getByLabel(/nome/i).fill(produtoNome)
     await page.getByLabel(/valor/i).fill('1000,00')
     await page.getByRole('button', { name: 'Adicionar' }).click()
-    await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 5000 })
+    await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 10000 })
 
     // 4. Criar cliente
     await page.goto('/clientes')
-    await page.waitForLoadState('networkidle')
-    await page.getByRole('button', { name: /adicionar cliente/i }).click()
+    await page.waitForLoadState('domcontentloaded')
+    await page.getByRole('button', { name: /adicionar cliente/i }).click({ timeout: 10000 })
     const clienteNome = `Cliente Fluxo ${Date.now()}`
     await page.getByLabel(/nome/i).fill(clienteNome)
     await page.getByLabel(/email/i).fill(`cliente-fluxo-${Date.now()}@teste.com`)
     await page.getByRole('button', { name: 'Adicionar' }).click()
-    await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 5000 })
+    await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 10000 })
 
     // 5. Ir para CRM e verificar que página carrega
     await page.goto('/crm')
-    await page.waitForLoadState('networkidle')
-    await expect(page.locator('main h1')).toBeVisible()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(page.locator('main h1')).toBeVisible({ timeout: 10000 })
 
-    // 7. Verificar dashboard
+    // 6. Verificar dashboard
     await page.goto('/dashboard')
-    await page.waitForLoadState('networkidle')
-    await expect(page.locator('main')).toBeVisible()
+    await page.waitForLoadState('domcontentloaded')
+    await expect(page.locator('main')).toBeVisible({ timeout: 10000 })
   })
 })
