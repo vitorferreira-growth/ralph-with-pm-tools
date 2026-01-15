@@ -10,7 +10,8 @@ import { FormularioCliente } from '@/components/clientes/formulario-cliente'
 import { DialogoExcluirCliente } from '@/components/clientes/dialogo-excluir-cliente'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Plus, Loader2, AlertCircle, RefreshCw, Search } from 'lucide-react'
+import { Plus, AlertCircle, RefreshCw, Search } from 'lucide-react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 // ============================================================================
 // COMPONENT
