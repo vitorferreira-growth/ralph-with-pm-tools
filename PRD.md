@@ -1291,7 +1291,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 7.4
   - **Acceptance**: Seleção de cliente, produtos, vendedor funcional
 
-- [ ] **Step 7.6**: Criar página do CRM
+- [x] **Step 7.6**: Criar página do CRM
   - **Task**: Integrar todos os componentes do kanban
   - **Files**: `src/app/(dashboard)/crm/page.tsx`
   - **Dependencies**: Step 7.5
