@@ -1273,7 +1273,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Step 7.1
   - **Acceptance**: Hook gerencia estado e atualização de stage
 
-- [ ] **Step 7.3**: Criar componente KanbanBoard
+- [x] **Step 7.3**: Criar componente KanbanBoard
   - **Task**: Implementar board com 6 colunas e drag and drop
   - **Files**: `src/components/crm/kanban-board.tsx`, `src/components/crm/kanban-coluna.tsx`
   - **Dependencies**: Step 7.2
