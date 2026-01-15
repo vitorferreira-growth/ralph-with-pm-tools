@@ -1359,7 +1359,7 @@ describe('calcularTicketMedio', () => {
   - **Dependencies**: Sections 4-8
   - **Acceptance**: UX fluida em todos os estados
 
-- [ ] **Step 9.2**: Implementar tratamento de erros
+- [x] **Step 9.2**: Implementar tratamento de erros
   - **Task**: Adicionar toast notifications e error boundaries
   - **Files**: `src/components/ui/toast.tsx`, `src/app/error.tsx`
   - **Dependencies**: Sections 4-8
