@@ -16,6 +16,15 @@ vi.mock('next/navigation', () => ({
 // Mock fetch globally
 global.fetch = vi.fn()
 
+// Mock pointer capture methods for Radix UI components
+// These are not implemented in jsdom
+Element.prototype.hasPointerCapture = vi.fn().mockReturnValue(false)
+Element.prototype.setPointerCapture = vi.fn()
+Element.prototype.releasePointerCapture = vi.fn()
+
+// Mock scrollIntoView (not implemented in jsdom)
+Element.prototype.scrollIntoView = vi.fn()
+
 // Reset mocks before each test
 beforeEach(() => {
   vi.clearAllMocks()
