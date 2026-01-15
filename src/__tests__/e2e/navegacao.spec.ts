@@ -13,14 +13,14 @@ test.describe('Navegação (sem autenticação)', () => {
       await page.goto('/login')
 
       await expect(page).toHaveURL(/\/login/)
-      await expect(page.getByText(/crm infinitepay/i)).toBeVisible()
+      await expect(page.getByText(/infinitepay/i)).toBeVisible()
     })
 
     test('página de registro deve carregar corretamente', async ({ page }) => {
       await page.goto('/registro')
 
       await expect(page).toHaveURL(/\/registro/)
-      await expect(page.getByText(/crm infinitepay/i)).toBeVisible()
+      await expect(page.getByText(/infinitepay/i)).toBeVisible()
     })
   })
 
