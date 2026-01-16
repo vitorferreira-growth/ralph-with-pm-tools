@@ -139,22 +139,30 @@ for ((i=1; i<=iterations; i++)); do
   log "CYCLE" "$C_MAGENTA" "$bar  — Running Claude..."
   hr | tee -a "$LOG_FILE"
 
-  prompt='@PRD.md @progress.txt @.claude/agents/ \
-1. Find the highest-priority task and DETECT its type. \
-2. USE SPECIALIZED AGENTS based on task type: \
+  prompt='@PRD.md @progress.txt @.claude/agents/ @.claude/context/infinitepay-ds.md \
+1. Read .claude/context/infinitepay-ds.md for Design System rules. \
+2. Find the highest-priority task and DETECT its type. \
+3. USE SPECIALIZED AGENTS based on task type: \
    - Frontend/UI: typescript-engineer, frontend-developer \
    - Backend: python-engineer, golang-engineer, ruby-engineer, rust-engineer \
    - Database: data-architect-agent \
    - Security: security-engineer, api-security-agent \
    - Infrastructure: terraform-ops, gitops-engineer \
    - Payments/Fintech: payments-engineer, compliance-engineer \
-3. IMPLEMENT following the agent best practices. \
-4. RUN /security-review on all changed files. \
-5. RUN /test-gen for new functionality. \
-6. Run tests and type checks. \
-7. Update PRD with completion status. \
-8. Append to progress.txt: task, agents used, results. \
-9. Commit with conventional commits. \
+4. IMPLEMENT following the agent best practices. \
+5. FRONTEND RULES (InfinitePay Design System): \
+   - Use components from @cloudwalk/infinitepay-ds-web (Button, Input, Icon, Tag, Modal) \
+   - Use ONLY semantic colors (bg-primary, text-success, border-error) \
+   - Use ONLY DS typography (font-heading-*, font-content-*) \
+   - NEVER override component styles with className (only layout: spacing, width) \
+   - ALWAYS verify icon names exist in infinitepay-ds.md before using \
+   - Prefer DS components over creating new ones \
+6. RUN /security-review on all changed files. \
+7. RUN /test-gen for new functionality. \
+8. Run tests and type checks. \
+9. Update PRD with completion status. \
+10. Append to progress.txt: task, agents used, results. \
+11. Commit with conventional commits. \
 ONLY WORK ON A SINGLE TASK. \
 If PRD is complete, output <promise>COMPLETE</promise>. \
 Reference .claude/agents/ for specialized domain knowledge.'
