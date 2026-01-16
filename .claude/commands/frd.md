@@ -6,10 +6,10 @@ Voce eh um **Feature Architect** especializado em adicionar novas features a pro
 
 ## Modos de Operacao
 
-| Comando | Modo | Fases | Uso |
-|---------|------|-------|-----|
-| `/frd quick` | Quick | 3 fases | Features simples, UI changes |
-| `/frd` ou `/frd full` | Full | 6 fases | Features complexas, novas APIs |
+| Comando               | Modo  | Fases   | Uso                            |
+| --------------------- | ----- | ------- | ------------------------------ |
+| `/frd quick`          | Quick | 3 fases | Features simples, UI changes   |
+| `/frd` ou `/frd full` | Full  | 6 fases | Features complexas, novas APIs |
 
 ---
 
@@ -19,7 +19,7 @@ Quando o usuario acionar `/frd`:
 
 1. **Execute a Fase 0** (Context Loading) automaticamente
 2. **Verifique o modo** solicitado (quick ou full)
-3. **Inicie as perguntas** da primeira fase
+3. **Inicie as perguntas** da primeira fase (Não utilize UserQuestTool, deixe a pergunta aberta)
 4. **Ao final de cada fase**, apresente o output e pergunte se deseja ajustar antes de avancar
 5. **Na ultima fase**, gere o FRD e ofereca opcoes de output
 
@@ -28,28 +28,25 @@ Quando o usuario acionar `/frd`:
 # FASE 0: Context Loading (Automatica)
 
 ## Objetivo
+
 Ler e entender o projeto existente antes de adicionar features.
 
 ## Acoes
 
 1. **Ler PRD.md** e extrair:
    - Tech Stack
-   - Design System (deve ser InfinitePay DS)
+   - Design System (cores, tipografia, componentes)
    - Features existentes
    - Convencoes do projeto
 
-2. **Ler `.claude/context/infinitepay-ds.md`** e confirmar:
-   - Componentes disponiveis (Button, Input, Icon, Tag, Modal, etc.)
-   - Cores semanticas (bg-primary, text-success, etc.)
-   - Regras de uso (NUNCA override className, SEMPRE verificar icones)
-
-3. **Ler progress.txt** e verificar:
+2. **Ler progress.txt** e verificar:
    - Tasks completas
    - Tasks pendentes
    - Status geral do projeto
 
-4. **Validacao de Completude**:
+3. **Validacao de Completude**:
    - Se houver tasks pendentes do PRD original, exibir warning:
+
    ```
    ⚠️ AVISO: O PRD ainda tem tasks pendentes.
    Recomendado: Termine o PRD primeiro com `ralph-once.sh` ou `ralph-afk.sh`.
@@ -57,18 +54,14 @@ Ler e entender o projeto existente antes de adicionar features.
    Deseja continuar mesmo assim? (sim/nao)
    ```
 
-5. **Apresentar resumo**:
+4. **Apresentar resumo**:
+
    ```markdown
    ## Contexto do Projeto
 
    **Tech Stack:** [extraido do PRD]
-   **Design System:** InfinitePay DS (@cloudwalk/infinitepay-ds-web)
    **Features Existentes:** [lista]
    **Status:** X tasks completas, Y pendentes
-
-   **Componentes DS disponiveis:**
-   Button, Input, Icon, Tag, Select, Checkbox, Radio, Switch,
-   Search, PopupModal, DrawerModal, CalendarRange
 
    Pronto para adicionar uma nova feature!
    ```
@@ -80,6 +73,7 @@ Ler e entender o projeto existente antes de adicionar features.
 ## Fase 1: Feature Discovery
 
 ### Objetivo
+
 Entender a feature que sera adicionada.
 
 ### Perguntas
@@ -102,15 +96,19 @@ Vamos comecar pela **Fase 1: Feature Discovery**.
 ## Feature: [Nome]
 
 ### Descricao
+
 [2-3 frases sobre o que a feature faz]
 
 ### Problema que Resolve
+
 [Qual dor do usuario esta sendo resolvida]
 
 ### Integracao
+
 [Como se conecta com features existentes]
 
 ### Prioridade
+
 [P0/P1/P2] - [Justificativa]
 ```
 
@@ -119,6 +117,7 @@ Vamos comecar pela **Fase 1: Feature Discovery**.
 ## Fase 2: User Stories
 
 ### Objetivo
+
 Detalhar user stories e acceptance criteria.
 
 ### Perguntas
@@ -139,16 +138,19 @@ Para cada fluxo principal:
 ## User Stories
 
 ### Story 1: [Titulo]
+
 **As a** [tipo de usuario]
 **I want to** [acao]
 **So that** [beneficio]
 
 #### Acceptance Criteria
+
 - [ ] [Criterio 1]
 - [ ] [Criterio 2]
 - [ ] [Criterio 3]
 
 #### Edge Cases
+
 - [Caso especial 1]
 - [Caso especial 2]
 ```
@@ -158,23 +160,8 @@ Para cada fluxo principal:
 ## Fase 3: Screen States
 
 ### Objetivo
-Definir componentes e estados de tela usando o InfinitePay Design System.
 
-### Componentes DS Disponiveis (usar preferencialmente)
-
-**IMPORTANTE:** Antes de criar componentes novos, verifique se o DS ja oferece:
-
-| Necessidade | Componente DS |
-|-------------|---------------|
-| Botoes | `Button` (variant: primary, secondary, ghost, destructive) |
-| Campos de texto | `Input` (com label, error, iconLeft) |
-| Selecao | `Select`, `Checkbox`, `Radio`, `Switch` |
-| Icones | `Icon` (582 disponiveis - verificar nome) |
-| Tags/Status | `Tag` (context: success, error, warning, info, neutral) |
-| Busca | `Search` |
-| Modais | `PopupModal`, `DrawerModal`, `AnnouncementModal` |
-| Data | `CalendarRange` |
-| Graficos | `CashflowChart` |
+Definir componentes e estados de tela.
 
 ### Perguntas
 
@@ -182,15 +169,13 @@ Definir componentes e estados de tela usando o InfinitePay Design System.
 Agora vamos para a **Fase 3: Screen States**.
 
 1. **Telas**: Quais telas sao afetadas por esta feature?
-2. **Componentes DS**: Quais componentes do InfinitePay DS serao usados?
-   (Button, Input, Tag, Modal, Icon, etc.)
-3. **Componentes Novos**: Precisa criar algo que o DS NAO oferece?
-4. **Estados**: Para cada tela/componente:
+2. **Componentes**: Precisa de novos componentes?
+3. **Estados**: Para cada tela/componente:
    - Empty state
    - Loading state
    - Success state
    - Error state
-5. **Interacoes**: Quais micro-interacoes sao importantes?
+4. **Interacoes**: Quais micro-interacoes sao importantes?
 ```
 
 ### Output Esperado
@@ -200,38 +185,30 @@ Agora vamos para a **Fase 3: Screen States**.
 
 ### Tela: [Nome]
 
-#### Componentes do InfinitePay DS utilizados
-- `Button` variant="primary" - [Uso]
-- `Input` - [Uso]
-- `Tag` context="success" - [Uso]
-- `Icon` name="icon-xxx" - [Uso]
-- `PopupModal` - [Uso]
+#### Componentes Novos
 
-#### Componentes Novos (apenas se necessario)
-- `ComponentName` - [Descricao e justificativa]
+- `ComponentName` - [Descricao]
 
 #### Estados
 
 **Empty State**
-- Usar `Icon` para ilustracao
-- Texto com `font-heading-3` e `text-secondary`
-- `Button` variant="primary" como CTA
+
+- [Descricao do estado vazio]
 
 **Loading State**
-- Skeleton com `bg-secondary` e animacao
-- Ou `Icon` name="icon-loader" com spin
+
+- [Descricao do loading]
 
 **Success State**
-- Lista/grid de items
-- `Tag` para status
-- `Button` variant="ghost" para acoes secundarias
+
+- [Descricao do estado com dados]
 
 **Error State**
-- `Icon` name="icon-alert-circle" com `text-error`
-- Mensagem com `text-error`
-- `Button` variant="secondary" para retry
+
+- [Descricao do erro]
 
 #### Micro-interactions
+
 - [Interacao 1]
 - [Interacao 2]
 ```
@@ -241,6 +218,7 @@ Agora vamos para a **Fase 3: Screen States**.
 ## Fase 4: Technical Spec
 
 ### Objetivo
+
 Definir especificacoes tecnicas respeitando o stack existente.
 
 ### Perguntas
@@ -264,20 +242,21 @@ Considerando o tech stack existente ([extraido do PRD]):
 ### API Endpoints (se aplicavel)
 
 #### `POST /api/[resource]`
+
 **Descricao:** [O que faz]
 
 **Request:**
 \`\`\`json
 {
-  "field": "value"
+"field": "value"
 }
 \`\`\`
 
 **Response (201):**
 \`\`\`json
 {
-  "id": "string",
-  "field": "value"
+"id": "string",
+"field": "value"
 }
 \`\`\`
 
@@ -285,15 +264,17 @@ Considerando o tech stack existente ([extraido do PRD]):
 
 \`\`\`prisma
 model NewEntity {
-  id        String   @id @default(cuid())
-  // fields
+id String @id @default(cuid())
+// fields
 }
 \`\`\`
 
 ### Integracoes Externas
+
 - [Integracao 1] - [Motivo]
 
 ### State Management
+
 - [Como o estado sera gerenciado]
 ```
 
@@ -302,9 +283,11 @@ model NewEntity {
 ## Fase 5: Implementation Plan
 
 ### Objetivo
-Gerar tasks detalhadas compativeis com ralph-once.sh.
+
+Gerar tasks detalhadas.
 
 ### Processo
+
 Gerar automaticamente baseado nas fases anteriores.
 
 ### Output Esperado
@@ -332,6 +315,7 @@ Gerar automaticamente baseado nas fases anteriores.
 ## Fase 6: Output Options
 
 ### Objetivo
+
 Definir onde salvar o FRD.
 
 ### Perguntas
@@ -349,16 +333,19 @@ Onde voce quer salvar as tasks desta feature?
 ### Acoes por opcao
 
 **Opcao 1 (Append to PRD):**
+
 - Adicionar nova Section ao PRD.md
 - Adicionar tasks ao Implementation Plan existente
 - Atualizar progress.txt com novas tasks pendentes
 
 **Opcao 2 (Create FRD):**
+
 - Criar pasta `docs/frd/` se nao existir
 - Salvar em `docs/frd/FRD_[FEATURE_NAME].md`
 - Atualizar progress.txt com referencia ao FRD
 
 **Opcao 3 (Both):**
+
 - Executar ambas as acoes
 
 ---
@@ -392,7 +379,7 @@ Vamos criar um FRD rapido! **Fase 1: Feature + Stories**
 
 ## Fase 3: Tasks
 
-Gerar tasks simplificadas no formato Ralph-compatible.
+Gerar tasks simplificadas.
 
 ```markdown
 ## Feature: [Nome]
@@ -408,12 +395,5 @@ Gerar tasks simplificadas no formato Ralph-compatible.
 # Notas Importantes
 
 1. **Sempre respeite o tech stack do PRD** - Nao sugira tecnologias diferentes
-2. **Use o InfinitePay Design System** - Todos os projetos usam `@cloudwalk/infinitepay-ds-web`
-   - Prefira componentes do DS (Button, Input, Tag, Modal) a criar novos
-   - Use cores semanticas (bg-primary, text-success) - NUNCA cores hex
-   - Use tipografia do DS (font-heading-*, font-content-*)
-   - NUNCA override estilos com className (apenas layout: spacing, width)
-   - Verifique nomes de icones antes de usar
-3. **Tasks granulares** - Cada step deve ser executavel em uma sessao do Ralph
-4. **Dependencias claras** - Ralph executa em ordem, entao dependencias importam
-5. **Consulte o contexto** - Ler `.claude/context/infinitepay-ds.md` para detalhes do DS
+2. **Mantenha consistencia com Design System** - Use cores, tipografia e componentes existentes
+3. **Ao finalizar o FRD, feche a sessao** - Deixe que o usuario decida se vai começar implementação ou não.
