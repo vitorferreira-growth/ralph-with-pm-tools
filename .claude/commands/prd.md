@@ -573,12 +573,46 @@ Gerar tasks detalhadas para implementação.
 ```markdown
 ## 8. Implementation Plan
 
+### Section 0: InfinitePay Design System Setup (Obrigatorio)
+
+- [ ] **Step 0.1**: Configurar GitHub Packages
+  - **Task**: Configurar acesso ao npm registry do CloudWalk para instalar o Design System
+  - **Files**: .npmrc
+  - **Dependencies**: None
+  - **User Instructions**:
+    1. Criar GitHub Personal Access Token em https://github.com/settings/tokens
+    2. Selecionar permissao `read:packages`
+    3. Criar arquivo `.npmrc` na raiz do projeto com:
+       ```
+       @cloudwalk:registry=https://npm.pkg.github.com
+       //npm.pkg.github.com/:_authToken=SEU_TOKEN_AQUI
+       ```
+    4. Adicionar `.npmrc` ao `.gitignore` (contem token sensivel)
+  - **Acceptance**: `npm install @cloudwalk/infinitepay-ds-web` executa sem erros de autenticacao
+
+- [ ] **Step 0.2**: Instalar InfinitePay Design System
+  - **Task**: Instalar pacote do Design System e peer dependencies
+  - **Files**: package.json
+  - **Commands**: `npm install @cloudwalk/infinitepay-ds-web react-calendar date-fns`
+  - **Dependencies**: Step 0.1
+  - **Acceptance**: Pacotes instalados sem erros em package.json
+
+- [ ] **Step 0.3**: Configurar Tailwind para InfinitePay DS
+  - **Task**: Adicionar preset do Design System ao Tailwind e importar estilos
+  - **Files**: tailwind.config.ts, postcss.config.mjs, app/globals.css
+  - **Dependencies**: Step 0.2
+  - **Details**:
+    - tailwind.config.ts: Adicionar `infinitepayPreset` e content paths do DS
+    - postcss.config.mjs: Configurar tailwindcss e autoprefixer
+    - globals.css: Importar `@cloudwalk/infinitepay-ds-web/styles.css`
+  - **Acceptance**: Classes do DS funcionam (bg-primary, font-heading-1, etc.) e componentes renderizam corretamente
+
 ### Section 1: Project Setup
 
 - [ ] **Step 1.1**: Initialize Next.js project
   - **Task**: Create Next.js 14 project with TypeScript, TailwindCSS, ESLint
   - **Files**: package.json, tsconfig.json, tailwind.config.ts, next.config.js
-  - **Dependencies**: None
+  - **Dependencies**: Section 0 completa
   - **Acceptance**: `npm run dev` starts without errors
 
 - [ ] **Step 1.2**: Configure database
