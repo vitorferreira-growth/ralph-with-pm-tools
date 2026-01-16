@@ -191,139 +191,94 @@ Agora vamos detalhar a feature **[Nome da Feature]** na **Fase 3: User Stories**
 
 ### Objetivo
 
-Definir o sistema visual completo do produto.
+Aplicar o Design System padrao InfinitePay (sem customizacao).
 
-### Perguntas
+### Processo
+
+**NAO PERGUNTAR** sobre cores, estilos ou referencias visuais.
+
+1. Informar que o projeto usara o InfinitePay DS obrigatoriamente
+2. Mostrar resumo do DS para conhecimento do usuario
+3. Gerar output automaticamente
+
+**Mensagem para o usuario:**
 
 ```
-Agora vamos para a **Fase 4: Design System**.
+**Fase 4: Design System**
 
-1. **Referências**: Tem apps/sites que você gosta visualmente? (pode listar nomes)
-2. **Estilo**: Qual a vibe?
-   - [ ] Minimalista e clean
-   - [ ] Rico em informações (dashboards)
-   - [ ] Colorido e vibrante
-   - [ ] Dark mode first
-   - [ ] Corporativo/profissional
-3. **Cores**: Tem cores definidas ou posso sugerir?
-4. **Dark mode**: Precisa de suporte?
-5. **Densidade**: Prefere interfaces limpas ou ricas em dados?
+Este projeto usara o **InfinitePay Design System** obrigatoriamente.
+
+O InfinitePay DS e um sistema de design completo com:
+- **Componentes:** Button, Input, Icon (582), Tag, Select, Modal, etc.
+- **Cores:** Semanticas (bg-primary, text-success, border-error)
+- **Tipografia:** CeraPro (font-heading-*, font-content-*)
+- **Dark Mode:** Suportado via class 'dark'
+
+Nenhuma customizacao sera aplicada - todos os projetos seguem este padrao.
+
+Gerando Design System automaticamente...
 ```
 
-### Output Esperado
+### Output Fixo (NAO EDITAVEL)
 
 ```markdown
 ## 4. Design System
 
-### Color Palette
+> **InfinitePay Design System** - Padrao obrigatorio para todos os projetos.
+> Documentacao completa em `.claude/context/infinitepay-ds.md`
 
-#### Primary Colors
+### Package
 
-| Nome          | Hex       | Uso                       |
-| ------------- | --------- | ------------------------- |
-| Primary       | `#000000` | Botões principais, ênfase |
-| Primary Light | `#333333` | Hover states              |
+```bash
+npm install @cloudwalk/infinitepay-ds-web react-calendar date-fns
+```
 
-#### Secondary Colors
+**Nota:** Requer configuracao de GitHub Packages (.npmrc) - veja Implementation Plan.
 
-| Nome            | Hex       | Uso                   |
-| --------------- | --------- | --------------------- |
-| Secondary       | `#666666` | Elementos secundários |
-| Secondary Light | `#999999` | Backgrounds sutis     |
+### Componentes Disponiveis
 
-#### Accent Colors
+| Categoria | Componentes |
+|-----------|-------------|
+| **Atoms** | Button, Input, Icon, Tag, Select, Checkbox, Radio, Switch, Tooltip, Avatar |
+| **Molecules** | Search |
+| **Templates** | PopupModal, DrawerModal, AnnouncementModal |
+| **Dataviz** | CalendarRange, CashflowChart |
 
-| Nome   | Hex       | Uso                    |
-| ------ | --------- | ---------------------- |
-| Accent | `#0066FF` | CTAs, links, destaques |
+### Sistema de Icones
 
-#### Functional Colors
+582 icones vetoriais disponiveis via componente `<Icon name="icon-xxx" />`.
 
-| Nome    | Hex       | Uso                     |
-| ------- | --------- | ----------------------- |
-| Success | `#22C55E` | Confirmações, sucesso   |
-| Error   | `#EF4444` | Erros, alertas críticos |
-| Warning | `#F59E0B` | Avisos                  |
-| Info    | `#3B82F6` | Informações             |
+Categorias: navegacao, acoes, status, financeiro, usuario, comunicacao, arquivos, dispositivos.
 
-#### Background Colors
+**CRITICO:** Sempre verificar se o icone existe antes de usar.
 
-| Nome       | Hex       | Uso               |
-| ---------- | --------- | ----------------- |
-| Background | `#FFFFFF` | Fundo principal   |
-| Surface    | `#F9FAFB` | Cards, painéis    |
-| Elevated   | `#FFFFFF` | Modals, dropdowns |
+### Cores Semanticas
 
-### Typography
+| Tipo | Classes |
+|------|---------|
+| **Background** | `bg-primary`, `bg-secondary`, `bg-tertiary`, `bg-inverse` |
+| **Texto** | `text-primary`, `text-secondary`, `text-success`, `text-error`, `text-warning` |
+| **Bordas** | `border-primary`, `border-secondary`, `border-success`, `border-error` |
+| **Estados** | `bg-success`, `bg-error`, `bg-warning`, `bg-info` |
 
-#### Font Families
+### Tipografia
 
-- **Primary**: Inter / SF Pro Text (UI)
-- **Monospace**: JetBrains Mono (código)
+| Tipo | Classes |
+|------|---------|
+| **Headings** | `font-heading-1` a `font-heading-6` |
+| **Content** | `font-content-primary`, `font-content-secondary`, `font-content-caption` |
 
-#### Type Scale
+### Regras de Uso
 
-| Style      | Size | Weight         | Line Height |
-| ---------- | ---- | -------------- | ----------- |
-| H1         | 32px | Bold (700)     | 40px        |
-| H2         | 24px | Bold (700)     | 32px        |
-| H3         | 20px | Semibold (600) | 28px        |
-| H4         | 18px | Semibold (600) | 24px        |
-| Body       | 16px | Regular (400)  | 24px        |
-| Body Small | 14px | Regular (400)  | 20px        |
-| Caption    | 12px | Medium (500)   | 16px        |
+1. **NUNCA** usar `className` para override de estilos dos componentes (apenas layout: spacing, width)
+2. **NUNCA** criar cores customizadas (usar apenas cores semanticas)
+3. **NUNCA** inventar nomes de icones (verificar lista)
+4. **SEMPRE** usar props dos componentes (variant, size, context)
+5. **SEMPRE** usar tipografia do DS (font-heading-*, font-content-*)
 
-### Spacing System
+### Dark Mode
 
-| Token | Value | Uso                          |
-| ----- | ----- | ---------------------------- |
-| xs    | 4px   | Micro espaçamentos           |
-| sm    | 8px   | Entre elementos relacionados |
-| md    | 16px  | Padding padrão               |
-| lg    | 24px  | Separação de seções          |
-| xl    | 32px  | Grandes separações           |
-| 2xl   | 48px  | Entre blocos principais      |
-
-### Component Styling
-
-#### Buttons
-
-- **Primary**: Background brand, texto branco, radius 8px
-- **Secondary**: Outlined, borda brand, texto brand
-- **Ghost**: Sem background, texto brand
-- **Destructive**: Background error, texto branco
-
-#### Cards
-
-- Background: Surface color
-- Shadow: 0 1px 3px rgba(0,0,0,0.1)
-- Radius: 12px
-- Padding: 16px (md)
-
-#### Inputs
-
-- Height: 44px
-- Radius: 8px
-- Border: 1px neutral (idle), 2px primary (focus)
-- Padding: 12px horizontal
-
-### Motion & Animation
-
-| Type     | Duration | Easing      | Uso               |
-| -------- | -------- | ----------- | ----------------- |
-| Micro    | 150ms    | ease-out    | Hovers, toggles   |
-| Standard | 200ms    | ease-in-out | Transições gerais |
-| Emphasis | 300ms    | spring      | Entradas, modais  |
-| Page     | 400ms    | ease-out    | Navegação         |
-
-### Dark Mode (se aplicável)
-
-| Token          | Light     | Dark      |
-| -------------- | --------- | --------- |
-| Background     | `#FFFFFF` | `#0A0A0A` |
-| Surface        | `#F9FAFB` | `#171717` |
-| Text Primary   | `#111827` | `#F9FAFB` |
-| Text Secondary | `#6B7280` | `#9CA3AF` |
+Suportado via classe `dark` no elemento root. Todos os componentes se adaptam automaticamente.
 ```
 
 ---
