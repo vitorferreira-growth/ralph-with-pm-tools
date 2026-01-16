@@ -668,16 +668,24 @@ Vamos criar um PRD rápido! **Fase 1: Essenciais**
 5. **Tech Stack**: Alguma preferência? (ou usar padrões)
 ```
 
-## Fase 2: Design Rápido
+## Fase 2: Design Rapido
 
-### Perguntas
+### Processo
+
+**NAO PERGUNTAR** - Usar InfinitePay DS automaticamente.
+
+**Mensagem para o usuario:**
 
 ```
-**Fase 2: Design Rápido**
+**Fase 2: Design**
 
-1. **Estilo**: Minimalista ou rico em dados?
-2. **Cores**: Alguma cor principal? (ou deixar eu sugerir)
-3. **Dark mode**: Precisa?
+Design System: **InfinitePay DS** (padrao obrigatorio)
+- Componentes: Button, Input, Icon, Tag, Modal, etc.
+- Cores: Semanticas (bg-primary, text-success)
+- Tipografia: CeraPro
+- Dark mode: Suportado
+
+Gerando automaticamente...
 ```
 
 ## Fase 3: Output
