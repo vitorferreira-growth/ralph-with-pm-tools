@@ -158,7 +158,23 @@ Para cada fluxo principal:
 ## Fase 3: Screen States
 
 ### Objetivo
-Definir componentes e estados de tela.
+Definir componentes e estados de tela usando o InfinitePay Design System.
+
+### Componentes DS Disponiveis (usar preferencialmente)
+
+**IMPORTANTE:** Antes de criar componentes novos, verifique se o DS ja oferece:
+
+| Necessidade | Componente DS |
+|-------------|---------------|
+| Botoes | `Button` (variant: primary, secondary, ghost, destructive) |
+| Campos de texto | `Input` (com label, error, iconLeft) |
+| Selecao | `Select`, `Checkbox`, `Radio`, `Switch` |
+| Icones | `Icon` (582 disponiveis - verificar nome) |
+| Tags/Status | `Tag` (context: success, error, warning, info, neutral) |
+| Busca | `Search` |
+| Modais | `PopupModal`, `DrawerModal`, `AnnouncementModal` |
+| Data | `CalendarRange` |
+| Graficos | `CashflowChart` |
 
 ### Perguntas
 
@@ -166,13 +182,15 @@ Definir componentes e estados de tela.
 Agora vamos para a **Fase 3: Screen States**.
 
 1. **Telas**: Quais telas sao afetadas por esta feature?
-2. **Componentes**: Precisa de novos componentes?
-3. **Estados**: Para cada tela/componente:
+2. **Componentes DS**: Quais componentes do InfinitePay DS serao usados?
+   (Button, Input, Tag, Modal, Icon, etc.)
+3. **Componentes Novos**: Precisa criar algo que o DS NAO oferece?
+4. **Estados**: Para cada tela/componente:
    - Empty state
    - Loading state
    - Success state
    - Error state
-4. **Interacoes**: Quais micro-interacoes sao importantes?
+5. **Interacoes**: Quais micro-interacoes sao importantes?
 ```
 
 ### Output Esperado
@@ -182,22 +200,36 @@ Agora vamos para a **Fase 3: Screen States**.
 
 ### Tela: [Nome]
 
-#### Componentes Novos
-- `ComponentName` - [Descricao]
+#### Componentes do InfinitePay DS utilizados
+- `Button` variant="primary" - [Uso]
+- `Input` - [Uso]
+- `Tag` context="success" - [Uso]
+- `Icon` name="icon-xxx" - [Uso]
+- `PopupModal` - [Uso]
+
+#### Componentes Novos (apenas se necessario)
+- `ComponentName` - [Descricao e justificativa]
 
 #### Estados
 
 **Empty State**
-- [Descricao do estado vazio]
+- Usar `Icon` para ilustracao
+- Texto com `font-heading-3` e `text-secondary`
+- `Button` variant="primary" como CTA
 
 **Loading State**
-- [Descricao do loading]
+- Skeleton com `bg-secondary` e animacao
+- Ou `Icon` name="icon-loader" com spin
 
 **Success State**
-- [Descricao do estado com dados]
+- Lista/grid de items
+- `Tag` para status
+- `Button` variant="ghost" para acoes secundarias
 
 **Error State**
-- [Descricao do erro]
+- `Icon` name="icon-alert-circle" com `text-error`
+- Mensagem com `text-error`
+- `Button` variant="secondary" para retry
 
 #### Micro-interactions
 - [Interacao 1]
