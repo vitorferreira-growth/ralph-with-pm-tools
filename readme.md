@@ -73,12 +73,51 @@ Add new features to an existing project. Reads `PRD.md` and `progress.txt` autom
 
 ---
 
+## InfinitePay Design System Integration
+
+All generated projects use the **InfinitePay Design System** (`@cloudwalk/infinitepay-ds-web`) by default. No customization questions are asked during PRD generation.
+
+### What's Included
+
+| Category | Details |
+|----------|---------|
+| **Package** | `@cloudwalk/infinitepay-ds-web` |
+| **Components** | Button, Input, Icon, Tag, Select, Modal, Search, Calendar |
+| **Icons** | 582 vectorial icons |
+| **Colors** | Semantic classes (`bg-primary`, `text-success`, `border-error`) |
+| **Typography** | CeraPro font (`font-heading-*`, `font-content-*`) |
+| **Dark Mode** | Supported via `dark` class |
+
+### Automatic Setup Tasks
+
+Every PRD includes **Section 0** with mandatory setup tasks:
+
+1. **Step 0.1**: Configure GitHub Packages (`.npmrc` with token)
+2. **Step 0.2**: Install DS package and peer dependencies
+3. **Step 0.3**: Configure Tailwind with DS presets
+
+### Frontend Rules (Enforced)
+
+- Use DS components instead of creating new ones
+- Use semantic colors only (never hex values)
+- Use DS typography classes
+- Never override component styles with `className` (only layout)
+- Always verify icon names exist before using
+
+> **Documentation**: See `.claude/context/infinitepay-ds.md` for complete reference.
+
+---
+
 ## Project Structure
 
 ```
-.claude/commands/
-├── prd.md                 # The /prd command definition
-└── frd.md                 # The /frd command definition
+.claude/
+├── commands/
+│   ├── prd.md             # The /prd command definition
+│   └── frd.md             # The /frd command definition
+├── context/
+│   └── infinitepay-ds.md  # InfinitePay Design System reference
+└── agents/                # Specialized agent definitions
 docs/prd_reference/        # 8-Step Method documentation
 ├── steps/                 # Detailed prompts for each step
 └── templates/
