@@ -388,10 +388,28 @@ Agora vamos para a **Fase 6: Technical Architecture**.
 | Layer    | Technology     | Justificativa                |
 | -------- | -------------- | ---------------------------- |
 | Frontend | Next.js 14     | SSR, App Router, performance |
+| UI/DS    | InfinitePay DS | Design System padrao CloudWalk |
 | Backend  | Server Actions | Type-safe, colocation        |
 | Database | PostgreSQL     | Relacional, full-text search |
 | Auth     | Clerk          | Managed, webhooks, SSO       |
 | Hosting  | Vercel         | Edge, preview deployments    |
+
+### Design System Dependencies (Obrigatorio)
+
+```json
+{
+  "dependencies": {
+    "@cloudwalk/infinitepay-ds-web": "latest",
+    "react-calendar": "^4.0.0",
+    "date-fns": "^3.0.0"
+  }
+}
+```
+
+**Configuracao necessaria:**
+- `.npmrc` com GitHub Packages token
+- `tailwind.config.ts` com preset do DS
+- `globals.css` importando estilos do DS
 
 ### System Diagram
 
