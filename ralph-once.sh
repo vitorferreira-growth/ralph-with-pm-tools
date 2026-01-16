@@ -71,20 +71,28 @@ log "INFO" "$C_CYAN" "Starting one-shot Claude run (IS_SANDBOX=1)."
 log "INFO" "$C_DIM"  "Log file: $LOG_FILE | STREAM=$STREAM"
 hr | tee -a "$LOG_FILE"
 
-prompt='@PRD.md @progress.txt @.claude/agents/ \
+prompt='@PRD.md @progress.txt @.claude/agents/ @.claude/context/infinitepay-ds.md \
 1. Read the PRD and progress file to understand context. \
-2. Find the next incomplete task. \
-3. DETECT TASK TYPE and use appropriate specialized agents: \
+2. Read .claude/context/infinitepay-ds.md for Design System rules. \
+3. Find the next incomplete task. \
+4. DETECT TASK TYPE and use appropriate specialized agents: \
    - Frontend tasks: Use typescript-engineer, frontend-developer agents \
    - Backend tasks: Use language-specific agent (python/go/ruby/rust) \
    - Database tasks: Use data-architect-agent \
    - API tasks: Use api-security-agent \
    - Infrastructure: Use terraform-ops, gitops-engineer \
-4. IMPLEMENT the task following agent best practices. \
-5. RUN /security-review on changed files before committing. \
-6. RUN /test-gen to create tests for new code. \
-7. Commit with conventional commits format. \
-8. Update progress.txt with task details and agents used. \
+5. IMPLEMENT the task following agent best practices. \
+6. FRONTEND RULES (InfinitePay Design System): \
+   - Use components from @cloudwalk/infinitepay-ds-web (Button, Input, Icon, Tag, Modal) \
+   - Use ONLY semantic colors (bg-primary, text-success, border-error) \
+   - Use ONLY DS typography (font-heading-*, font-content-*) \
+   - NEVER override component styles with className (only layout: spacing, width) \
+   - ALWAYS verify icon names exist in infinitepay-ds.md before using \
+   - Prefer DS components over creating new ones \
+7. RUN /security-review on changed files before committing. \
+8. RUN /test-gen to create tests for new code. \
+9. Commit with conventional commits format. \
+10. Update progress.txt with task details and agents used. \
 ONLY DO ONE TASK AT A TIME. \
 Reference agents in .claude/agents/ for domain expertise.'
 
