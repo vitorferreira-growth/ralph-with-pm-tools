@@ -34,16 +34,21 @@ Ler e entender o projeto existente antes de adicionar features.
 
 1. **Ler PRD.md** e extrair:
    - Tech Stack
-   - Design System (cores, tipografia, componentes)
+   - Design System (deve ser InfinitePay DS)
    - Features existentes
    - Convencoes do projeto
 
-2. **Ler progress.txt** e verificar:
+2. **Ler `.claude/context/infinitepay-ds.md`** e confirmar:
+   - Componentes disponiveis (Button, Input, Icon, Tag, Modal, etc.)
+   - Cores semanticas (bg-primary, text-success, etc.)
+   - Regras de uso (NUNCA override className, SEMPRE verificar icones)
+
+3. **Ler progress.txt** e verificar:
    - Tasks completas
    - Tasks pendentes
    - Status geral do projeto
 
-3. **Validacao de Completude**:
+4. **Validacao de Completude**:
    - Se houver tasks pendentes do PRD original, exibir warning:
    ```
    ⚠️ AVISO: O PRD ainda tem tasks pendentes.
@@ -52,13 +57,18 @@ Ler e entender o projeto existente antes de adicionar features.
    Deseja continuar mesmo assim? (sim/nao)
    ```
 
-4. **Apresentar resumo**:
+5. **Apresentar resumo**:
    ```markdown
    ## Contexto do Projeto
 
    **Tech Stack:** [extraido do PRD]
+   **Design System:** InfinitePay DS (@cloudwalk/infinitepay-ds-web)
    **Features Existentes:** [lista]
    **Status:** X tasks completas, Y pendentes
+
+   **Componentes DS disponiveis:**
+   Button, Input, Icon, Tag, Select, Checkbox, Radio, Switch,
+   Search, PopupModal, DrawerModal, CalendarRange
 
    Pronto para adicionar uma nova feature!
    ```
