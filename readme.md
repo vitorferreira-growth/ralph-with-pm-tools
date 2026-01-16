@@ -18,7 +18,7 @@ The main enhancement is a Claude Code custom command that generates comprehensiv
 1. **Discovery** - Problem, audience, USP, platforms, monetization
 2. **Features** - MVP features (P0), v2 features (P1), future (P2)
 3. **User Stories** - Detailed stories with acceptance criteria per feature
-4. **Design System** - Colors, typography, spacing, components, motion
+4. **Design System** - **InfinitePay DS** (automatic, no questions)
 5. **Screen States** - Empty, loading, success, error states per feature
 6. **Technical Architecture** - Stack, system diagram, data models, APIs
 7. **Project Rules** - Code style, git workflow, testing conventions
@@ -27,7 +27,7 @@ The main enhancement is a Claude Code custom command that generates comprehensiv
 ### Quick Mode (3 Phases)
 
 1. **Essenciais** - Idea, problem, audience, MVP features, tech stack
-2. **Design Rápido** - Style, colors, dark mode
+2. **Design** - **InfinitePay DS** (automatic, no questions)
 3. **Output** - Simplified PRD with high-level tasks
 
 ## The `/frd` Command
