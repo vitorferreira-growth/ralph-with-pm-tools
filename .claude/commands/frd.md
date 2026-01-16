@@ -408,6 +408,12 @@ Gerar tasks simplificadas no formato Ralph-compatible.
 # Notas Importantes
 
 1. **Sempre respeite o tech stack do PRD** - Nao sugira tecnologias diferentes
-2. **Mantenha consistencia com Design System** - Use cores, tipografia e componentes existentes
+2. **Use o InfinitePay Design System** - Todos os projetos usam `@cloudwalk/infinitepay-ds-web`
+   - Prefira componentes do DS (Button, Input, Tag, Modal) a criar novos
+   - Use cores semanticas (bg-primary, text-success) - NUNCA cores hex
+   - Use tipografia do DS (font-heading-*, font-content-*)
+   - NUNCA override estilos com className (apenas layout: spacing, width)
+   - Verifique nomes de icones antes de usar
 3. **Tasks granulares** - Cada step deve ser executavel em uma sessao do Ralph
 4. **Dependencias claras** - Ralph executa em ordem, entao dependencias importam
+5. **Consulte o contexto** - Ler `.claude/context/infinitepay-ds.md` para detalhes do DS
